@@ -1,4 +1,9 @@
 <?php
+    require "./dao/pdo.php";
+    require "./dao/khach-hang.php";
+    require "./dao/hang-hoa.php";
+    require "./dao/loai.php";
+    
     require "include/header.php";
     $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
 
