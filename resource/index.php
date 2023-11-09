@@ -1,10 +1,11 @@
 <?php
-    require './global.php';
+    require "./global.php";
     require "./dao/pdo.php";
     require "./dao/khach-hang.php";
     require "./dao/hang-hoa.php";
     require "./dao/loai.php";
     
+    //Include header
     require "include/header.php";
     $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
     
@@ -59,6 +60,6 @@
             break;
         }
     }
-
+    //Include header
     require 'include/footer.php';
 ?>
