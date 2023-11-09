@@ -6,7 +6,7 @@
     
     require "include/header.php";
     $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
-
+    
     switch ($pages) {
         case 'home':{
             include "resource/home/". $pages .".php";
