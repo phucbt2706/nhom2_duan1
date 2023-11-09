@@ -1,5 +1,5 @@
 <?php 
-    class Loai extends DB{
+    class Loai extends Connect{
         //Insert category
         function loai_insert($ten_loai)
         {

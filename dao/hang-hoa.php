@@ -1,6 +1,6 @@
 <?php
 
-class HangHoa extends DB{
+class HangHoa extends Connect{
     // Insert product
     function hang_hoa_insert( $ten_hh, $don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai){
         $sql = "INSERT INTO hang_hoa(ten_hh,don_gia,giam_gia,hinh,ngay_nhap,mo_ta,dac_biet,ma_loai) VALUES(?,?,?,?,?,?,?,?)";

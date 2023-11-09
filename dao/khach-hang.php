@@ -1,5 +1,5 @@
 <?php
-    class KhachHang extends DB {
+    class KhachHang extends Connect {
         // Insert category
         function khach_hang_insert($ma_kh,$ten_kh,$mat_khau,$email,$hinh,$kich_hoat,$vai_tro)
         {

@@ -1,5 +1,5 @@
 <?php
-class DB{
+class Connect{
     // Connection CSDL
     function pdo_get_connection(){
         $dburl = "mysql:host=localhost;dbname=xshop;charset=utf8";

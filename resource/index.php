@@ -1,4 +1,5 @@
 <?php
+    require './global.php';
     require "./dao/pdo.php";
     require "./dao/khach-hang.php";
     require "./dao/hang-hoa.php";

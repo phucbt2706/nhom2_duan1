@@ -1,5 +1,5 @@
 <?php
-class ThongKe extends DB{
+class ThongKe extends Connect{
     function thong_ke_hang_hoa(){
         $sql = " SELECT lo.ma_loai, lo.ten_loai,"
                         . " COUNT(*) so_luong,"

@@ -1,5 +1,5 @@
 <?php
-    class BinhLuan extends DB{
+    class BinhLuan extends Connect{
         function binh_luan_delete_one($ma_bl){
             $sql = "DELETE FROM binh_luan WHERE ma_bl=?";
             return $this->pdo_execute($sql, $ma_bl);
