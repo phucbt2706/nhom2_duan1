@@ -1,82 +1,78 @@
 <?php
-class Connect{
+class Connect
+{
     // Connection CSDL
-    function pdo_get_connection(){
-        $dburl = "mysql:host=localhost;dbname=xshop;charset=utf8";
+    function pdo_get_connection()
+    {
+        $dburl = "mysql:host=localhost;dbname=nhom2_duan1;charset=utf8";
         $username = 'root';
         $password = 'mysql';
         $conn = new PDO($dburl, $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
-    }   
+    }
 
-    function pdo_execute($sql){
+    function pdo_execute($sql)
+    {
         $sql_args = array_slice(func_get_args(), 1);
-        try{
+        try {
             $conn = $this->pdo_get_connection();
             $stmt = $conn->prepare($sql);
             $stmt->execute($sql_args);
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             throw $e;
-        }
-        finally{
+        } finally {
             unset($conn);
         }
     }
 
 
-    function pdo_query($sql){
+    function pdo_query($sql)
+    {
         $sql_args = array_slice(func_get_args(), 1);
-        try{
+        try {
             $conn = $this->pdo_get_connection();
             $stmt = $conn->prepare($sql);
             $stmt->execute($sql_args);
             $rows = $stmt->fetchAll();
             return $rows;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             throw $e;
-        }
-        finally{
+        } finally {
             unset($conn);
         }
     }
-        
+
     // Insert category
-    function pdo_query_one($sql){
+    function pdo_query_one($sql)
+    {
         $sql_args = array_slice(func_get_args(), 1);
-        try{
+        try {
             $conn = $this->pdo_get_connection();
             $stmt = $conn->prepare($sql);
             $stmt->execute($sql_args);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             return $row;
-        }
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             throw $e;
-        }   
-        finally{
+        } finally {
             unset($conn);
         }
     }
 
-    function pdo_query_value($sql){
+    function pdo_query_value($sql)
+    {
         $sql_args = array_slice(func_get_args(), 1);
-        try{
+        try {
             $conn = $this->pdo_get_connection();
             $stmt = $conn->prepare($sql);
             $stmt->execute($sql_args);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             return array_values($row)[0];
-        }
-        catch(PDOException $e){
-             $e;
-        }
-        finally{
+        } catch (PDOException $e) {
+            $e;
+        } finally {
             unset($conn);
         }
     }
 }
-
-?>
