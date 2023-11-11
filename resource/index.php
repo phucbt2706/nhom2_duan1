@@ -54,6 +54,16 @@
             include "resource/cart/". $pages .".php";
             break;
         }
+     
+        case 'login':{
+            include "resource/home/". $pages .".php";
+            break;
+        }
+
+        case 'register':{
+            include "resource/home/". $pages .".php";
+            break;
+        }
 
         default:{
             include "resource/home/404.php";
