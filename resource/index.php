@@ -1,4 +1,5 @@
 <?php
+    session_start ();
     require "./global.php";
     require "./dao/pdo.php";
     require "./dao/khach-hang.php";
@@ -56,15 +57,19 @@
         }
      
         case 'login':{
-            include "resource/home/". $pages .".php";
+            include "resource/account/". $pages .".php";
             break;
         }
 
         case 'register':{
-            include "resource/home/". $pages .".php";
+            include "resource/account/". $pages .".php";
             break;
         }
 
+        case 'account':{
+            include "resource/account/". $pages .".php";
+            break;
+        }
         default:{
             include "resource/home/404.php";
             break;

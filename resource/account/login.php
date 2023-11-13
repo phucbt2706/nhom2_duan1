@@ -4,12 +4,19 @@ if(isset($_POST["login"])){
     $user = new KhachHang();
     $data = $user->user_select_by_email($_POST["email"]);
     if($data['email'] == $_POST["email"] && $data['password'] == $_POST["pass"]){
-        $errol = 'Thành công';
+        $_SESSION['user'] = serialize($data);
+        $retrieved_data = unserialize($_SESSION['user']);
+
     }else{
         $errol = 'Email hoặc mật khẩu sai';
     }
+    if(!empty(unserialize($_SESSION['user']))){
+        $retrieved_data = unserialize($_SESSION['user']);
+        echo "<script>window.location.href = '?pages=account';</script>";
+    }
+    
+    
 }
-
 
 ?>
 

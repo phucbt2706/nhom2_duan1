@@ -10,8 +10,7 @@
     <title>Male-Fashion</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="<?= $PUBLIC_URL ?>/css/bootstrap.min.css" type="text/css">
@@ -65,16 +64,30 @@
         <div class="header__top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-7">
+                    <div class="col-lg-6 col-md-7" >
                         <div class="header__top__left">
                             <p>Free shipping, 30-day return or refund guarantee.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
-                            <div class="header__top__links">
-                                <a href="?pages=login">Đăng Nhập</a>
-                                <a href="?pages=admin">ADMIN</a>
+                            <div class="header__top__links ">
+                                <?php
+                                if (!empty(unserialize($_SESSION['user']))) {
+                                    $retrieved_data = unserialize($_SESSION['user']);
+
+                                    echo '
+                                    <a href="?pages=account" class="m-0" >                                    
+                                    <p style="margin: 0; padding:0 color: rgb(255,255,255)"> <img style="margin-right: 5px;" width="20px" height="20px" src="'.$retrieved_data['avatar'].'" alt=""><span style="color: rgb(255,255,255)" >'.$retrieved_data['fullname'].'</span></p>
+                                </a>';
+                                } else {
+                                    echo '
+                                        <a href="?pages=login">Đăng Nhập</a>
+                                        <a href="?pages=admin">ADMIN</a>';
+                                }
+
+                                ?>
+
                             </div>
                             <div class="header__top__hover">
                                 <span>Usd <i class="arrow_carrot-down"></i></span>
