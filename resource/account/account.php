@@ -1,5 +1,9 @@
 <?php
 
+if (isset($_POST['logout'])) {
+  $_SESSION['user'] = "";
+  echo "<script>window.location.href = '?pages=login';</script>";
+}
 ?>
 
 
@@ -11,13 +15,15 @@
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-            <img src="<?= $retrieved_data['avatar'] ?? "" ?>" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 150px;">
+            <img src="<?= $retrieved_data['avatar'] ?? "" ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3"><?= $retrieved_data['fullname'] ?? "" ?></h5>
             <p class="text-muted mb-1"><?= $retrieved_data['phone'] ?? "" ?></p>
             <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
             <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary">Sửa tài khoản</button>
+              <form method="post">
+                <button class="btn btn-primary mr-1" name="logout">Đăng xuất</button>
+                <button class="btn btn-outline-primary ms-1">Sửa tài khoản</button>
+              </form>
             </div>
           </div>
         </div>
@@ -69,7 +75,7 @@
                 <input class="text-muted mb-0" type="password" value="<?= $retrieved_data['password'] ?? "" ?>" disabled>
               </div>
             </div>
-            
+
           </div>
         </div>
 
