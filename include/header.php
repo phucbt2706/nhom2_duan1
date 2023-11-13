@@ -73,7 +73,7 @@
                         <div class="header__top__right">
                             <div class="header__top__links ">
                                 <?php
-                                if (!empty(unserialize($_SESSION['user']))) {
+                                if (!empty($_SESSION['user'])) {
                                     $retrieved_data = unserialize($_SESSION['user']);
 
                                     echo '
