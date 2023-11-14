@@ -4,6 +4,14 @@ if (isset($_POST['logout'])) {
   $_SESSION['user'] = "";
   echo "<script>window.location.href = '?pages=login';</script>";
 }
+
+if (isset($_POST['edit'])) {
+  echo "<script>window.location.href = '?pages=edit';</script>";
+}
+
+if (isset($_POST['edit-pw'])) {
+  echo "<script>window.location.href = '?pages=edit-pw';</script>";
+}
 ?>
 
 
@@ -16,13 +24,14 @@ if (isset($_POST['logout'])) {
         <div class="card mb-4">
           <div class="card-body text-center">
             <img src="<?= $retrieved_data['avatar'] ?? "" ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3"><?= $retrieved_data['fullname'] ?? "" ?></h5>
+            <h5 class="mt-3 mb-1"><?= $retrieved_data['fullname'] ?? "" ?></h5>
             <p class="text-muted mb-1"><?= $retrieved_data['phone'] ?? "" ?></p>
-            <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+            <p class="text-muted mb-2">Người dùng tại Việt Nam</p>
             <div class="d-flex justify-content-center mb-2">
               <form method="post">
-                <button class="btn btn-primary mr-1" name="logout">Đăng xuất</button>
-                <button class="btn btn-outline-primary ms-1">Sửa tài khoản</button>
+                <button class="btn btn-outline-primary ms-1" name="edit">Sửa tài khoản</button>
+                <button class="btn btn-outline-primary ms-1" name="edit-pw">Đổi mật khẩu</button>
+                <button class="btn btn-primary mr-1 mt-1" name="logout">Đăng xuất</button>
               </form>
             </div>
           </div>

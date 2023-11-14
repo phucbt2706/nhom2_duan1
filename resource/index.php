@@ -70,6 +70,16 @@
             include "resource/account/". $pages .".php";
             break;
         }
+
+        case 'edit':{
+            include "resource/account/". $pages .".php";
+            break;
+        }
+
+        case 'edit-pw':{
+            include "resource/account/". $pages .".php";
+            break;
+        }
         default:{
             include "resource/home/404.php";
             break;
