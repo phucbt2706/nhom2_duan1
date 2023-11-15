@@ -77,4 +77,10 @@ class KhachHang extends Connect
         $sql = "SELECT `user_id`, `username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id` FROM `user` WHERE email = '$email';";
         return  $this->pdo_query_one($sql);
     }
+
+    function user_select_by_username($name)
+    {
+        $sql = "SELECT `user_id`, `username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id` FROM `user` WHERE username = '$name';";
+        return  $this->pdo_query_one($sql);
+    }
 }

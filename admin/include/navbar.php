@@ -1,3 +1,12 @@
+<?php
+
+if (isset($_POST['logout'])) {
+    $_SESSION['userAdmin'] = "";
+    echo "<script>window.location.href = '?pages=home';</script>";
+  }
+
+
+?>
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -73,8 +82,11 @@
                     </li>
                     <li>
                         <a class="dropdown-item" href="auth-login-basic.html">
-                            <i class="bx bx-power-off me-2"></i>
-                            <span class="align-middle">Log Out</span>
+                            <form method="post">
+                                <i class="bx bx-power-off me-1"></i>
+                                <button class="btn align-middle" name="logout" style="margin-left: -20px">Đăng xuất</button>
+                            </form>
+
                         </a>
                     </li>
                 </ul>

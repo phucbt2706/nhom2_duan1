@@ -1,27 +1,29 @@
 <?php
-    if (!empty($_SESSION['admin'])) {
-        require "include/header.php";
-        $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'index';
 
-        switch ($pages) {
-            case 'home':{
-                include "resource/home/". $pages .".php";
+include "../dao/pdo.php";
+include "../dao/khach-hang.php";
+session_start();
+if (!empty($_SESSION['userAdmin'])) {
+    require "include/header.php";
+    $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'index';
+
+    switch ($pages) {
+        case 'home': {
+                include "resource/home/" . $pages . ".php";
                 break;
             }
 
-            case 'contact':{
-                include "resource/home/". $pages .".php";
+        case 'contact': {
+                include "resource/home/" . $pages . ".php";
                 break;
             }
 
-            default:{
+        default: {
                 include "resource/home/404.php";
                 break;
             }
-        }
-        require 'include/footer.php';
-    }else{
-        include  "resource/account/login.php";
     }
-    
-?>
+    require 'include/footer.php';
+} else {
+    include  "resource/account/login.php";
+}

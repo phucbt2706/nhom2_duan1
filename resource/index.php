@@ -15,6 +15,12 @@
             include "resource/home/". $pages .".php";
             break;
         }
+        case 'admin':{
+            // header("Location: admin/index.php");
+            echo "<script>window.location.href = 'admin/index.php';</script>";
+            break;
+        }
+
 
         case 'contact':{
             include "resource/home/". $pages .".php";
