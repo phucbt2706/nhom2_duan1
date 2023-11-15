@@ -1,5 +1,4 @@
 <?php
-    session_start ();
     require "./global.php";
     require "./dao/pdo.php";
     require "./dao/khach-hang.php";
@@ -63,6 +62,10 @@
 
         case 'register':{
             include "resource/account/". $pages .".php";
+            break;
+        }
+        case 'admin':{
+            header("location: admin/index.php ");
             break;
         }
 

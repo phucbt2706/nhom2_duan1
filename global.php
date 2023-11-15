@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    ob_start();
+    
     $protocol =  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https://" : "http://");
     $ROOT_URL = $protocol . $_SERVER['HTTP_HOST'];
     

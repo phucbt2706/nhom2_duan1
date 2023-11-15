@@ -1,7 +1,7 @@
 <?php
-    if (!empty($_SESSION['admin'])) {
+    if (!empty($_SESSION['user'])) {
         require "include/header.php";
-        $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'index';
+        $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
 
         switch ($pages) {
             case 'home':{
