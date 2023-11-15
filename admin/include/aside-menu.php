@@ -111,12 +111,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="?pages=list-product" class="menu-link">
+                    <a href="?pages=list_products" class="menu-link">
                         <div data-i18n="Error">List product</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="?pages=add-product" class="menu-link">
+                    <a href="?pages=add_products" class="menu-link">
                         <div data-i18n="Under Maintenance">Add new</div>
                     </a>
                 </li>
