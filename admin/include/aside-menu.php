@@ -70,12 +70,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="?pages=list-account" class="menu-link">
+                    <a href="index.php?act=listuser" class="menu-link">
                         <div data-i18n="Account">List account</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="?pages=add-account" class="menu-link">
+                    <a href="index.php?act=adduser" class="menu-link">
                         <div data-i18n="Notifications">Add new</div>
                     </a>
                 </li>
@@ -111,12 +111,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="?pages=list-product" class="menu-link">
+                    <a href="index.php?act=listpro" class="menu-link">
                         <div data-i18n="Error">List product</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="?pages=add-product" class="menu-link">
+                    <a href="index.php?act=addpro" class="menu-link">
                         <div data-i18n="Under Maintenance">Add new</div>
                     </a>
                 </li>

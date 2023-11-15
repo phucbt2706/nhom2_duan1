@@ -1,6 +1,6 @@
 <?php
-    $ROOT_URL = "/project_1";
-    
+   $protocol =  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https://" : "http://");
+   $ROOT_URL = $protocol . $_SERVER['HTTP_HOST'];
     //Admin
     $ASSETS_URL = $ROOT_URL."/admin/public/assets";
     

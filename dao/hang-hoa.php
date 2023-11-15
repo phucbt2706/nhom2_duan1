@@ -1,26 +1,41 @@
 <?php
     // Insert product
-    function hang_hoa_insert( $ten_hh, $don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai){
-        $sql = "INSERT INTO hang_hoa(ten_hh,don_gia,giam_gia,hinh,ngay_nhap,mo_ta,dac_biet,ma_loai) VALUES(?,?,?,?,?,?,?,?)";
-        pdo_execute($sql, $ten_hh,$don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai);
+    function hang_hoa_insert($product_name, $price, $discount, $images, $description, $cate_id){
+        $sql = "insert into product(product_name, price, discount, images, description, cate_id) values ('$product_name', '$price', '$discount', '$images' , '$description', '$cate_id')";
+        pdo_execute($sql);
     }
 
     // Update product
-    function hang_hoa_update( $ma_hh, $ten_hh, $don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai){
-        $sql = "UPDATE hang_hoa SET ten_hh=?,don_gia=?,giam_gia=?,hinh=?,ngay_nhap=?,mo_ta=?,dac_biet=?,ma_loai=? WHERE ma_hh=?";
-        pdo_execute($sql, $ten_hh,$don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai, $ma_hh);
-    }
+    function product_update()
+{
+    $product_id = $_POST['product_id'];
+    $product_name = $_POST['product_name'];
+    $price = $_POST['price'];
+    $discount = $_POST['discount'];
+    $images = $_POST['images'];
+    $description = $_POST['description'];
+    $cate_id = $_POST['cate_id'];
+    
+
+
+    $sql = "UPDATE product SET 
+        product_name = '" . $product_name . "',
+        price = '" . $price . "',
+        discount = '" . $discount . "',
+        images = '" . $images . "',
+        description = '" . $description . "',
+        cate_id = '" . $cate_id . "'
+        
+    WHERE product_id = " . $product_id;
+
+    pdo_execute($sql);
+}
 
     // Delete product
-    function hang_hoa_delete($ma_hh){
-        $sql = "DELETE FROM hang_hoa WHERE ma_hh=?";
-        if (is_array($ma_hh)) {
-            foreach ($ma_hh as $ma) {
-                pdo_execute($sql, $ma);
-            }
-        } else {
-            pdo_execute($sql, $ma_hh);
-        }
+    function product_delete()
+    {
+        $sql = "delete from product where product_id = " . $_GET['product_id'];
+        $listproduct = pdo_query($sql);
     }
 
     function hang_hoa_tang_so_luot_xem($ma_hh){
@@ -29,8 +44,8 @@
     }
 
     // Get all data
-    function hang_hoa_select_all(){
-        $sql = "SELECT * FROM hang_hoa";
+    function product_select_all(){
+        $sql = "SELECT * FROM product";
         return pdo_query($sql);
     }
     function num_row(){
