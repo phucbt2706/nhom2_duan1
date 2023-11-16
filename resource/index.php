@@ -58,7 +58,9 @@
         }
 
         case 'shop-detail':{
-            include "resource/shop/". $pages .".php";
+            $id = $_GET['product_id'];
+            $item = $pro->products_select_by_id($id);
+            include "resource/shop/shop-detail.php";
             break;
         }
 
