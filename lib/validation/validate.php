@@ -169,43 +169,51 @@
     // Function check form add product
     function check_form_add_product (){
         $error  = [];
-        $ten_hh = $_POST['ten_hh'];
-        $don_gia = $_POST['don_gia'];
-        $giam_gia = $_POST['giam_gia'];
+
+        $product_name = $_POST['product_name'];
+        $price = $_POST['price'];
+        $discount = $_POST['discount'];
+
 
         //Check name of product
-        if (!empty($ten_hh)) {
-            if (is_numeric($ten_hh)) {
+        if (!empty($product_name)) {
+            if (is_numeric($product_name)) {
                 $error['name_format'] = 'Tên sản phẩm phải là chữ!';
             }
             else{
-                $ten_hh = $ten_hh;
+                $product_name = $product_name;
             }
         } else {
             $error['name_empty'] = 'Không để trống tên sản phẩm!';
         }
 
         //Check price of product
-        if (!empty($don_gia)) {
-            if (!is_numeric($don_gia)) {
+        if (!empty($price)) {
+            if (!is_numeric($price)) {
                 $error['price_format'] = 'Giá phải là số!';
             }
             else{
-                $don_gia = $don_gia;
+                $price = $price;
             }
         } else {
             $error['price_empty'] = 'Không để trống!';
         }
 
         //Check giam gia
-        if (!empty($giam_gia)) {
-            if ($giam_gia < 0 || $giam_gia > 100) {
+        if (!empty($discount)) {
+            if ($discount < 0 || $discount > 100) {
                 $error['sale_format'] = 'Nhập từ 0 đến 100%!';
+            }elseif (!is_numeric($discount)) {
+                $error['sale_format'] = 'Phải là số từ 0 - 100% .';
             }
             else{
-                $don_gia = $don_gia;
+                $price = $price;
             }
         }
+        else {
+            $error['sale_format'] = 'Không để trống!';
+        }
+        
         if (!empty($error)) {
             $value = [
                 'error'    => $error
@@ -214,10 +222,9 @@
             
         }else {
             $value =  [
-                
-                'ten_hh' => $ten_hh,
-                'don_gia' => $don_gia,
-                'giam_gia' => $giam_gia
+                'product_name' => $product_name,
+                'price' => $price,
+                'discount' => $discount
             ];
             return $value;
         }

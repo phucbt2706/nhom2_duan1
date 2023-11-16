@@ -75,17 +75,16 @@
                                 <?php
                                 if (!empty($_SESSION['user'])) {
                                     $retrieved_data = unserialize($_SESSION['user']);
-
-                                    echo '
+                                    ?>
+                                    
                                     <a href="?pages=account" class="m-0" >                                    
-                                    <p style="margin: 0; padding:0 color: rgb(255,255,255)"> <img style="margin-right: 5px;" width="20px" height="20px" src="'.$retrieved_data['avatar'].'" alt=""><span style="color: rgb(255,255,255)" >'.$retrieved_data['fullname'].'</span></p>
-                                </a>
+                                        <p style="margin: 0; padding:0; color: rgb(255,255,255)"> <img style="margin-right: 5px;" width="20px" height="20px" src="<?= $retrieved_data['avatar'] ?>" alt=""><span style="color: rgb(255,255,255)" ><?= $retrieved_data['fullname']  ?></span></p>
+                                    </a>
                                     <a href="?pages=admin">ADMIN</a>'
-                                    ;
+                                    
+                                    <?php
                                 } else {
-                                    echo '
-                                        <a href="?pages=login">Đăng Nhập</a>
-                                        ';
+                                    echo '<a href="?pages=login">Đăng Nhập</a>';
                                 }
 
                                 ?>

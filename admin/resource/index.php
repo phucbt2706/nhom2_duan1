@@ -1,6 +1,7 @@
 <?php
     require "../dao/pdo.php";
     require "../dao/hang-hoa.php";
+    require "../lib/validation/validate.php ";
 
     if (!empty($_SESSION['user'])) {
         require "include/header.php";
@@ -25,16 +26,28 @@
             }
 
             case 'insert_product':{
-                $product_name = $_POST['product_name'];
-                $price = $_POST['price'];
-                $discount = $_POST['discount'];
-                $images = (isset($_POST['images']))? $_POST['images'] : '';
-                $description = $_POST['description'];
-                $cate_id = $_POST['cate_id'];
-
                 $db = new HangHoa();
-                $db->product_insert( $product_name, $price,$discount,$images,$description,$cate_id);
-                include "resource/products/add.php";
+                
+                $cate_id = $_POST['cate_id'];
+                $up_hinh = save_file("images",$IMAGE_DIR);
+                $images = strlen($up_hinh) > 0 ? $up_hinh:'product_default.png';
+                // $ngay_nhap = date_format(date_create(),'Y-m-d');
+                
+                $value = check_form_add_product();
+                extract($value);
+
+                if (empty($error)) {
+                    try {
+                        $db ->product_insert($product_name, $price,$discount,$images,$description,$cate_id);
+                        echo "<script>alert(\"Add successfully! \");</script>";
+                    } catch (PDOException $e) {
+                        throw $e;
+                        echo "<script>alert(\"Add failed! \");</script>";
+                    }
+                    include "resource/products/list.php";
+                }else {
+                    include "resource/products/add.php";
+                }
                 break;
             }
 

@@ -2,7 +2,7 @@
     <div class="col-8">
         <div class="card mb-4">
             <div class="card-body">
-                <form action="index.php" method="post" enctype="multipart/form-data">
+                <form action="?pages=insert_product" method="post" enctype="multipart/form-data">
                     <div id="form" class="row g-3">
                         <div class="col-12 text-center">
                             <h2>Thêm sản phẩm</h2>
@@ -78,7 +78,7 @@
                         </div>
                         <div class="col-6">
                             <button type="submit" name="button" value="insert_product" class="btn btn-primary">Add</button>
-                            <button type="submit" name="btn_list" value="btn_list" class="btn btn-primary">Liss of Product</button>
+                            <a class="btn btn-primary" href="?pages=list_products" role="button">List of Product</a>
                         </div>
 
                     </div>

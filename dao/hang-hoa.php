@@ -2,8 +2,8 @@
 
 class HangHoa extends Connect{
     // Insert product
-    function product_insert( $product_name, $price,$discount,$images,$description,$cate_id){
-        $sql = "INSERT INTO product(`product_name`, `price`,`discount`,`images`,`description`,`cate_id`) VALUES(?,?,?,?,?,?,?)";
+    function product_insert($product_name, $price,$discount,$images,$description,$cate_id){
+        $sql = "INSERT INTO product(`product_name`, `price`,`discount`,`images`,`description`,`cate_id`) VALUES(?,?,?,?,?,?)";
         $this->pdo_execute($sql, $product_name, $price,$discount,$images,$description,$cate_id);
     }
 
