@@ -1,3 +1,16 @@
+<?php
+
+if (isset($_POST['logout'])) {
+    $_SESSION['userAdmin'] = "";
+    $_SESSION['user'] = "";
+    echo "<script>window.location.href = '?pages=home';</script>";
+  }
+  if(!empty($_SESSION['userAdmin'])){
+    $retrieved_data = unserialize($_SESSION['userAdmin']);
+  }
+  
+
+?>
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -25,7 +38,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="<?= $ASSETS_URL ?>/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                        <img src="<?= $retrieved_data['avatar']?? "" ?>" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -34,11 +47,11 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="<?= $ASSETS_URL ?>/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                        <img src="<?= $retrieved_data['avatar']?? "" ?>" alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
+                                    <span class="fw-semibold d-block"><?= $retrieved_data['fullname']?? "" ?></span>
                                     <small class="text-muted">Admin</small>
                                 </div>
                             </div>
@@ -48,7 +61,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="?pages=account">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
@@ -73,8 +86,11 @@
                     </li>
                     <li>
                         <a class="dropdown-item" href="auth-login-basic.html">
-                            <i class="bx bx-power-off me-2"></i>
-                            <span class="align-middle">Log Out</span>
+                            <form method="post">
+                                <i class="bx bx-power-off me-1"></i>
+                                <button class="btn align-middle" name="logout" style="margin-left: -20px">Đăng xuất</button>
+                            </form>
+
                         </a>
                     </li>
                 </ul>

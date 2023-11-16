@@ -1,4 +1,5 @@
 <?php
+class ThongKe extends Connect{
     function thong_ke_hang_hoa(){
         $sql = " SELECT lo.ma_loai, lo.ten_loai,"
                         . " COUNT(*) so_luong,"
@@ -8,7 +9,7 @@
                         . " FROM hang_hoa hh "
                         . " JOIN loai_hang lo ON lo.ma_loai = hh.ma_loai "
                         . " GROUP BY lo.ma_loai, lo.ten_loai";
-        return pdo_query($sql);
+        return $this->pdo_query($sql);
     }
     
     function thong_ke_binh_luan(){
@@ -19,7 +20,9 @@
                         ." FROM binh_luan bl"
                         ." JOIN hang_hoa hh ON hh.ma_hh = bl.ma_hh"
                         ." HAVING so_luong > 0";
-        return pdo_query($sql);
+        return $this->pdo_query($sql);
     }
+}
+    
     
 ?>

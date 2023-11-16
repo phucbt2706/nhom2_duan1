@@ -1,92 +1,87 @@
 <?php
-// Insert user
-function khach_hang_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id)
+class KhachHang extends Connect
 {
-    $sql = "insert into user(username, password, fullname, email, phone, avatar, role_id) values ('$username', '$password', '$fullname', '$email' , '$phone', '$avatar', '$role_id')";
-    pdo_execute($sql);
+    // Insert category
+    function user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id)
+    {
+        $sql = "INSERT INTO `user`(`username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id`) VALUES(?,?,?,?,?,?,?)";
+        $this->pdo_execute($sql, $username, $password, $fullname, $email, $phone, $avatar, $role_id);
+    }
 
-}
-function loadall_taikhoan()
-{
-    $sql = "select * from user order by user_id asc";
-    $listuser = pdo_query($sql);
-    return $listuser;
-}
-function delete_taikhoan()
-{
-    $sql = "delete from user where user_id = " . $_GET['user_id'];
-    $listuser = pdo_query($sql);
-}
+    // Update category
+    function user_update($username, $password, $fullname, $email, $phone, $avatar, $role_id, $user_id)
+    {
+        $sql = "UPDATE `user` SET username='$username', password='$password', fullname='$fullname', email='$email', phone='$phone', avatar='$avatar', role_id='$role_id' WHERE user_id=?";
+        $this->pdo_execute($sql, $user_id);
+    }
 
-// Update user
-function khach_hang_update()
-{
-    $user_id = $_POST['user_id'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $avatar = $_POST['avatar'];
-    $role_id = $_POST['role_id'];
-
-
-    $sql = "UPDATE user SET 
-        username = '" . $username . "',
-        password = '" . $password . "',
-        fullname = '" . $fullname . "',
-        email = '" . $email . "',
-        phone = '" . $phone . "',
-        avatar = '" . $avatar . "',
-        role_id = '" . $role_id . "'
-    WHERE user_id = " . $user_id;
-
-    pdo_execute($sql);
-}
-
-
-
-// Delete user
-function khach_hang_delete($ma_kh)
-{
-    $sql = "DELETE FROM khach_hang WHERE ma_kh=?";
-    if (is_array($ma_kh)) {
-        foreach ($ma_kh as $ma) {
-            pdo_execute($sql, $ma);
+    // Delete category
+    function khach_hang_delete($ma_kh)
+    {
+        $sql = "DELETE FROM khach_hang WHERE ma_kh=?";
+        if (is_array($ma_kh)) {
+            foreach ($ma_kh as $ma) {
+                $this->pdo_execute($sql, $ma);
+            }
+        } else {
+            $this->pdo_execute($sql, $ma_kh);
         }
-    } else {
-        pdo_execute($sql, $ma_kh);
+    }
+
+
+    // Get all data
+    function khach_hang_select_all()
+    {
+        $sql = "SELECT * FROM khach_hang";
+        return  $this->pdo_query($sql);
+    }
+
+    function khach_hang_select_by_id($ma_kh)
+    {
+        $sql = "SELECT * FROM khach_hang WHERE ma_kh=?";
+        return  $this->pdo_query_one($sql, $ma_kh);
+    }
+
+    function khach_hang_exist($ma_kh)
+    {
+        $sql = "SELECT count(*) FROM khach_hang WHERE ma_kh=?";
+        return  $this->pdo_query_value($sql, $ma_kh) > 0;
+    }
+
+    function khach_hang_select_by_role($vai_tro)
+    {
+        $sql = "SELECT * FROM khach_hang WHERE vai_tro=?";
+        return  $this->pdo_query_one($sql, $vai_tro);
+    }
+
+    function khach_hang_change_password($ma_kh, $mat_khau_moi)
+    {
+        $sql = "UPDATE khach_hang SET mat_khau=? WHERE ma_kh=?";
+        $this->pdo_execute($sql, $mat_khau_moi, $ma_kh);
+    }
+
+    function kiemTraSoDienThoai($soDienThoai)
+    {
+        // Loại bỏ các ký tự không phải số từ chuỗi số điện thoại
+        $soDienThoai = preg_replace('/\D/', '', $soDienThoai);
+
+        // Kiểm tra xem số điện thoại sau khi loại bỏ ký tự không phải số có đúng định dạng không
+        if (preg_match('/^0[0-9]{9}$/', $soDienThoai)) {
+            return true; // Số điện thoại đúng định dạng
+        } else {
+            return false; // Số điện thoại không đúng định dạng
+        }
+    }
+
+    function user_select_by_email($email)
+    {
+        $sql = "SELECT `user_id`, `username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id` FROM `user` WHERE email = '$email';";
+        return  $this->pdo_query_one($sql);
+    }
+
+    function user_select_by_username($name)
+    {
+        $sql = "SELECT `user_id`, `username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id` FROM `user` WHERE username = '$name';";
+        return  $this->pdo_query_one($sql);
     }
 }
-
-// Get all data
-function khach_hang_select_all()
-{
-    $sql = "SELECT * FROM user";
-    return pdo_query($sql);
-}
-
-function khach_hang_select_by_id($user_id)
-{
-    $sql = "SELECT * FROM user WHERE user_id=?";
-    return pdo_query_one($sql, $user_id);
-}
-
-function khach_hang_exist($ma_kh)
-{
-    $sql = "SELECT count(*) FROM khach_hang WHERE ma_kh=?";
-    return pdo_query_value($sql, $ma_kh) > 0;
-}
-
-function khach_hang_select_by_role($vai_tro)
-{
-    $sql = "SELECT * FROM khach_hang WHERE vai_tro=?";
-    return pdo_query_one($sql, $vai_tro);
-}
-
-function khach_hang_change_password($ma_kh, $mat_khau_moi)
-{
-    $sql = "UPDATE khach_hang SET mat_khau=? WHERE ma_kh=?";
-    pdo_execute($sql, $mat_khau_moi, $ma_kh);
-}
-?>
