@@ -28,9 +28,9 @@
         }
 
         //Get all
-        function loai_select_all()
+        function category_select_all()
         {
-            $sql = "SELECT * FROM loai_hang";
+            $sql = "SELECT * FROM category";
             return $this->pdo_query($sql);
         }
 

@@ -173,6 +173,7 @@
         $product_name = $_POST['product_name'];
         $price = $_POST['price'];
         $discount = $_POST['discount'];
+        $description = $_POST['description'];
 
 
         //Check name of product
@@ -224,6 +225,7 @@
             $value =  [
                 'product_name' => $product_name,
                 'price' => $price,
+                'description' => $description,
                 'discount' => $discount
             ];
             return $value;
