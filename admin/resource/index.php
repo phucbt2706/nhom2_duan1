@@ -65,14 +65,22 @@
                 break;
             }
 
-            default:{
+        case 'edit-pw': {
+                include "resource/account/" . $pages . ".php";
+                break;
+            }
+
+        case 'contact': {
+                include "resource/home/" . $pages . ".php";
+                break;
+            }
+
+        default: {
                 include "resource/home/404.php";
                 break;
             }
-        }
-        require 'include/footer.php';
-    }else{
-        include  "resource/account/login.php";
     }
-    
-?>
+    require 'include/footer.php';
+} else {
+    include  "resource/account/login.php";
+}

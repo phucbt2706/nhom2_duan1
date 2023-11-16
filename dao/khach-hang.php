@@ -9,10 +9,10 @@ class KhachHang extends Connect
     }
 
     // Update category
-    function khach_hang_update($ma_kh, $ten_kh, $mat_khau, $email, $hinh, $kich_hoat, $vai_tro)
+    function user_update($username, $password, $fullname, $email, $phone, $avatar, $role_id, $user_id)
     {
-        $sql = "UPDATE khach_hang SET ten_kh=?,mat_khau=?,email=?,hinh=?,kich_hoat=?,vai_tro=? WHERE ma_kh=?";
-        $this->pdo_execute($sql, $ten_kh, $mat_khau, $email, $hinh, $kich_hoat, $vai_tro, $ma_kh);
+        $sql = "UPDATE `user` SET username='$username', password='$password', fullname='$fullname', email='$email', phone='$phone', avatar='$avatar', role_id='$role_id' WHERE user_id=?";
+        $this->pdo_execute($sql, $user_id);
     }
 
     // Delete category
@@ -75,6 +75,12 @@ class KhachHang extends Connect
     function user_select_by_email($email)
     {
         $sql = "SELECT `user_id`, `username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id` FROM `user` WHERE email = '$email';";
+        return  $this->pdo_query_one($sql);
+    }
+
+    function user_select_by_username($name)
+    {
+        $sql = "SELECT `user_id`, `username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id` FROM `user` WHERE username = '$name';";
         return  $this->pdo_query_one($sql);
     }
 }

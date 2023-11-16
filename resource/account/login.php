@@ -10,7 +10,7 @@ if(isset($_POST["login"])){
     }else{
         $errol = 'Email hoặc mật khẩu sai';
     }
-    if(!empty(unserialize($_SESSION['user']))){
+    if(!empty($_SESSION['user'])){
         $retrieved_data = unserialize($_SESSION['user']);
         echo "<script>window.location.href = '?pages=account';</script>";
     }

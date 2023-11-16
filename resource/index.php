@@ -14,6 +14,12 @@
             include "resource/home/". $pages .".php";
             break;
         }
+        case 'admin':{
+            // header("Location: admin/index.php");
+            echo "<script>window.location.href = 'admin/index.php';</script>";
+            break;
+        }
+
 
         case 'contact':{
             include "resource/home/". $pages .".php";
@@ -70,6 +76,16 @@
         }
 
         case 'account':{
+            include "resource/account/". $pages .".php";
+            break;
+        }
+
+        case 'edit':{
+            include "resource/account/". $pages .".php";
+            break;
+        }
+
+        case 'edit-pw':{
             include "resource/account/". $pages .".php";
             break;
         }
