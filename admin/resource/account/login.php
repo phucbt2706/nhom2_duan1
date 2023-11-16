@@ -1,19 +1,12 @@
 <?php
-if (!empty($_SESSION['user'])) {
-    $retrieved_data = unserialize($_SESSION['user']);
-    if ($retrieved_data['role_id'] == 1) {
-        $_SESSION['userAdmin'] = $_SESSION['user'];
-        echo '<script>location.reload();</script>';
-    }
-}
 
 if (isset($_POST["login"])) {
     $user = new KhachHang();
     $data = $user->user_select_by_username($_POST["name"]);
     if (!empty($data)) {
         if ($data["username"] == $_POST["name"] && $data["password"] == $_POST["pass"] && $data["role_id"] == 1) {
-            $_SESSION['userAdmin'] = serialize($data);
-            $retrieved_data = unserialize($_SESSION['userAdmin']);
+            $_SESSION['user'] = serialize($data);
+            $retrieved_data = unserialize($_SESSION['user']);
             echo "<script>window.location.href = '?pages=home';</script>";
         } else {
             $errol = 'Tên đăng nhập hoặc mật khẩu sai';

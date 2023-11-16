@@ -2,7 +2,7 @@
 
 include "../dao/pdo.php";
 include "../dao/khach-hang.php";
-if (!empty($_SESSION['userAdmin'])) {
+if (!empty($_SESSION['user'])) {
     require "include/header.php";
     $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'index';
 
