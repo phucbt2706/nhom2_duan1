@@ -8,20 +8,20 @@ class HangHoa extends Connect{
     }
 
     // Update product
-    function product_update( $ma_hh, $ten_hh, $don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai){
-        $sql = "UPDATE hang_hoa SET ten_hh=?,don_gia=?,giam_gia=?,hinh=?,ngay_nhap=?,mo_ta=?,dac_biet=?,ma_loai=? WHERE ma_hh=?";
-        $this->pdo_execute($sql, $ten_hh,$don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai, $ma_hh);
+    function product_update($product_id,$product_name, $price,$discount,$images,$description,$cate_id){
+        $sql = "UPDATE product SET `product_name`=?,`price`=?,`discount`=?,`images`=?,`description`=?,`cate_id`=? WHERE `product_id`=?";
+        $this->pdo_execute($sql, $product_name, $price,$discount,$images,$description,$cate_id, $product_id);
     }
 
     // Delete product
-    function hang_hoa_delete($ma_hh){
-        $sql = "DELETE FROM hang_hoa WHERE ma_hh=?";
-        if (is_array($ma_hh)) {
-            foreach ($ma_hh as $ma) {
-                $this->pdo_execute($sql, $ma);
+    function product_delete($product_id){
+        $sql = "DELETE FROM product WHERE product_id=?";
+        if (is_array($product_id)) {
+            foreach ($product_id as $id) {
+                $this->pdo_execute($sql, $id);
             }
         } else {
-            $this->pdo_execute($sql, $ma_hh);
+            $this->pdo_execute($sql, $product_id);
         }
     }
 

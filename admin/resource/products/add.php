@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-12">
+    <div class="col-8">
         <div class="card mb-4">
             <div class="card-body">
                 <form action="?pages=insert_product" method="post" enctype="multipart/form-data">
@@ -45,7 +45,7 @@
                         <div class="col-6 form-group ">
                             <label for="" class="form-label required">Loại hàng</label>
                             <select class="form-select" name="cate_id">
-                                <option selected>Choose category of product</option>
+                                <option selected value="1">Choose category of product</option>
                                 <?php
                                     foreach ($list_cate as $item ) {
                                         extract($item);?>
@@ -73,7 +73,7 @@
 
                         <div class=" col-12 form-group">
                             <label class="required">Mô tả</label>
-                            <textarea class="form-control" name="description" rows="3"><?php echo (!empty($_POST['mo_ta'])) ? $_POST['mo_ta'] : false; ?></textarea>
+                            <textarea class="form-control" name="description" rows="3"><?php echo (!empty($_POST['description'])) ? $_POST['description'] : false; ?></textarea>
                         </div>
                         <div class="col-6">
                             <button type="submit" name="button" value="insert_product" class="btn btn-primary">Add</button>

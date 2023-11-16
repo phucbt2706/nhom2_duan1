@@ -27,6 +27,7 @@
 <script src="<?= $ASSETS_URL ?>/vendor/libs/apex-charts/apexcharts.js"></script>
 
 <!-- Main JS -->
+<script src="<?= $ASSETS_URL ?>/js/script.js"></script>
 <script src="<?= $ASSETS_URL ?>/js/main.js"></script>
 
 <!-- Page JS -->

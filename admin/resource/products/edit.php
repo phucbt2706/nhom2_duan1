@@ -5,18 +5,18 @@ extract($item);
     <div class="col-8">
         <div class="card mb-4">
             <div class="card-body">
-                <form action="index.php" method="post" enctype="multipart/form-data">
+                <form action="?pages=update_product" method="post" enctype="multipart/form-data">
                     <div id="form" class="row g-3">
                         <div class="col-12 text-center">
                             <h2>Update the product "<?= $product_name; ?>"</h2>
                         </div>
                         <div class="col-6 form-froup">
                             <label for="" class="form-label required">Mã sản phẩm</label>
-                            <input type="" class="form-control" readonly id="" value="<?= $product_id; ?>" name="product_id">
+                            <input type="" class="form-control" readonly value="<?= $product_id ?>" name="product_id">
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Tên sản phẩm</label>
-                            <input type="" class="form-control" id="" value="<?= $product_name; ?>" name="product_name">
+                            <input type="" class="form-control" value="<?= $product_name; ?>" name="product_name">
                             <span id="red_error" class="form-text"><?php if (!empty($error['name_format'])) {
                                                             echo $error['name_format'];
                                                         } else if (!empty($error['name_empty'])) {
@@ -26,7 +26,7 @@ extract($item);
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Đơn giá</label>
-                            <input type="" class="form-control" id="" value="<?= $price; ?>" name="price">
+                            <input type="" class="form-control" value="<?= $price; ?>" name="price">
                             <span id="red_error" class="form-text"><?php if (!empty($error['price_format'])) {
                                                             echo $error['price_format'];
                                                         } else if (!empty($error['price_empty'])) {
@@ -36,7 +36,7 @@ extract($item);
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Giảm giá</label>
-                            <input type="" class="form-control" id="" value="<?= $discount; ?>" name="discount">
+                            <input type="" class="form-control" value="<?= $discount; ?>" name="discount">
                             <span id="red_error" class="form-text"><?php if (!empty($error['sale_format'])) {
                                                             echo $error['sale_format'];
                                                         } else if (!empty($error['sale_empty'])) {
@@ -50,12 +50,12 @@ extract($item);
                         </div>
                         <!-- <div class="col-6 form-froup">
                             <label for="" class="form-label required">Ngày nhập</label>
-                            <input type="" class="form-control datepicker" value="<?= $ngay_nhap; ?>" id="" name="ngay_nhap">
+                            <input type="" class="form-control datepicker" value="<?= $ngay_nhap; ?>" name="ngay_nhap">
                         </div> -->
 
                         <div class="col-6 form-group ">
                             <label for="" class="form-label required">Loại hàng</label>
-                            <select class="form-select" name="loai_hang">
+                            <select class="form-select" name="cate_id">
                                 <?php
                                      foreach ($list_cate as $item ) {
                                         extract($item);?>
@@ -83,10 +83,10 @@ extract($item);
 
                         <div class=" col-12 form-group">
                             <label class="required">Mô tả</label>
-                            <textarea class="form-control" name="mo_ta" value="<?= $description ?>" rows="3"></textarea>
+                            <textarea class="form-control" name="description"  rows="3"><?= $description ?></textarea>
                         </div>
                         <div class="col-6">
-                            <button type="submit" name="button" value="update" class="btn btn-primary">Update</button>
+                            <button type="submit" name="button" class="btn btn-primary">Update</button>
                             <a class="btn btn-primary" href="?pages=list_products" role="button">List of Product</a>
                         </div>
 

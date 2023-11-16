@@ -3,13 +3,13 @@
         <div class="card">
             <h5 class="card-header">List product</h5>
             <div class="table-responsive text-nowrap">
-                <form action="?btn_delete_all" method="post">
-                    <button type="submit" class="btn btn-secondary" name="delete_all">Delete</button>
+                <form action="?pages=delete_all_product" method="post">
+                    <button type="submit" class="btn btn-secondary">Delete</button>
                     <a class="btn btn-primary" role="button" href="?pages=add_products">Add</a>
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th><input type="checkbox" name="hh[]" id="product1" onclick="checkedAllPro();"></th>
+                                <th><input type="checkbox" name="product_id[]" id="product1" onclick="checkedAllPro();"></th>
                                 <th scope="col">ID.</th>
                                 <th scope="col">Tên sản phẩm</th>
                                 <th scope="col">Đơn giá</th>
@@ -29,7 +29,7 @@
                             <?php
                             foreach ($list_product as $item) { extract($item)?>
                             <tr>
-                                <td> <input type="checkbox" class="product" name="hh[]" value="<?=$product_id?>"></td>
+                                <td> <input type="checkbox" class="product" name="product_id[]" value="<?=$product_id?>"></td>
                                 <td>SP0<?= $product_id ?></td>
                                 <td><?= $product_name ?></td>
                                 <td><?= $price ?></td>
@@ -46,8 +46,8 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="?pages=btn_edit&product_id=<?= $product_id ?>"><i class="bx bx-edit-alt me-1"></i>Edit</a>
-                                            <a class="dropdown-item" href="?btn_delete&product_id=<?= $product_id ?>"><i class="bx bx-edit-alt me-1"></i>Delete</a>
+                                            <a class="dropdown-item" href="?pages=edit_product&product_id=<?= $product_id ?>"><i class="bx bx-edit-alt me-1"></i>Edit</a>
+                                            <a class="dropdown-item" href="?pages=delete_product&product_id=<?= $product_id ?>"><i class="bx bx-edit-alt me-1"></i>Delete</a>
                                         </div>
                                     </div>
                                 </td>
