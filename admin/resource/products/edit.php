@@ -12,11 +12,11 @@ extract($item);
                         </div>
                         <div class="col-6 form-froup">
                             <label for="" class="form-label required">Mã sản phẩm</label>
-                            <input type="" class="form-control" readonly id="" value="<?= $product_id; ?>" name="ma_hh">
+                            <input type="" class="form-control" readonly id="" value="<?= $product_id; ?>" name="product_id">
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Tên sản phẩm</label>
-                            <input type="" class="form-control" id="" value="<?= $product_name; ?>" name="ten_hh">
+                            <input type="" class="form-control" id="" value="<?= $product_name; ?>" name="product_name">
                             <span id="red_error" class="form-text"><?php if (!empty($error['name_format'])) {
                                                             echo $error['name_format'];
                                                         } else if (!empty($error['name_empty'])) {
@@ -26,7 +26,7 @@ extract($item);
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Đơn giá</label>
-                            <input type="" class="form-control" id="" value="<?= $price; ?>" name="don_gia">
+                            <input type="" class="form-control" id="" value="<?= $price; ?>" name="price">
                             <span id="red_error" class="form-text"><?php if (!empty($error['price_format'])) {
                                                             echo $error['price_format'];
                                                         } else if (!empty($error['price_empty'])) {
@@ -36,7 +36,7 @@ extract($item);
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Giảm giá</label>
-                            <input type="" class="form-control" id="" value="<?= $discount; ?>" name="giam_gia">
+                            <input type="" class="form-control" id="" value="<?= $discount; ?>" name="discount">
                             <span id="red_error" class="form-text"><?php if (!empty($error['sale_format'])) {
                                                             echo $error['sale_format'];
                                                         } else if (!empty($error['sale_empty'])) {
@@ -46,7 +46,7 @@ extract($item);
                         </div>
                         <div class="col-6 form-group">
                             <label for="formFile" class="form-label required">Chọn hình ảnh</label>
-                            <input class="form-control" name="hinh" value="<?= $images ?>" type="file" id="formFile">
+                            <input class="form-control" name="images" value="<?= $images ?>" type="file" id="formFile">
                         </div>
                         <!-- <div class="col-6 form-froup">
                             <label for="" class="form-label required">Ngày nhập</label>
@@ -56,13 +56,13 @@ extract($item);
                         <div class="col-6 form-group ">
                             <label for="" class="form-label required">Loại hàng</label>
                             <select class="form-select" name="loai_hang">
-                                <!-- <option selected>Choose category of product</option> -->
                                 <?php
-                                    //     foreach ($loai_info as $loai_info ) {
-                                    //         extract($loai_info);
-                                    //         echo "<option value=".$ma_loai.">".$ten_loai."</option>";
-                                    //     }
-                                    // ?>
+                                     foreach ($list_cate as $item ) {
+                                        extract($item);?>
+                                        <option value=<?= $cate_id ?>><?= $cate_id ." - ".$cate_name ?></option>
+                                        <?php
+                                    }
+                                    ?>
                             </select>
                         </div>
                         <div class="col-6 form-froup">
