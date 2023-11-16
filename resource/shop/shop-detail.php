@@ -1,3 +1,4 @@
+    <?php extract($item) ?>
     <!-- Shop Details Section Begin -->
     <section class="shop-details">
         <div class="product__details__pic">
@@ -45,7 +46,7 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="<?= $PUBLIC_URL ?>/img/shop-details/product-big-2.png" alt="">
+                                    <img src="<?= $PUBLIC_URL ?>/img/product/<?= $images ?>" alt="">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
@@ -74,7 +75,7 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-8">
                         <div class="product__details__text">
-                            <h4>Hooded thermal anorak</h4>
+                            <h4><?= $product_name ?></h4>
                             <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -83,7 +84,7 @@
                                 <i class="fa fa-star-o"></i>
                                 <span> - 5 Reviews</span>
                             </div>
-                            <h3>$270.00 <span>70.00</span></h3>
+                            <h3><?= currency_format($price) ?> <span>70.00</span></h3>
                             <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
                                 cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
                             with placket.</p>

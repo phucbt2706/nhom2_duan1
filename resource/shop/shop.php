@@ -45,7 +45,7 @@
                         extract($item); ?>
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <a href="?pages=detail&product_id=<?= $product_id ?>"> <img class="product__item__pic set-bg" src="<?= $PUBLIC_URL ?>/img/product/<?= $images ?>"></img></a>
+                                <a href="?pages=shop-detail&product_id=<?= $product_id ?>"> <img class="product__item__pic set-bg" src="<?= $PUBLIC_URL ?>/img/product/<?= $images ?>"></img></a>
                                 <div class="product__item__text">
                                     <h6><?= $product_name ?></h6>
                                     <a href="#" class="add-cart">+ Add To Cart</a>
