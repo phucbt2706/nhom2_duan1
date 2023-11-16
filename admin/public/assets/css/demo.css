@@ -116,3 +116,8 @@ span#red_error{
   content: " *";
   color: red;
 }
+#img_hh{
+  height: 40px;
+  width: 40px;
+}
+
