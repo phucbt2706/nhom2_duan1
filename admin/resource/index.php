@@ -2,7 +2,6 @@
 
 include "../dao/pdo.php";
 include "../dao/khach-hang.php";
-session_start();
 if (!empty($_SESSION['userAdmin'])) {
     require "include/header.php";
     $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'index';
@@ -10,6 +9,20 @@ if (!empty($_SESSION['userAdmin'])) {
     switch ($pages) {
         case 'home': {
                 include "resource/home/" . $pages . ".php";
+                break;
+            }
+
+        case 'account': {
+                include "resource/account/" . $pages . ".php";
+                break;
+            }
+        case 'edit': {
+                include "resource/account/" . $pages . ".php";
+                break;
+            }
+
+        case 'edit-pw': {
+                include "resource/account/" . $pages . ".php";
                 break;
             }
 

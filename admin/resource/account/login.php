@@ -1,4 +1,11 @@
 <?php
+if (!empty($_SESSION['user'])) {
+    $retrieved_data = unserialize($_SESSION['user']);
+    if ($retrieved_data['role_id'] == 1) {
+        $_SESSION['userAdmin'] = $_SESSION['user'];
+        echo '<script>location.reload();</script>';
+    }
+}
 
 if (isset($_POST["login"])) {
     $user = new KhachHang();
@@ -11,10 +18,11 @@ if (isset($_POST["login"])) {
         } else {
             $errol = 'Tên đăng nhập hoặc mật khẩu sai';
         }
-    }else {
+    } else {
         $errol = 'Tên đăng nhập hoặc mật khẩu sai';
     }
 }
+
 
 ?>
 

@@ -1,5 +1,4 @@
 <?php
-    session_start ();
     require "./global.php";
     require "./dao/pdo.php";
     require "./dao/khach-hang.php";
