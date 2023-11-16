@@ -36,7 +36,7 @@ class HangHoa extends Connect{
         return $this->pdo_query($sql);
     }
     function num_row(){
-        $sql = "SELECT count(*) as num_row FROM hang_hoa";
+        $sql = "SELECT count(*) as num_row FROM product";
         return $this->pdo_query($sql);
     }
 
@@ -79,8 +79,8 @@ class HangHoa extends Connect{
         return $this->pdo_query($sql,'%'. $keyword. '%','%'. $keyword. '%');
     }
 
-    function hang_hoa_select_page($start,$num_rows_in_page){
-        $sql = "SELECT * FROM hang_hoa LIMIT $start,$num_rows_in_page";
+    function product_select_page($start,$num_rows_in_page){
+        $sql = "SELECT * FROM product LIMIT $start,$num_rows_in_page";
         return $this->pdo_query($sql);
     }
 }

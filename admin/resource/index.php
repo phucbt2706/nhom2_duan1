@@ -4,7 +4,8 @@
     require "../dao/khach-hang.php";
     require "../dao/loai.php";
     require "../lib/validation/validate.php ";
-
+    require "../lib/pagging/pagging.php ";
+    
     if (!empty($_SESSION['user'])) {
         require "include/header.php";
 
@@ -20,7 +21,21 @@
 
             //-------------------------------------------------- Module Product
             case 'list_products':{
-                $list_product = $db->products_select_all();
+                $rows = $db->num_row();
+                $total_rows  = $rows[0]['num_row'];
+                //Số lượng dữ liệu (bản ghi) trên 1 trang
+                $num_rows_in_page = 10;
+            
+                //Tổng số trang cho $total_rows bảng ghi với mỗi trang là $num_row_in_page bảng ghi
+                $num_page = ceil($total_rows / $num_rows_in_page);
+            
+                //Chỉ số trang hiện tại trên URL
+                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; //Chỉ số để thay đổi dữ liệu khi chuyển trang
+            
+                //Chỉ số bắt đầu
+                $start = ($page - 1) * $num_rows_in_page;
+
+                $list_product = $db->product_select_page($start,$num_rows_in_page);
                 include "resource/products/list.php";
                 break;
             }

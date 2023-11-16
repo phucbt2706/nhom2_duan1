@@ -32,7 +32,7 @@
                                 <td> <input type="checkbox" class="product" name="product_id[]" value="<?=$product_id?>"></td>
                                 <td>SP0<?= $product_id ?></td>
                                 <td><?= $product_name ?></td>
-                                <td><?= $price ?></td>
+                                <td><?= currency_format($price) ?></td>
                                 <td><?= $discount ?></td>
                                 <td><img id="img_hh" src="<?= "../../../public/img/product/". $images ?>" alt=""></td>
                                 <!-- <td><?= $ngay_nhap ?></td> -->
@@ -62,4 +62,8 @@
         </div>
     </div>
 </div>
-<!-- Table End -->
+<div class="row">
+    <div class="col-12">
+    <?php echo get_pagging($num_page,$page) ?>
+    </div>
+</div>
