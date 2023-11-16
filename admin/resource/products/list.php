@@ -5,7 +5,7 @@
             <div class="table-responsive text-nowrap">
                 <form action="?btn_delete_all" method="post">
                     <button type="submit" class="btn btn-secondary" name="delete_all">Delete</button>
-                    <a class="btn btn-primary" role="button" href="index.php">Add</a>
+                    <a class="btn btn-primary" role="button" href="?pages=add_products">Add</a>
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
@@ -34,7 +34,7 @@
                                 <td><?= $product_name ?></td>
                                 <td><?= $price ?></td>
                                 <td><?= $discount ?></td>
-                                <td><img id="img_hh" src="<?= "../../../content/images/". $images ?>" alt=""></td>
+                                <td><img id="img_hh" src="<?= "../../../public/img/product/". $images ?>" alt=""></td>
                                 <!-- <td><?= $ngay_nhap ?></td> -->
                                 <td><?= $description ?></td>
                                 <!-- <td><?= $dac_biet ?></td> -->
