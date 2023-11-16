@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-8">
+    <div class="col-12">
         <div class="card mb-4">
             <div class="card-body">
                 <form action="?pages=insert_product" method="post" enctype="multipart/form-data">
@@ -45,15 +45,14 @@
                         <div class="col-6 form-group ">
                             <label for="" class="form-label required">Loại hàng</label>
                             <select class="form-select" name="cate_id">
-
                                 <option selected>Choose category of product</option>
-                                <option value="1">Cate</option>
                                 <?php
-                                        // foreach ($loai_info as $loai_info ) {
-                                        //     extract($loai_info);
-                                        //     echo "<option value=".$ma_loai.">".$ten_loai."</option>";
-                                        // }
-                                    ?>
+                                    foreach ($list_cate as $item ) {
+                                        extract($item);?>
+                                        <option value=<?= $cate_id ?>><?= $cate_id ." - ".$cate_name ?></option>
+                                        <?php
+                                    }
+                                ?>
                             </select>
                         </div>
                         <div class="col-6 form-froup">
