@@ -1,4 +1,4 @@
 <?php
 require '../global.php';
-require "./resource/index.php";
+require "resource/index.php";
 ?>

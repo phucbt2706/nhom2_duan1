@@ -130,7 +130,7 @@
                 'ten_kh'   => $ten_kh,
                 'mat_khau' => $mat_khau,
                 'email'    => $email,
-                'vai_tro'    => $vai_tro,
+                'vai_tro'  => $vai_tro,
                 'error'    => $error
             ];
             return $value;
@@ -168,44 +168,64 @@
 
     // Function check form add product
     function check_form_add_product (){
+        global $IMAGE_DIR;
         $error  = [];
-        $ten_hh = $_POST['ten_hh'];
-        $don_gia = $_POST['don_gia'];
-        $giam_gia = $_POST['giam_gia'];
+        
+       
+        $cate_id      = $_POST['cate_id'];
+        $product_id = $_POST['product_id'];
+        $product_name = $_POST['product_name'];
+        $price        = $_POST['price'];
+        $discount     = $_POST['discount'];
+        $description  = $_POST['description'];
+        $up_hinh      = save_file("images",$IMAGE_DIR);
+        $images       = strlen($up_hinh) > 0 ? $up_hinh:'product_default.png';
 
         //Check name of product
-        if (!empty($ten_hh)) {
-            if (is_numeric($ten_hh)) {
+        if (!empty($product_name)) {
+            if (is_numeric($product_name)) {
                 $error['name_format'] = 'Tên sản phẩm phải là chữ!';
             }
             else{
-                $ten_hh = $ten_hh;
+                $product_name = $product_name;
             }
         } else {
             $error['name_empty'] = 'Không để trống tên sản phẩm!';
         }
 
         //Check price of product
-        if (!empty($don_gia)) {
-            if (!is_numeric($don_gia)) {
+        if (!empty($price)) {
+            if (!is_numeric($price)) {
                 $error['price_format'] = 'Giá phải là số!';
             }
             else{
-                $don_gia = $don_gia;
+                if ($price < 0) {
+                    $error['price_format'] = 'Gía phải lớn hơn 0.';
+                }else {
+                    $price = $price;
+                }
             }
         } else {
             $error['price_empty'] = 'Không để trống!';
         }
 
         //Check giam gia
-        if (!empty($giam_gia)) {
-            if ($giam_gia < 0 || $giam_gia > 100) {
-                $error['sale_format'] = 'Nhập từ 0 đến 100%!';
+        if (!empty($discount)) {
+            if (!is_numeric($discount)) {
+                $error['sale_format'] = 'Giảm giá phải là số!';
             }
             else{
-                $don_gia = $don_gia;
+                if ($discount < 0 || $discount > 100) {
+                    $error['sale_format'] = 'Giảm giá từ 0 - 100%.';
+                }else {
+                    $discount = $discount;
+                }
             }
         }
+        else {
+            $error['sale_format'] = 'Không để trống!';
+        }
+        
         if (!empty($error)) {
             $value = [
                 'error'    => $error
@@ -214,10 +234,13 @@
             
         }else {
             $value =  [
-                
-                'ten_hh' => $ten_hh,
-                'don_gia' => $don_gia,
-                'giam_gia' => $giam_gia
+                'cate_id' => $cate_id,
+                'product_id' => $product_id,
+                'product_name' => $product_name,
+                'price' => $price,
+                'description' => $description,
+                'images' => $images,
+                'discount' => $discount
             ];
             return $value;
         }

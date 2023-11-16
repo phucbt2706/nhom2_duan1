@@ -70,6 +70,10 @@
             include "resource/account/". $pages .".php";
             break;
         }
+        case 'admin':{
+            header("location: admin/index.php ");
+            break;
+        }
 
         case 'account':{
             include "resource/account/". $pages .".php";

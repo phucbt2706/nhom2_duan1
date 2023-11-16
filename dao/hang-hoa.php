@@ -2,26 +2,26 @@
 
 class HangHoa extends Connect{
     // Insert product
-    function hang_hoa_insert( $ten_hh, $don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai){
-        $sql = "INSERT INTO hang_hoa(ten_hh,don_gia,giam_gia,hinh,ngay_nhap,mo_ta,dac_biet,ma_loai) VALUES(?,?,?,?,?,?,?,?)";
-        $this->pdo_execute($sql, $ten_hh,$don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai);
+    function product_insert($product_name, $price,$discount,$images,$description,$cate_id){
+        $sql = "INSERT INTO product(`product_name`, `price`,`discount`,`images`,`description`,`cate_id`) VALUES(?,?,?,?,?,?)";
+        $this->pdo_execute($sql, $product_name, $price,$discount,$images,$description,$cate_id);
     }
 
     // Update product
-    function hang_hoa_update( $ma_hh, $ten_hh, $don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai){
-        $sql = "UPDATE hang_hoa SET ten_hh=?,don_gia=?,giam_gia=?,hinh=?,ngay_nhap=?,mo_ta=?,dac_biet=?,ma_loai=? WHERE ma_hh=?";
-        $this->pdo_execute($sql, $ten_hh,$don_gia,$giam_gia,$hinh,$ngay_nhap,$mo_ta,$dac_biet,$ma_loai, $ma_hh);
+    function product_update($product_id,$product_name, $price,$discount,$images,$description,$cate_id){
+        $sql = "UPDATE product SET `product_name`=?,`price`=?,`discount`=?,`images`=?,`description`=?,`cate_id`=? WHERE `product_id`=?";
+        $this->pdo_execute($sql, $product_name, $price,$discount,$images,$description,$cate_id, $product_id);
     }
 
     // Delete product
-    function hang_hoa_delete($ma_hh){
-        $sql = "DELETE FROM hang_hoa WHERE ma_hh=?";
-        if (is_array($ma_hh)) {
-            foreach ($ma_hh as $ma) {
-                $this->pdo_execute($sql, $ma);
+    function product_delete($product_id){
+        $sql = "DELETE FROM product WHERE product_id=?";
+        if (is_array($product_id)) {
+            foreach ($product_id as $id) {
+                $this->pdo_execute($sql, $id);
             }
         } else {
-            $this->pdo_execute($sql, $ma_hh);
+            $this->pdo_execute($sql, $product_id);
         }
     }
 
@@ -31,8 +31,8 @@ class HangHoa extends Connect{
     }
 
     // Get all data
-    function hang_hoa_select_all(){
-        $sql = "SELECT * FROM hang_hoa";
+    function products_select_all(){
+        $sql = "SELECT * FROM product";
         return $this->pdo_query($sql);
     }
     function num_row(){
@@ -45,8 +45,8 @@ class HangHoa extends Connect{
         return $this->pdo_query($sql,$ma_loai);
     }
 
-    function hang_hoa_select_by_id($ma_hh){
-        $sql = "SELECT * FROM hang_hoa WHERE ma_hh=?";
+    function products_select_by_id($ma_hh){
+        $sql = "SELECT * FROM product WHERE product_id=?";
         return $this->pdo_query_one($sql, $ma_hh);
     }
 

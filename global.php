@@ -1,5 +1,6 @@
 <?php
     session_start ();
+
     $protocol =  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https://" : "http://");
     $ROOT_URL = $protocol . $_SERVER['HTTP_HOST'];
     
@@ -11,7 +12,7 @@
 
     $UPLOAD_URL  = $ROOT_URL."/upload";
 
-    $IMAGE_DIR   = $_SERVER["DOCUMENT_ROOT"] . "$ROOT_URL/content/images/";
+    $IMAGE_DIR   = $_SERVER["DOCUMENT_ROOT"]."/public/img/product/";
    
     function show_array($data)
     {
@@ -19,7 +20,6 @@
         print_r($data);
         echo '</pre>';
     }
-
 
     //Upload file
     function save_file($fieldname, $target_dir)
