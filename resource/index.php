@@ -4,7 +4,7 @@
     require "./dao/khach-hang.php";
     require "./dao/hang-hoa.php";
     require "./dao/loai.php";
-    
+    require "./lib/pagging/pagging.php ";
     //Include header
     require "include/header.php";
     $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
@@ -42,7 +42,7 @@
             $rows = $pro->num_row_product();
             $total_rows  = $rows[0]['num_row'];
             //Số lượng dữ liệu (bản ghi) trên 1 trang
-            $num_rows_in_page = 9;
+            $num_rows_in_page = 12;
         
             //Tổng số trang cho $total_rows bảng ghi với mỗi trang là $num_row_in_page bảng ghi
             $num_page = ceil($total_rows / $num_rows_in_page);

@@ -74,22 +74,11 @@
                         <?php
                     } ?>
                 </div>
-                <div class="row">
-                    <div class="col-12">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-4">
                     <?php echo get_pagging($num_page,$page) ?>
                     </div>
                 </div>
-                <!-- <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product__pagination">
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <span>...</span>
-                            <a href="#">21</a>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
