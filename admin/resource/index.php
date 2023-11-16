@@ -1,12 +1,15 @@
 <?php
     require "../dao/pdo.php";
     require "../dao/hang-hoa.php";
+    require "../dao/loai.php";
     require "../lib/validation/validate.php ";
 
     if (!empty($_SESSION['user'])) {
         require "include/header.php";
         $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
         $pages = isset($_POST['button']) ? $_POST['button'] : $pages;
+        $db = new HangHoa();
+        $cate = new Loai();
         switch ($pages) {
             case 'home':{
                 include "resource/home/". $pages .".php";
@@ -14,20 +17,18 @@
             }
 
             case 'list_products':{
-                $db = new HangHoa();
                 $list_product = $db->products_select_all();
                 include "resource/products/list.php";
                 break;
             }
             
             case 'add_products':{
+                $list_cate  = $cate->category_select_all();
                 include "resource/products/add.php";
                 break;
             }
 
             case 'insert_product':{
-                $db = new HangHoa();
-                
                 $cate_id = $_POST['cate_id'];
                 $up_hinh = save_file("images",$IMAGE_DIR);
                 $images = strlen($up_hinh) > 0 ? $up_hinh:'product_default.png';
@@ -44,18 +45,21 @@
                         throw $e;
                         echo "<script>alert(\"Add failed! \");</script>";
                     }
+                   
+                    $list_product = $db->products_select_all();
                     include "resource/products/list.php";
                 }else {
+                    $list_cate  = $cate->category_select_all();
                     include "resource/products/add.php";
                 }
                 break;
             }
 
-
             case 'btn_edit':{
                 $id = $_GET['product_id'];
-                $db = new HangHoa();
                 $item = $db->products_select_by_id($id);
+                $list_cate  = $cate->category_select_all();
+
                 include "resource/products/edit.php";
                 break;
             }
@@ -65,17 +69,17 @@
                 break;
             }
 
-        case 'edit-pw': {
+            case 'edit-pw': {
                 include "resource/account/" . $pages . ".php";
                 break;
             }
 
-        case 'contact': {
+            case 'contact': {
                 include "resource/home/" . $pages . ".php";
                 break;
             }
 
-        default: {
+            default: {
                 include "resource/home/404.php";
                 break;
             }
