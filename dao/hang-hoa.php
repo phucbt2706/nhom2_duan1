@@ -35,7 +35,7 @@ class HangHoa extends Connect{
         $sql = "SELECT * FROM product";
         return $this->pdo_query($sql);
     }
-    function num_row(){
+    function num_row_product(){
         $sql = "SELECT count(*) as num_row FROM product";
         return $this->pdo_query($sql);
     }

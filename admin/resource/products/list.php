@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <h5 class="card-header">List product</h5>
+            <div class="text-center">
+                <h3 class="card-header">Products list</h3>
+            </div>
             <div class="table-responsive text-nowrap">
                 <form action="?pages=delete_all_product" method="post">
                     <button type="submit" class="btn btn-secondary">Delete</button>
@@ -11,15 +13,15 @@
                             <tr>
                                 <th><input type="checkbox" name="product_id[]" id="product1" onclick="checkedAllPro();"></th>
                                 <th scope="col">ID.</th>
-                                <th scope="col">Tên sản phẩm</th>
-                                <th scope="col">Đơn giá</th>
-                                <th scope="col">Giảm giá</th>
-                                <th scope="col">Hình</th>
+                                <th scope="col">Product name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Images</th>
                                 <!-- <th scope="col">Ngày nhập</th> -->
-                                <th scope="col">Mô tả</th>
+                                <th scope="col">Description</th>
                                 <!-- <th scope="col">Đặc biệt</th> -->
                                 <!-- <th scope="col">Số lượt xem</th> -->
-                                <th scope="col">Mã loại</th>
+                                <th scope="col">Cate ID</th>
                                 <th scope="col" colspan="2">Action</th>
 
 

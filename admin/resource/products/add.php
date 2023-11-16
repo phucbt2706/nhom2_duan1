@@ -5,7 +5,7 @@
                 <form action="?pages=insert_product" method="post" enctype="multipart/form-data">
                     <div id="form" class="row g-3">
                         <div class="col-12 text-center">
-                            <h2>Thêm sản phẩm</h2>
+                            <h2>Add new product</h2>
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Product name</label>
@@ -38,14 +38,14 @@
                                                         ?> </span>
                         </div>
                         <div class="col-6 form-group">
-                            <label for="formFile" class="form-label required">Chọn hình ảnh</label>
+                            <label for="formFile" class="form-label required">Images</label>
                             <input class="form-control" name="images" type="file" id="formFile">
                         </div>
 
                         <div class="col-6 form-group ">
-                            <label for="" class="form-label required">Loại hàng</label>
+                            <label for="" class="form-label required">Category</label>
                             <select class="form-select" name="cate_id">
-                                <option selected value="1">Choose category of product</option>
+                                <option selected value="1">Choose category ..</option>
                                 <?php
                                     foreach ($list_cate as $item ) {
                                         extract($item);?>
@@ -55,7 +55,7 @@
                                 ?>
                             </select>
                         </div>
-                        <div class="col-6 form-froup">
+                        <!-- <div class="col-6 form-froup">
                             <label for="" class="form-label required">Status</label>
                             <div class="form-check ">
                                 <input class="form-check-input" type="radio" name="status" value="0" id="status-radio1">
@@ -69,10 +69,11 @@
                                     Kích hoạt
                                 </label>
                             </div>
-                        </div>
+                        </div> -->
+                        <span id="red_error" class="form-text"> </span>
 
                         <div class=" col-12 form-group">
-                            <label class="required">Mô tả</label>
+                            <label class="required">Description</label>
                             <textarea class="form-control" name="description" rows="3"><?php echo (!empty($_POST['description'])) ? $_POST['description'] : false; ?></textarea>
                         </div>
                         <div class="col-6">

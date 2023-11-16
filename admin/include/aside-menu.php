@@ -65,13 +65,31 @@
         </li>
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <div data-i18n="Form Elements">Roles</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="forms-basic-inputs.html" class="menu-link">
+                        <div data-i18n="Basic Inputs">Roles list</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="forms-input-groups.html" class="menu-link">
+                        <div data-i18n="Input groups">Add new</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">Users</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="index.php?act=listuser" class="menu-link">
-                        <div data-i18n="Account">List account</div>
+                    <a href="?pages=list-account" class="menu-link">
+                        <div data-i18n="Account">Accounts list</div>
                     </a>
                 </li>
                 <li class="menu-item">
@@ -93,12 +111,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="?pages=list-category" class="menu-link" target="_blank">
-                        <div data-i18n="Basic">List category</div>
+                    <a href="?pages=list_cate" class="menu-link" target="_blank">
+                        <div data-i18n="Basic">Categories list</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="?pages=add-cate" class="menu-link" target="_blank">
+                    <a href="?pages=form_add_cate" class="menu-link" target="_blank">
                         <div data-i18n="Basic">Add new</div>
                     </a>
                 </li>
@@ -112,7 +130,7 @@
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="?pages=list_products" class="menu-link">
-                        <div data-i18n="Error">List product</div>
+                        <div data-i18n="Error">Products list</div>
                     </a>
                 </li>
                 <li class="menu-item">
@@ -131,7 +149,7 @@
         <li class="menu-item">
             <a href="?pages=orders" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Orders</div>
+                <div data-i18n="Basic">Orders list</div>
             </a>
         </li>
 
@@ -166,7 +184,7 @@
                         <div data-i18n="Perfect Scrollbar">Statistic</div>
                     </a>
                 </li>
-                
+
             </ul>
         </li>
     </ul>
