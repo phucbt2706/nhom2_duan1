@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?= $PUBLIC_URL ?>/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<?= $PUBLIC_URL ?>/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<?= $PUBLIC_URL ?>/css/style.css" type="text/css">
+    <link rel="stylesheet" href="<?= $PUBLIC_URL ?>/css/main.css" type="text/css">
 </head>
 
 <body>
