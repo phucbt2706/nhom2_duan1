@@ -25,7 +25,7 @@ if (isset($_POST["edit_acount"])) {
         $fullname = $_POST["name"];
         $phone = $_POST["phone"];
         $email = $_POST["email"];
-        $avatar = $target_file;
+        $avatar = $avatar['name'];
         $role_id = $_POST["role_id"];
         $user_id = $retrieved_data["user_id"];
         $user->user_update($username, $password, $fullname, $email, $phone, $avatar, $role_id, $user_id);
