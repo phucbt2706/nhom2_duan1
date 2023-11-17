@@ -70,7 +70,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="forms-basic-inputs.html" class="menu-link">
+                    <a href="?pages=list_role" class="menu-link">
                         <div data-i18n="Basic Inputs">Roles list</div>
                     </a>
                 </li>
