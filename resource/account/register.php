@@ -7,6 +7,8 @@ if (isset($_POST["register"])) {
                 $avatar =  $_FILES['avatar'];
                 $target_dir = "./admin/img/";
                 $target_file = $target_dir . basename($avatar['name']);
+                $target_dir1 = "./img/";
+                $target_file1 = $target_dir1 . basename($avatar['name']);
 
                 if (file_exists($target_file)) {
                     $errol = "Tệp ko tồn tại";
@@ -42,7 +44,7 @@ if (isset($_POST["register"])) {
 <!-- register Section Begin -->
 <section class="contact spad">
     <div class="container">
-        
+
         <div class="row">
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-6 col-md-6">

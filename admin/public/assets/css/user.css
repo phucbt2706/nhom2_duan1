@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.column-3 {
+    flex-basis: calc((100% / 12) * 3);
+    max-width: calc((100% / 12) * 3);
+}
+
+.column-6 {
+    flex-basis: calc((100% / 12) * 6);
+    max-width: calc((100% / 12) * 6);
+}
+
+.column-12 {
+    flex-basis: calc((100% / 12) * 12);
+    max-width: calc((100% / 12) * 12);
+    margin-top: 10px; /* Thêm margin để tạo khoảng cách giữa các cột */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="file"],
+button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 10px; /* Thêm margin để tạo khoảng cách giữa các input và button */
+}

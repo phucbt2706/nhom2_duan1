@@ -6,7 +6,8 @@ if (isset($_POST["edit_acount"])) {
             $avatar =  $_FILES['avatar'];
             $target_dir = "./admin/img/";
             $target_file = $target_dir . basename($avatar['name']);
-
+            $target_dir1 = "./img/";
+            $target_file1 = $target_dir1 . basename($avatar['name']);
             if (file_exists($target_file)) {
                 $errol = "Tệp ko tồn tại";
             } else {
@@ -25,7 +26,7 @@ if (isset($_POST["edit_acount"])) {
         $fullname = $_POST["name"];
         $phone = $_POST["phone"];
         $email = $_POST["email"];
-        $avatar = $target_file;
+        $avatar = $target_file1;
         $role_id = "2";
         $user_id = $retrieved_data["user_id"];
         $user->user_update($username, $password, $fullname, $email, $phone, $avatar, $role_id, $user_id);
