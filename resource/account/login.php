@@ -2,13 +2,13 @@
 
 if(isset($_POST["login"])){
     $user = new KhachHang();
-    $data = $user->user_select_by_email($_POST["email"]);
-    if($data['email'] == $_POST["email"] && $data['password'] == $_POST["pass"]){
+    $data = $user->user_select_by_username($_POST["username"]);
+    if($data['username'] == $_POST["username"] && $data['password'] == $_POST["pass"]){
         $_SESSION['user'] = serialize($data);
         $retrieved_data = unserialize($_SESSION['user']);
 
     }else{
-        $errol = 'Email hoặc mật khẩu sai';
+        $errol = 'Tên đăng nhập hoặc mật khẩu sai';
     }
     if(!empty($_SESSION['user'])){
         $retrieved_data = unserialize($_SESSION['user']);
@@ -31,7 +31,7 @@ if(isset($_POST["login"])){
                     <form method="post">
                         <div class="row">
                             <div class="col-lg-12 mt-3">
-                                <input name="email" type="email" placeholder="Email" style="width: 100%; " required>
+                                <input name="username" type="text" placeholder="Tên đăng nhập" style="width: 100%; " required>
                             </div>
                             <div class="col-lg-12 mt-1">
                                 <input name="pass" type="password" placeholder="Mật khẩu" style="width: 100%;" required>
