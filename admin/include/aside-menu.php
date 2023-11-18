@@ -70,12 +70,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="forms-basic-inputs.html" class="menu-link">
+                    <a href="?pages=list_role" class="menu-link">
                         <div data-i18n="Basic Inputs">Roles list</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="forms-input-groups.html" class="menu-link">
+                    <a href="?pages=add_role" class="menu-link">
                         <div data-i18n="Input groups">Add new</div>
                     </a>
                 </li>
@@ -88,12 +88,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="?pages=list-account" class="menu-link">
+                    <a href="?pages=list_account" class="menu-link">
                         <div data-i18n="Account">Accounts list</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="?pages=add-account" class="menu-link">
+                    <a href="?pages=add_user" class="menu-link">
                         <div data-i18n="Notifications">Add new</div>
                     </a>
                 </li>

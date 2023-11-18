@@ -3,6 +3,7 @@
     require "../dao/hang-hoa.php";
     require "../dao/khach-hang.php";
     require "../dao/loai.php";
+    require "../dao/role.php";
     require "../lib/validation/validate.php ";
     require "../lib/pagging/pagging.php ";
     
@@ -12,6 +13,8 @@
         $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
         $db    = new HangHoa();
         $cate  = new Loai();
+        $role = new Role();
+        $tk = new KhachHang();
 
         switch ($pages) {
             //-------------------------------------------------------Module Home---------------------------- 
@@ -240,9 +243,200 @@
             }
 
             //-----------------------------------------------------Module Roles------------------------------------------------------
+            case "list_role":{
+                $rows = $role->num_row_role();
+                $total_rows  = $rows[0]['num_row'];
+                //Số lượng dữ liệu (bản ghi) trên 1 trang
+                $num_rows_in_page = 10;
+            
+                //Tổng số trang cho $total_rows bảng ghi với mỗi trang là $num_row_in_page bảng ghi
+                $num_page = ceil($total_rows / $num_rows_in_page);
+            
+                //Chỉ số trang hiện tại trên URL
+                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; //Chỉ số để thay đổi dữ liệu khi chuyển trang
+            
+                //Chỉ số bắt đầu
+                $start = ($page - 1) * $num_rows_in_page;
+
+                $list_role = $role->role_select_page($start,$num_rows_in_page);
+                include "resource/roles/list.php";
+                break;
+                include "resource/roles/list.php";
+                break;
+            }
+            
+            case 'add_role':{
+                $list_role  = $role->role_select_all();
+                include "resource/roles/form-add.php";
+                break;
+            }
+            
+            case 'insert_role':{
+                //$ngay_nhap = date_format(date_create(),'Y-m-d');
+                $value = check_form_add_role();
+                extract($value);
+                if (empty($error)) {
+                    try {
+                        $role ->role_insert($role_name);
+                        echo "<script>alert(\"Add successfully! \");</script>";
+                    } catch (PDOException $e) {
+                        throw $e;
+                        echo "<script>alert(\"Add failed! \");</script>";
+                    }
+                    echo "<script>window.location.href ='?pages=list_role';</script>";
+                }else {
+                    $list_role  = $role->role_select_all();
+                    include "resource/roles/form-add.php";
+                }
+                break;
+            }
+            case 'update_role':{  
+                $value = check_form_update_role();
+                extract($value);
+
+                if (empty($error)) {
+                    try {
+                        $role ->update_role($role_id, $role_name);
+                        echo "<script>alert(\"Update successfully! \");</script>";
+                    } catch (PDOException $e) {
+                        throw $e;
+                        echo "<script>alert(\"Update failed! \");</script>";
+                    }
+                    echo "<script>window.location.href ='?pages=list_role';</script>";
+                }else {
+                    $id = $_POST['role_id'];
+                    $item = $role->role_select_by_id($id);
+                    include "resource/roles/edit.php";
+                }
+                break;
+            }
+
+            case 'edit_role':{
+                $id = $_GET['role_id'];
+                $item = $role->role_select_by_id($id);
+                include "resource/roles/edit.php";
+                break;
+            }
+            case "delete_role":{
+                $id = $_GET["role_id"];
+                try {
+                    $role->role_delete($id);
+                    echo "<script>alert(\"Delete role successfully! \");</script>";
+                } catch (PDOException $e) {
+                    throw $e;
+                }
+                echo "<script>window.location.href ='?pages=list_role';</script>";
+                break;
+            }
+            case 'delete_all_role':{
+                $id = $_POST["role_id"];
+                try {
+                    $role->role_delete($id);
+                    echo "<script>alert(\"Delete role successfully! \");</script>";
+                } catch (PDOException $e) {
+                    throw $e;
+                }
+                echo "<script>window.location.href ='?pages=list_role';</script>";
+                break;
+            }
 
             //-----------------------------------------------------Module User------------------------------------------------------
+            case 'list_account':{
+                $rows = $tk->num_row_user();
+                $total_rows  = $rows[0]['num_row'];
+                //Số lượng dữ liệu (bản ghi) trên 1 trang
+                $num_rows_in_page = 10;
+            
+                //Tổng số trang cho $total_rows bảng ghi với mỗi trang là $num_row_in_page bảng ghi
+                $num_page = ceil($total_rows / $num_rows_in_page);
+            
+                //Chỉ số trang hiện tại trên URL
+                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; //Chỉ số để thay đổi dữ liệu khi chuyển trang
+            
+                //Chỉ số bắt đầu
+                $start = ($page - 1) * $num_rows_in_page;
 
+                $list_user = $tk->user_select_page($start,$num_rows_in_page);
+                include "resource/user/list.php";
+                break;
+            }
+            case 'add_user':{
+                $list_user  = $tk->user_select_all();
+                include "resource/user/add.php";
+                break;
+            }
+            case 'insert_user':{
+                //$ngay_nhap = date_format(date_create(),'Y-m-d');
+                $value = check_form_add_customer();
+                extract($value);
+                if (empty($error)) {
+                    try {
+                        $tk ->user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id);
+                        echo "<script>alert(\"Add successfully! \");</script>";
+                    } catch (PDOException $e) {
+                        throw $e;
+                        echo "<script>alert(\"Add failed! \");</script>";
+                    }
+                    echo "<script>window.location.href ='?pages=list_account';</script>";
+                }else {
+                    $list_user  = $tk->user_select_all();
+                    include "resource/user/add.php";
+                }
+                break;
+            }
+            case 'update_user':{  
+                $value = check_form_update_customer();
+                extract($value);
+                if (empty($error)) {
+                    try {
+                        $tk ->user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id);
+                        echo "<script>alert(\"Update successfully! \");</script>";
+                    } catch (PDOException $e) {
+                        throw $e;
+                        echo "<script>alert(\"Update failed! \");</script>";
+                    }
+                    echo "<script>window.location.href = '?pages=list_account';</script>";
+
+                }else {
+                    $id = $_POST['user_id'];
+                    $item = $tk->user_select_by_id($id);
+                    $list_user  = $tk->user_select_all();
+                    include "resource/user/edit.php";
+                }
+                break;
+            }
+
+            case 'edit_user':{
+                $id = $_GET['user_id'];
+                $item = $tk->user_select_by_id($id);
+                $list_user  = $tk->user_select_all();
+                include "resource/user/edit.php";
+                break;
+            }
+            case "delete_user":{
+                $id = $_GET["user_id"];
+                try {
+                    $tk->user_delete($id);
+                    echo "<script>alert(\"Delete user successfully! \");</script>";
+                } catch (PDOException $e) {
+                    throw $e;
+                }
+                echo "<script>window.location.href ='?pages=list_account';</script>";
+                break;
+            }
+
+            case 'delete_all_user':{
+                $id = $_POST["user_id"];
+                try {
+                    $tk->user_delete($id);
+                    echo "<script>alert(\"Delete user successfully! \");</script>";
+                } catch (PDOException $e) {
+                    throw $e;
+                }
+                echo "<script>window.location.href ='?pages=list_account';</script>";
+                break;
+            }
+            
             //-----------------------------------------------------Module Orders----------------------------------------------------
             
             //-----------------------------------------------------Module Comments--------------------------------------------------
