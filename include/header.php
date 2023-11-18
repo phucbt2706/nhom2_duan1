@@ -127,8 +127,8 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="<?= $PUBLIC_URL ?>/img/icon/search.png" alt=""></a>
                         <a href="#"><img src="<?= $PUBLIC_URL ?>/img/icon/heart.png" alt=""></a>
-                        <a href="?pages=cart"><img src="<?= $PUBLIC_URL ?>/img/icon/cart.png" alt=""> <span><?= sizeof($_SESSION['cart']['buy']) ?></span></a>
-                        <div class="price"><?= currency_format($_SESSION['cart']['info']['total']) ?></div>
+                        <a href="?pages=cart"><img src="<?= $PUBLIC_URL ?>/img/icon/cart.png" alt=""> <span><?= (!empty($_SESSION['cart']['buy']))? count($_SESSION['cart']['buy']): 0; ?></span></a>
+                        <!-- <div class="price"><?= currency_format($_SESSION['cart']['info']['total']) ?></div> -->
                     </div>
                 </div>
             </div>

@@ -42,18 +42,18 @@
                                                         <img src="<?= $PUBLIC_URL ?>/img/product/<?= $prod['images'] ?>" alt="">
                                                     </div>
                                                     <div class="product__cart__item__text">
-                                                        <h6><?= $prod['product_name'] ?? "" ?></h6>
-                                                        <h5><?= currency_format($prod['price'])  ?? "" ?></h5>
+                                                        <h6><?= $prod['product_name']?></h6>
+                                                        <h5><?= currency_format($prod['price'])?></h5>
                                                     </div>
                                                 </td>
                                                 <td class="quantity__item">
                                                     <div class="quantity">
                                                         <div class="pro-qty-2">
-                                                            <input type="text" name="qty[<?= $prod['product_id'] ?? "" ?>]" value="<?= $prod['qty'] ?? "" ?>">
+                                                            <input type="text" name="qty[<?= $prod['product_id']?>]" value="<?= $prod['qty']?>">
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="cart__price"><?= currency_format($prod['sub_total'])  ?? "" ?></td>
+                                                <td class="cart__price"><?= currency_format($prod['sub_total'])?></td>
                                                 <td class="cart__close"><a href="?pages=delete_prod&product_id=<?= $prod['product_id'] ?>"><i class="fa fa-close"></i> </a></td>
                                             </tr>
                                         <?php endforeach ?>
