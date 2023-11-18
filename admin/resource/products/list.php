@@ -17,7 +17,7 @@
                                 <th scope="col">Price</th>
                                 <th scope="col">Discount</th>
                                 <th scope="col">Images</th>
-                                <!-- <th scope="col">Ngày nhập</th> -->\
+                                <!-- <th scope="col">Ngày nhập</th> -->
                                 <th scope="col">Description</th>
                                 <!-- <th scope="col">Đặc biệt</th> -->
                                 <!-- <th scope="col">Số lượt xem</th> -->
