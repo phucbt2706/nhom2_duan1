@@ -136,10 +136,6 @@
                             <a href="?pages=cart"><img src="<?= $PUBLIC_URL ?>/img/icon/cart.png" alt=""> <span>0</span></a>
                             <div class="price">0,0đ</div>
                         <?php endif ?>
-
-                        <a href="?pages=cart"><img src="<?= $PUBLIC_URL ?>/img/icon/cart.png" alt=""> <span><?= (!empty($_SESSION['cart']['buy'])) ? count($_SESSION['cart']['buy']) : 0; ?></span></a>
-                        <!-- <div class="price"><?= currency_format($_SESSION['cart']['info']['total']) ?></div> -->
-
                     </div>
                 </div>
             </div>
