@@ -11,12 +11,7 @@
                         <div class="col-6">
                             <label for="" class="form-label required">Cate Name</label>
                             <input type="" class="form-control" id="" name="cate_name">
-                            <span id="red_error" class="form-text"><?php if (!empty($error['name_format'])) {
-                                                            echo $error['name_format'];
-                                                        } else if (!empty($error['name_empty'])) {
-                                                            echo $error['name_empty'];
-                                                        }
-                                                        ?> </span>
+                            <span id="red_error" class="form-text"><?= !empty($error['error_name_cate'])?$error['error_name_cate']:false;?></span>
                         </div>
                         <div class="col-6 form-group ">
                             <label for="" class="form-label required">Parent Category</label>

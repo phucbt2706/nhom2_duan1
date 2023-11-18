@@ -2,7 +2,7 @@
 extract($item);
 ?>
 <div class="row">
-    <div class="col-7">
+    <div class="col-8">
         <div class="card mb-4">
             <div class="card-body">
                 <form action="?pages=update_user" method="post" enctype="multipart/form-data">
@@ -10,11 +10,7 @@ extract($item);
                         <div class="col-12 text-center">
                             <h2>Edit new user</h2>
                         </div>
-                        <div class="col-6 form-group">
-                            <label for="" class="form-label required">User Id</label>
-                            <input type="" class="form-control" readonly value="<?=$user_id ?>" name="user_id">
-                        </div>
-
+                        <input type="" class="form-control" hidden value="<?=$user_id ?>" name="user_id">
                         <div class="col-6">
                             <label for="" class="form-label required">Username</label>
                             <input type="" class="form-control" id=" " value="<?=$username ?>" name="username">
@@ -26,27 +22,6 @@ extract($item);
                                                         ?> </span>
                         </div>
                         <div class="col-6">
-                            <label for="inputPassword4" class="form-label required">Password</label>
-                            <input type="password" class="form-control"id="" name = "password" value="<?=$password ?>">
-                            <span id="red_error" class="form-text"><?php if (!empty($error['password_format'])) {
-                                                            echo $error['password_format'];
-                                                        } else if (!empty($error['password_empty'])) {
-                                                            echo $error['password_empty'];
-                                                        }
-                                                        ?> </span>
-                        </div>
-                        <div class="col-6">
-                            <label for="inputPassword4" class="form-label required">Password</label>
-                            <input type="password" class="form-control"id="" name = "password" value="<?=$password ?>">
-                            <span id="red_error" class="form-text"><?php if (!empty($error['password_format'])) {
-                                                            echo $error['password_format'];
-                                                        } else if (!empty($error['password_empty'])) {
-                                                            echo $error['password_empty'];
-                                                        }
-                                                        ?> </span>
-                        </div>
-                        
-                        <div class="col-6">
                             <label for="" class="form-label required">Fullname</label>
                             <input type="" class="form-control" id=" " value="<?=$fullname ?>" name="fullname">
                             <span id="red_error" class="form-text"><?php if (!empty($error['fullname_format'])) {
@@ -56,7 +31,26 @@ extract($item);
                                                         }
                                                         ?> </span>
                         </div>
-
+                        <div class="col-6">
+                            <label for="inputPassword4" class="form-label required">Password</label>
+                            <input type="password" class="form-control"id="" name = "password" value="<?=$password ?>">
+                            <span id="red_error" class="form-text"><?php if (!empty($error['password_format'])) {
+                                                            echo $error['password_format'];
+                                                        } else if (!empty($error['password_empty'])) {
+                                                            echo $error['password_empty'];
+                                                        }
+                                                        ?> </span>
+                        </div>
+                        <div class="col-6">
+                            <label for="inputPassword4" class="form-label required">Confirm Password</label>
+                            <input type="password" class="form-control"id="" name = "password" value="<?=$password ?>">
+                            <span id="red_error" class="form-text"><?php if (!empty($error['password_format'])) {
+                                                            echo $error['password_format'];
+                                                        } else if (!empty($error['password_empty'])) {
+                                                            echo $error['password_empty'];
+                                                        }
+                                                        ?> </span>
+                        </div>
                         <div class="col-6">
                             <label for="exampleFormControlInput1" class="form-label required">Email</label>
                             <input type="email" name="email" class="form-control" value="<?=$email ?>"

@@ -9,13 +9,8 @@
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Role Name</label>
-                            <input type="" class="form-control" id="" value="<?php echo (!empty($_POST['role_name'])) ? $_POST['role_name'] : false; ?>" name="role_name">
-                            <span id="red_error" class="form-text"><?php if (!empty($error['name_format'])) {
-                                                            echo $error['name_format'];
-                                                        } else if (!empty($error['name_empty'])) {
-                                                            echo $error['name_empty'];
-                                                        }
-                                                        ?> </span>
+                            <input type="" class="form-control" id="" value="<?= !empty($_POST['role_name']) ? $_POST['role_name'] : false; ?>" name="role_name">
+                            <span id="red_error" class="form-text"><?= !empty($error['error_role']) ? $error['error_role']:false ?> </span>
                         </div>
                         </div>
                         <div class="col-12 mt-4">

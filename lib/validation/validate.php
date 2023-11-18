@@ -66,6 +66,7 @@ function check_form_add_customer()
     $error = [];
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
@@ -76,59 +77,61 @@ function check_form_add_customer()
     //---------------Check username---------------
     if (!empty($username)) {
         if (!check_username($username)) {
-            $error['username_format'] = 'Username không đúng định dạng!';
-        } else {
-            $username = $username;
+            $error['error_username'] = 'Username không đúng định dạng!';
         }
     } else {
-        $error['username_empty'] = 'Không để trống username!';
+        $error['error_username'] = 'Không để trống username!';
     }
 
     //---------------Check fullanme---------------
     if (!empty($fullname)) {
         if (strlen($fullname) > 40) {
-            $error['fullname_lenght'] = 'Độ dài không phù hợp';
-        } else {
-            $fullname = $fullname;
+            $error['error_name'] = 'Độ dài không phù hợp';
         }
     } else {
-        $error['fullname_empty'] = 'Không để trống họ và tên!';
+        $error['error_name'] = 'Không để trống họ và tên!';
     }
 
     //---------------Check password---------------
     if (!empty($password)) {
         if (!check_password($password)) {
-            $error['password_format'] = 'Password không đúng định dạng!';
+            $error['error_pass'] = 'Password không đúng định dạng!';
         }
     } else {
-        $error['password_empty'] = 'Không để trống password!';
+        $error['error_pass'] = 'Không để trống password!';
+    }
+
+    //---------------Confirm password---------------
+    
+    if (!empty($confirm_password)) {
+        if ($confirm_password != $password) {
+            $error['error_conf_pass'] = 'Phải trùng password!';
+        }
+    } else {
+        $error['error_conf_pass'] = 'Không để trống password!';
     }
     //---------------Check sđt---------------
 
     if (!empty($phone)) {
         if (!is_numeric($phone)) {
-            $error['phone_format'] = 'Giá phải là số!';
+            $error['error_phone'] = 'Giá phải là số!';
         } else {
             if ($phone < 0) {
-                $error['phone_format'] = 'Gía phải lớn hơn 0.';
-            } else {
-                $phone = $phone;
+                $error['error_phone'] = 'Gía phải lớn hơn 0.';
             }
         }
     } else {
-        $error['phone_empty'] = 'Không để trống!';
+        $error['error_phone'] = 'Không để trống!';
     }
 
 
     //---------------Check email---------------
     if (!empty($email)) {
         if (!check_email($email)) {
-            $error['email_format'] = 'Email không đúng định dạng!';
-        } else {
-            $email = $email;
+            $error['error_email'] = 'Email không đúng định dạng!';
         }
     } else {
-        $error['email_empty'] = 'Không để trống email!';
+        $error['error_email'] = 'Không để trống email!';
     }
 
     if (!empty($error)) {
@@ -255,12 +258,10 @@ function check_form_add_category()
 
     if (!empty($cate_name)) {
         if (is_numeric($cate_name)) {
-            $error['name_format'] = 'Tên loại phải là chữ!';
-        } else {
-            $cate_name = $cate_name;
+            $error['error_name_cate'] = 'Tên loại phải là chữ!';
         }
     } else {
-        $error['name_empty'] = 'Không để trống tên loại!';
+        $error['error_name_cate'] = 'Không để trống tên loại!';
     }
 
     if (!empty($error)) {
@@ -466,12 +467,12 @@ function check_form_add_role()
 
     if (!empty($role_name)) {
         if (is_numeric($role_name)) {
-            $error['name_format'] = 'Tên loại phải là chữ!';
+            $error['error_role'] = 'Tên loại phải là chữ!';
         } else {
             $role_name = $role_name;
         }
     } else {
-        $error['name_empty'] = 'Không để trống tên loại!';
+        $error['error_role'] = 'Không để trống tên loại!';
     }
 
     if (!empty($error)) {
@@ -490,9 +491,7 @@ function check_form_add_role()
 //Check name of product
 function check_form_update_role()
 {
-    global $IMAGE_DIR;
     $error = [];
-
     // Kiểm tra xem 'role_id' có tồn tại trong $_POST không
     $role_id = $_POST['role_id'];
     $role_name = $_POST['role_name'];
@@ -500,12 +499,12 @@ function check_form_update_role()
     // Check name of role
     if (!empty($role_name)) {
         if (is_numeric($role_name)) {
-            $error['name_format'] = 'Tên sản phẩm phải là chữ!';
+            $error['error_role'] = 'Tên sản phẩm phải là chữ!';
         } else {
             $role_name = $role_name;
         }
     } else {
-        $error['name_empty'] = 'Không để trống tên sản phẩm!';
+        $error['error_role'] = 'Không để trống tên sản phẩm!';
     }
 
     if (!empty($error)) {

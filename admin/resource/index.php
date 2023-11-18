@@ -255,7 +255,6 @@
             }
             
             case 'insert_role':{
-                //$ngay_nhap = date_format(date_create(),'Y-m-d');
                 $value = check_form_add_role();
                 extract($value);
                 if (empty($error)) {
@@ -273,6 +272,7 @@
                 }
                 break;
             }
+
             case 'update_role':{  
                 $value = check_form_update_role();
                 extract($value);
@@ -300,6 +300,7 @@
                 include "resource/roles/edit.php";
                 break;
             }
+
             case "delete_role":{
                 $id = $_GET["role_id"];
                 try {
@@ -311,6 +312,7 @@
                 echo "<script>window.location.href ='?pages=list_role';</script>";
                 break;
             }
+            
             case 'delete_all_role':{
                 $id = $_POST["role_id"];
                 try {
