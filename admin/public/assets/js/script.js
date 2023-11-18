@@ -26,3 +26,13 @@ function checkedAllCate() {
     aa[i].checked = checked;
     }
 }
+
+
+function checkedAllRoles() {
+    var aa = document.getElementsByClassName("role");
+    checked = document.getElementById('role1').checked;
+
+    for (var i = 0; i < aa.length; i++) {
+    aa[i].checked = checked;
+    }
+}
