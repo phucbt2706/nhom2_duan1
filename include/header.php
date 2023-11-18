@@ -49,7 +49,7 @@
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="<?= $PUBLIC_URL ?>/img/icon/search.png" alt=""></a>
             <a href="#"><img src="<?= $PUBLIC_URL ?>/img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="<?= $PUBLIC_URL ?>/img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href="#"><img src="<?= $PUBLIC_URL ?>/img/icon/cart.png" alt=""><span><?= sizeof($_SESSION['cart']['buy']) ?></span></a>
             <div class="price">$0.00</div>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -83,7 +83,7 @@
                                     </a>
                                     <div class="header__top__hover ml-4">
                                         <a href="?pages=admin">ADMIN</a>
-                                    </div>';                                 
+                                    </div>';
                                     } else {
                                         echo '
                                     <a href="?pages=account" class="m-0" >                                    
@@ -94,13 +94,12 @@
                                     echo '
                                         <a href="?pages=login">Đăng Nhập</a>
                                         <a style="margin: -15px" href="?pages=register">Đăng Ký</a>';
-                                        
                                 }
 
                                 ?>
 
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -128,8 +127,8 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="<?= $PUBLIC_URL ?>/img/icon/search.png" alt=""></a>
                         <a href="#"><img src="<?= $PUBLIC_URL ?>/img/icon/heart.png" alt=""></a>
-                        <a href="?pages=cart"><img src="<?= $PUBLIC_URL ?>/img/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
+                        <a href="?pages=cart"><img src="<?= $PUBLIC_URL ?>/img/icon/cart.png" alt=""> <span><?= sizeof($_SESSION['cart']['buy']) ?></span></a>
+                        <div class="price"><?= currency_format($_SESSION['cart']['info']['total']) ?></div>
                     </div>
                 </div>
             </div>
