@@ -193,57 +193,54 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="tab-pane" id="tabs-7" role="tabpanel">
+
+                                <div class="tab-pane" id="tabs-7" role="tabpanel" id="comment-list">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="comment_list">
-                                                <div class="review_item">
-                                                    <div class="media">
-                                                        <div class="d-flex">
-                                                            <img src="img/product/review-1.png" alt="">
+                                                <?php if (!empty($comment)) : ?>
+                                                    <?php foreach ($comment as $cmt) : ?>
+                                                        <div class="review_item">
+                                                            <div class="media">
+                                                                <div class="d-flex">
+                                                                    <img src="img/product/review-1.png" alt="">
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4><?= $cmt['name'] ?></h4>
+                                                                    <h5>12th Feb, 2018 at 05:56 pm</h5>
+                                                                    <a class="reply_btn" href="#">Trả lời</a>
+                                                                </div>
+                                                            </div>
+                                                            <p><?= $cmt['content'] ?></p>
                                                         </div>
-                                                        <div class="media-body">
-                                                            <h4>Blake Ruiz</h4>
-                                                            <h5>12th Feb, 2018 at 05:56 pm</h5>
-                                                            <a class="reply_btn" href="#">Reply</a>
-                                                        </div>
+                                                    <?php endforeach ?>
+                                                <?php else : ?>
+                                                    <div class="review_item">
+                                                        <p>Chưa Có bình luận nào!</p>
                                                     </div>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                        commodo</p>
-                                                </div>
+                                                <?php endif ?>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="review_box">
-                                                <h4>Post a comment</h4>
-                                                <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
+                                            <?php if (isset($_SESSION['user'])) : ?>
+                                                <div class="review_box">
+                                                    <h4>Gửi bình luận</h4>
+                                                    <form class="row contact_form" action="?pages=shop-detail&product_id=<?= $product_id ?>" method="post" enctype="multipart/form-data" id="contactForm" novalidate="novalidate">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control" name="content" id="content" rows="1" placeholder="Nội dung bình luận"></textarea>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                                                        <div class="col-md-12 ">
+                                                            <button type="submit" name="comment" value="submit" class="btn btn-primary">Gửi bình luận</button>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Message"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 ">
-                                                        <button type="submit" value="submit" class="btn btn-primary">Submit Now</button>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                                    </form>
+                                                </div>
+                                            <?php else : ?>
+                                                <div class="review_box">
+                                                    <p>Vui lòng đăng nhập để bình luận!</p>
+                                                </div>
+                                            <?php endif ?>
                                         </div>
                                     </div>
                                 </div>
