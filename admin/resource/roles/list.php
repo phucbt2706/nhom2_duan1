@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <h5 class="card-header">Danh sách vai trò</h5>
+            <div class="text-center">
+                <h3 class="card-header">Roles list</h3>
+            </div>
             <div class="table-responsive text-nowrap">
                 <form action="?pages=delete_all_role" method="post">
                     <button type="submit" class="btn btn-secondary" name="delete_all">Delete</button>
@@ -18,10 +20,9 @@
 
                         <tbody>
                         <?php
-                                $stt = 0;
                                 foreach ($list_role as $item) {
                                 extract($item);
-                                $stt++;?>
+                                ?>
                             <tr>
                             <td> <input type="checkbox" class="role" name="role_id[]" value="<?=$role_id?>"></td>
                                 <td><?= $role_id ?></td>

@@ -4,12 +4,13 @@ extract($item);
 <div class="row">
     <div class="col-7">
         <div class="card mb-4">
+        <div class="text-center">
+                <h3 class="card-header">Edit role</h3>
+            </div>
             <div class="card-body">
                 <form action="?pages=update_role" method="post" id="myForm" enctype="multipart/form-data">
                     <div class="row mb-4">
-                        <div class="col-12 text-center">
-                            <h2>Chỉnh Sửa Vai Trò</h2>
-                        </div>
+                        
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Role Id</label>
                             <input type="" class="form-control" readonly value="<?=$role_id ?>" name="role_id">
