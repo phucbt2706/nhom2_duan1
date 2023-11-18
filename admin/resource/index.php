@@ -244,29 +244,12 @@
 
             //-----------------------------------------------------Module Roles------------------------------------------------------
             case "list_role":{
-                $rows = $role->num_row_role();
-                $total_rows  = $rows[0]['num_row'];
-                //Số lượng dữ liệu (bản ghi) trên 1 trang
-                $num_rows_in_page = 10;
-            
-                //Tổng số trang cho $total_rows bảng ghi với mỗi trang là $num_row_in_page bảng ghi
-                $num_page = ceil($total_rows / $num_rows_in_page);
-            
-                //Chỉ số trang hiện tại trên URL
-                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; //Chỉ số để thay đổi dữ liệu khi chuyển trang
-            
-                //Chỉ số bắt đầu
-                $start = ($page - 1) * $num_rows_in_page;
-
-                $list_role = $role->role_select_page($start,$num_rows_in_page);
-                include "resource/roles/list.php";
-                break;
+                $list_role = $role->role_select_all();
                 include "resource/roles/list.php";
                 break;
             }
             
             case 'add_role':{
-                $list_role  = $role->role_select_all();
                 include "resource/roles/form-add.php";
                 break;
             }
