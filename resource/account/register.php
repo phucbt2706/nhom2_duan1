@@ -17,12 +17,12 @@ if (isset($_POST["register"])) {
                         $errol = "Upload thất bại";
                     }
                 }
-                $username = "khach_hang";
+                $username = $_POST["username"];
                 $password = $_POST["pass"];
                 $fullname = $_POST["name"];
                 $phone = $_POST["phone"];
                 $email = $_POST["email"];
-                $avatar = $target_file;
+                $avatar = $avatar['name'];
                 $role_id = "2";
                 $user->user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id);
                 echo "<script>window.location.href = '?pages=login';</script>";
@@ -42,7 +42,7 @@ if (isset($_POST["register"])) {
 <!-- register Section Begin -->
 <section class="contact spad">
     <div class="container">
-        
+
         <div class="row">
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-6 col-md-6">
@@ -52,6 +52,9 @@ if (isset($_POST["register"])) {
                         <div class="row">
                             <div class="col-lg-12 mt-3">
                                 <input name="name" type="text" placeholder="Họ và tên" style="width: 100%;" required>
+                            </div>
+                            <div class="col-lg-12 mt-3">
+                                <input name="username" type="text" placeholder="Tên đăng nhập" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-1">
                                 <input name="email" type="email" placeholder="Email" style="width: 100%;" required>

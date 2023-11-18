@@ -48,7 +48,7 @@
                                 <a href="?pages=shop-detail&product_id=<?= $product_id ?>"> <img class="product__item__pic set-bg" src="<?= $PUBLIC_URL ?>/img/product/<?= $images ?>"></img></a>
                                 <div class="product__item__text">
                                     <h6><?= $product_name ?></h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
+                                    <a href="?pages=add_cart&product_id=<?= $product_id ?>" class="add-cart">+ Add To Cart</a>
                                     <div class="rating">
                                         <i class="fa fa-star-o"></i>
                                         <i class="fa fa-star-o"></i>
@@ -71,12 +71,12 @@
                                 </div>
                             </div>
                         </div>
-                        <?php
+                    <?php
                     } ?>
                 </div>
                 <div class="row d-flex justify-content-center">
                     <div class="col-4">
-                    <?php echo get_pagging($num_page,$page) ?>
+                        <?php echo get_pagging($num_page, $page) ?>
                     </div>
                 </div>
             </div>
