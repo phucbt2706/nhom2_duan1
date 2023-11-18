@@ -224,6 +224,16 @@
             }
             
             //-----------------------------------------------------Module Account---------------------------------------------------
+            case 'account': {
+                include "resource/account/" . $pages . ".php";
+                break;
+            }
+
+            case 'edit': {
+                include "resource/account/" . $pages . ".php";
+                break;
+            }
+
             case 'edit-pw': {
                 include "resource/account/" . $pages . ".php";
                 break;

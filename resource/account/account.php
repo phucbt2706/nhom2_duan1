@@ -23,7 +23,7 @@ if (isset($_POST['edit-pw'])) {
       <div class="col-lg-4">
         <div class="card mb-4">
           <div class="card-body text-center">
-            <img src="<?= $retrieved_data['avatar'] ?? "" ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+            <img src="./admin/img/<?= $retrieved_data['avatar'] ?? "" ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="mt-3 mb-1"><?= $retrieved_data['fullname'] ?? "" ?></h5>
             <p class="text-muted mb-1"><?= $retrieved_data['phone'] ?? "" ?></p>
             <p class="text-muted mb-2">Người dùng tại Việt Nam</p>
