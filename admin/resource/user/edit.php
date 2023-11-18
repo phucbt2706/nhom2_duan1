@@ -8,7 +8,7 @@ extract($item);
                 <form action="?pages=update_user" method="post" enctype="multipart/form-data">
                     <div class="row mb-4">
                         <div class="col-12 text-center">
-                            <h2>Thêm người dùng</h2>
+                            <h2>Edit new user</h2>
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">User Id</label>
@@ -16,7 +16,7 @@ extract($item);
                         </div>
 
                         <div class="col-6">
-                            <label for="" class="form-label required">Tên Đăng Nhập</label>
+                            <label for="" class="form-label required">Username</label>
                             <input type="" class="form-control" id=" " value="<?=$username ?>" name="username">
                             <span id="red_error" class="form-text"><?php if (!empty($error['username_format'])) {
                                                             echo $error['username_format'];
@@ -26,7 +26,17 @@ extract($item);
                                                         ?> </span>
                         </div>
                         <div class="col-6">
-                            <label for="inputPassword4" class="form-label required">Mật khẩu</label>
+                            <label for="inputPassword4" class="form-label required">Password</label>
+                            <input type="password" class="form-control"id="" name = "password" value="<?=$password ?>">
+                            <span id="red_error" class="form-text"><?php if (!empty($error['password_format'])) {
+                                                            echo $error['password_format'];
+                                                        } else if (!empty($error['password_empty'])) {
+                                                            echo $error['password_empty'];
+                                                        }
+                                                        ?> </span>
+                        </div>
+                        <div class="col-6">
+                            <label for="inputPassword4" class="form-label required">Password</label>
                             <input type="password" class="form-control"id="" name = "password" value="<?=$password ?>">
                             <span id="red_error" class="form-text"><?php if (!empty($error['password_format'])) {
                                                             echo $error['password_format'];
@@ -37,7 +47,7 @@ extract($item);
                         </div>
                         
                         <div class="col-6">
-                            <label for="" class="form-label required">Họ Và Tên</label>
+                            <label for="" class="form-label required">Fullname</label>
                             <input type="" class="form-control" id=" " value="<?=$fullname ?>" name="fullname">
                             <span id="red_error" class="form-text"><?php if (!empty($error['fullname_format'])) {
                                                             echo $error['fullname_format'];
@@ -59,12 +69,12 @@ extract($item);
                                                         ?> </span>
                         </div>
                         <div class="col-6">
-                            <label for="formFile" class="form-label required">Chọn hình ảnh</label>
+                            <label for="formFile" class="form-label required">Avatar</label>
                             <input class="form-control" name="avatar" type="file" id="formFile">
                         </div>
                         <div class="col-6">
                             <div class="col-6">
-                                <label for="" class="form-label required">Số Điện Thoại</label>
+                                <label for="" class="form-label required">Phone</label>
                                 <input type="text" name="phone" class="form-control" value="<?=$phone?>">
                                 <span id="red_error" class="form-text"><?php if (!empty($error['phone'])) {
                                                             echo $error['phone_format'];
@@ -76,24 +86,24 @@ extract($item);
 
                         </div>
                         <div class="col-6">
-                            <label for="" class="form-label required">Vai trò</label>
+                            <label for="" class="form-label required">Role</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="role_id" value="0" id="role-radio3">
                                 <label class="form-check-label" for="role-radio3">
-                                    Khách hàng
+                                    Admin
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="role_id" value="1" id="role-radio4"
                                     checked>
                                 <label class="form-check-label" for="role-radio">
-                                    Nhân viên
+                                    User
                                 </label>
                             </div>
                         </div>
                         <div class="col-12 mt-4">
                             <button type="submit" name="button" value="update_user" class="btn btn-primary">Update</button>
-                            <a class="btn btn-primary" href="?pages=list_account" role="button">List of user</a>
+                            <a class="btn btn-primary" href="?pages=list_account" role="button">Users list</a>
                         </div>
                     </div>
                 </form>
