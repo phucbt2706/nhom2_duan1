@@ -2,6 +2,7 @@
 require "../dao/pdo.php";
 require "../dao/hang-hoa.php";
 require "../dao/khach-hang.php";
+require "../dao/role.php";
 require "../dao/loai.php";
 require "../lib/validation/validate.php ";
 require "../lib/pagging/pagging.php ";
@@ -15,6 +16,8 @@ if (!empty($_SESSION['user'])) {
     $cate  = new Loai();
     $tk    = new KhachHang();
     $bl    = new BinhLuan();
+    $role    = new Role();
+
     switch ($pages) {
         //-------------------------------------------------------Module Home---------------------------- 
         case 'home': {
