@@ -222,7 +222,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <?php if (isset($_SESSION['user'])) : ?>
+                                            <?php if (!empty($_SESSION['user'])) : ?>
                                                 <div class="review_box">
                                                     <h4>Gửi bình luận</h4>
                                                     <form class="row contact_form" action="?pages=shop-detail&product_id=<?= $product_id ?>" method="post" enctype="multipart/form-data" id="contactForm" novalidate="novalidate">
