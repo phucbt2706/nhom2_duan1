@@ -1,5 +1,6 @@
 <?php
 ob_start();
+
 require "./global.php";
 require "./dao/pdo.php";
 require "./dao/khach-hang.php";
@@ -7,10 +8,12 @@ require "./dao/hang-hoa.php";
 require "./dao/loai.php";
 require "./lib/pagging/pagging.php ";
 require "./dao/cart.php";
+require "./dao/binh-luan.php";
 
 $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
 $pro = new HangHoa();
 $cart = new Cart();
+$bl = new BinhLuan();
 //Include header
 require "include/header.php";
 switch ($pages) {
@@ -63,6 +66,12 @@ switch ($pages) {
     case 'shop-detail': {
             $id = $_GET['product_id'];
             $item = $pro->products_select_by_id($id);
+            $comment = $bl->binh_luan_get_detail($id);
+            if (isset($_POST['comment'])) {
+                $infor_user = unserialize($_SESSION['user']);
+                $bl->addComment($infor_user['user_id'], $_GET['product_id'], $_POST['content']);
+                header("Location:http:/?pages=shop-detail&product_id=" . $_GET['product_id']);
+            }
             include "resource/shop/shop-detail.php";
             break;
         }
@@ -81,7 +90,7 @@ switch ($pages) {
     case 'delete_prod': {
             $id = $_GET['product_id'];
             $cart->deleteCart($id);
-            header("Location:http:/?pages=cart");;
+            header("Location:http:/?pages=cart");
             break;
         }
     case 'update_cart': {
@@ -90,7 +99,7 @@ switch ($pages) {
                     $cart->updateQty($_POST['qty']);
                 }
             }
-            header("Location:http:/?pages=cart");;
+            header("Location:http:/?pages=cart");
             break;
         }
     case 'checkout': {
