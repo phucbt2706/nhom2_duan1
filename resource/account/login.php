@@ -3,17 +3,22 @@
 if(isset($_POST["login"])){
     $user = new KhachHang();
     $data = $user->user_select_by_username($_POST["username"]);
-    if($data['username'] == $_POST["username"] && $data['password'] == $_POST["pass"]){
-        $_SESSION['user'] = serialize($data);
-        $retrieved_data = unserialize($_SESSION['user']);
-
+    if(!empty($data)){
+        if($data['username'] == $_POST["username"] && $data['password'] == $_POST["pass"]){
+            $_SESSION['user'] = serialize($data);
+            $retrieved_data = unserialize($_SESSION['user']);
+    
+        }else{
+            $errol = 'Tên đăng nhập hoặc mật khẩu sai';
+        }
+        if(!empty($_SESSION['user'])){
+            $retrieved_data = unserialize($_SESSION['user']);
+            echo "<script>window.location.href = '?pages=account';</script>";
+        }
     }else{
         $errol = 'Tên đăng nhập hoặc mật khẩu sai';
     }
-    if(!empty($_SESSION['user'])){
-        $retrieved_data = unserialize($_SESSION['user']);
-        echo "<script>window.location.href = '?pages=account';</script>";
-    }
+
     
     
 }
