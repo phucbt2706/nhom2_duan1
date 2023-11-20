@@ -4,10 +4,11 @@ class Connect
     // Connection CSDL
     function pdo_get_connection()
     {
-        $dburl = "mysql:host=localhost;dbname=nhom2_duan1;charset=utf8";
+        $servername = 'localhost';
+        $dbname = 'nhom2_duan1';
         $username = 'root';
         $password = 'mysql';
-        $conn = new PDO($dburl, $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
     }
@@ -75,4 +76,4 @@ class Connect
             unset($conn);
         }
     }
-}
+} 
