@@ -1,5 +1,4 @@
 <?php
-
 if(isset($_POST["login"])){
     $user = new KhachHang();
     $data = $user->user_select_by_username($_POST["username"]);
@@ -19,10 +18,16 @@ if(isset($_POST["login"])){
         $errol = 'Tên đăng nhập hoặc mật khẩu sai';
     }
 
-    
-    
+    if(!empty($_SESSION['user'])){
+        $retrieved_data = unserialize($_SESSION['user']);
+        
+        if($_SESSION['check'] == true){
+            header("location: ?pages=checkout");
+        }else {
+            echo "<script>window.location.href = '?pages=account';</script>";
+        }
+    }
 }
-
 ?>
 
 <!-- login Section Begin -->
