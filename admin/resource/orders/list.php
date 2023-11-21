@@ -15,6 +15,7 @@
                                 <th scope="col">ID. Order</th>
                                 <th scope="col">Customer name</th>
                                 <th scope="col">Quantity</th>
+                                <th scope="col">Total</th>
                                 <th scope="col" colspan="2">Action</th>
                             </tr>
                         </thead>
@@ -27,14 +28,15 @@
                                 <td><?= $order_id ?></td>
                                 <td><?= $fullname ?></td>
                                 <td><?= $qty ?></td>
+                                <td><?= currency_format($total)  ?></td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="?pages=edit_product&product_id="><i class="bx bx-edit-alt me-1"></i>Edit</a>
-                                            <a class="dropdown-item" href="?pages=delete_product&product_id="><i class="bx bx-edit-alt me-1"></i>Delete</a>
+                                            <a class="dropdown-item" href="?pages=order_detail&order_id=<?= $order_id ?>"><i class="bx bx-edit-alt me-1"></i>Detail</a>
+                                            <a class="dropdown-item" href="?pages="><i class="bx bx-edit-alt me-1"></i>Delete</a>
                                         </div>
                                     </div>
                                 </td>

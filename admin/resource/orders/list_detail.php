@@ -14,8 +14,7 @@
                                 <th><input type="checkbox" name="order_id[]" id="order1" onclick="checkedAllOrder();"></th>
                                 <th scope="col">Product name</th>
                                 <th scope="col">Quantity</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Note</th>
+                                <th scope="col">Total</th>
                                 <th scope="col" colspan="2">Action</th>
                             </tr>
                         </thead>
@@ -25,9 +24,9 @@
                                 extract($item);?>
                             <tr>
                                 <td><input type="checkbox" class="product" name="product_id[]" value=""></td>
-                                <td><?= $order_id ?></td>
-                                <td><?= $fullname ?></td>
+                                <td><?= $product_name ?></td>
                                 <td><?= $qty ?></td>
+                                <td><?= currency_format($qty*$price ) ?></td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
