@@ -84,7 +84,7 @@ class KhachHang extends Connect
 
     function user_select_by_email($email)
     {
-        $sql = "SELECT `user_id`, `username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id` FROM `user` WHERE email = '$email';";
+        $sql = "SELECT * FROM `user` WHERE email = '$email';";
         return  $this->pdo_query_one($sql);
     }
 
@@ -92,5 +92,16 @@ class KhachHang extends Connect
     {
         $sql = "SELECT `user_id`, `username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id` FROM `user` WHERE username = '$name';";
         return  $this->pdo_query_one($sql);
+    }
+
+    function user_update_password($password, $email)
+    {
+        $sql = "UPDATE `user` SET `password`='$password' WHERE email= '$email';";
+        $this->pdo_execute($sql);
+    }
+    function user_update_token($token, $email)
+    {
+        $sql = "UPDATE `user` SET `token`='$token' WHERE email= '$email';";
+        $this->pdo_execute($sql);
     }
 }

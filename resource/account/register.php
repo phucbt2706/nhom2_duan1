@@ -81,7 +81,7 @@ if (isset($_POST["register"])) {
                                 <a href="?pages=login">Đã có tài khoản? Đăng nhập ngay</a>
                             </div>
                             <div class="col-lg-12 mt-3 text-center">
-                                <a href="">Quên mật khẩu?</a>
+                                <a href="?pages=forgotPassword">Quên mật khẩu?</a>
                             </div>
                         </div>
                     </form>

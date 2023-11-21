@@ -1,4 +1,9 @@
 <?php
+if(isset($forgot)){
+    echo $forgot;
+}else{
+    echo "";
+}
 if(isset($_POST["login"])){
     $user = new KhachHang();
     $data = $user->user_select_by_username($_POST["username"]);
@@ -24,7 +29,7 @@ if(isset($_POST["login"])){
         if($_SESSION['check'] == true){
             header("location: ?pages=checkout");
         }else {
-            echo "<script>window.location.href = '?pages=account';</script>";
+            echo "<script>window.location.href = '?pages=home';</script>";
         }
     }
 }
@@ -53,7 +58,7 @@ if(isset($_POST["login"])){
                                 <button name="login" type="submit" class="site-btn" style="width: 100%;">Đăng nhập</button>
                             </div>
                             <div class="col-lg-12 mt-3 text-center">
-                                <a href="">Quên mật khẩu?</a>
+                                <a href="?pages=forgotPassword">Quên mật khẩu?</a>
                             </div>
                             <div class="col-lg-12 mt-3 text-center">
                                 <a href="?pages=register">Đăng ký</a>

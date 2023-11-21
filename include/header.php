@@ -83,7 +83,7 @@
                                     <span style="margin: 0; padding:0 color: ffffff"> <img style="margin-right: 5px;" width="20px" height="20px" src="./admin/img/' . $retrieved_data['avatar'] . '" alt="">' . $retrieved_data['fullname'] . '</span>
                                     </a>
                                     <div class="header__top__hover ml-4">
-                                        <a href="?pages=admin">ADMIN</a>
+                                        <a href="/admin">ADMIN</a>
                                     </div>';
                                     } else {
                                         echo '
