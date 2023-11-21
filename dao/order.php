@@ -33,5 +33,24 @@ class Order extends Connect{
         return true;
     }
 
+    function order_select_all(){
+        $sql = "SELECT o.order_id, u.fullname ,COUNT(*) as 'qty'
+        FROM user u 
+        JOIN orders o ON u.user_id = o.user_id 
+        JOIN order_detail od ON o.order_id = od.order_id 
+        JOIN product p ON od.product_id = p.product_id 
+        GROUP BY od.order_id";
+        return  $this->pdo_query($sql);
+    }
+
+    function order_select_detail($id){
+        $sql = "SELECT o.order_id, COUNT(*) as 'qty'
+        FROM user u 
+        JOIN orders o ON u.user_id = o.user_id 
+        JOIN order_detail od ON o.order_id = od.order_id 
+        JOIN product p ON od.product_id = p.product_id 
+        WHERE od.order_id = ?";
+        return  $this->pdo_query($sql,$id);
+    }
    
 }

@@ -4,6 +4,7 @@ require "../dao/hang-hoa.php";
 require "../dao/khach-hang.php";
 require "../dao/role.php";
 require "../dao/loai.php";
+require "../dao/order.php";
 require "../lib/validation/validate.php ";
 require "../lib/pagging/pagging.php ";
 require "../dao/binh-luan.php";
@@ -17,6 +18,7 @@ if (!empty($_SESSION['user'])) {
     $tk    = new KhachHang();
     $bl    = new BinhLuan();
     $role    = new Role();
+    $order    = new Order();
 
     switch ($pages) {
         //-------------------------------------------------------Module Home---------------------------- 
@@ -419,9 +421,19 @@ if (!empty($_SESSION['user'])) {
             echo "<script>window.location.href ='?pages=list_account';</script>";
             break;
         }
-            
+        
         //-----------------------------------------------------Module Orders----------------------------------------------------
-
+        case 'orders':{
+            $list_order = $order->order_select_all();
+            include "resource/orders/list.php";
+            break;
+        }
+        case 'order_detail':{
+            $id = $_GET['order_id'];
+            $list_order_detail = $order->order_select_detail($id);
+            include "resource/orders/list_detail.php";
+            break;
+        }
         //-----------------------------------------------------Module Comments--------------------------------------------------
         case 'list-comment': {
             $comments = $bl->binh_luan_select_all();
