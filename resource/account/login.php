@@ -13,7 +13,7 @@ if(isset($_POST["login"])){
     if(!empty($_SESSION['user'])){
         $retrieved_data = unserialize($_SESSION['user']);
         
-        if($_SESSION['check'] == true){
+        if(isset($_SESSION['check']) && $_SESSION['check'] == true){
             header("location: ?pages=checkout");
         }else {
             echo "<script>window.location.href = '?pages=account';</script>";
