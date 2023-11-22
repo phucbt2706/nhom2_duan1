@@ -18,7 +18,6 @@ if (!empty($_SESSION['user'])) {
     $tk    = new KhachHang();
     $bl    = new BinhLuan();
     $role    = new Role();
-    $order    = new Order();
 
     switch ($pages) {
         //-------------------------------------------------------Module Home---------------------------- 
@@ -424,14 +423,15 @@ if (!empty($_SESSION['user'])) {
         
         //-----------------------------------------------------Module Orders----------------------------------------------------
         case 'orders':{
-            $list_order = $order->order_select_all();
             include "resource/orders/list.php";
             break;
         }
         case 'order_detail':{
-            $id = $_GET['order_id'];
-            $list_order_detail = $order->order_select_detail($id);
             include "resource/orders/list_detail.php";
+            break;
+        }
+        case 'order_delete':{
+            include "resource/orders/delete.php";
             break;
         }
         //-----------------------------------------------------Module Comments--------------------------------------------------
