@@ -20,7 +20,9 @@
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($list_order_detail as $item) {
+                            $order = new Order();
+                            $id = $_GET['order_id'];
+                            foreach ($order->order_select_detail($id) as $item) {
                                 extract($item);?>
                             <tr>
                                 <td><input type="checkbox" class="product" name="product_id[]" value=""></td>
