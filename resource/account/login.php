@@ -1,22 +1,28 @@
 <?php
-if(isset($_POST["login"])){
+$errol = "";
+if (isset($_POST["login"])) {
     $user = new KhachHang();
     $data = $user->user_select_by_username($_POST["username"]);
-    if($data['username'] == $_POST["username"] && $data['password'] == $_POST["pass"]){
-        $_SESSION['user'] = serialize($data);
-        $retrieved_data = unserialize($_SESSION['user']);
-
-    }else{
-        $errol = 'Tên đăng nhập hoặc mật khẩu sai';
+    if (!empty($data)) {
+        if ($data['username'] == $_POST["username"] && $data['password'] == $_POST["pass"]) {
+            $_SESSION['user'] = serialize($data);
+            $retrieved_data = unserialize($_SESSION['user']);
+        } else {
+            $errol = 'Tên đăng nhập hoặc mật khẩu sai';
+        }
+    } else {
+        $errol = "Tên đăng nhập không hợp lệ!";
     }
 
-    if(!empty($_SESSION['user'])){
+
+
+    if (!empty($_SESSION['user'])) {
         $retrieved_data = unserialize($_SESSION['user']);
-        
-        if(isset($_SESSION['check']) && $_SESSION['check'] == true){
-            header("location: ?pages=checkout");
-        }else {
-            echo "<script>window.location.href = '?pages=account';</script>";
+
+        if (isset($_SESSION['check']) && $_SESSION['check'] == true) {
+            // header("location: ?pages=checkout");
+        } else {
+            // echo "<script>window.location.href = '?pages=account';</script>";
         }
     }
 }
@@ -26,7 +32,7 @@ if(isset($_POST["login"])){
 <section class="contact spad">
     <div class="container">
         <div class="row">
-        <div class="col-lg-3 col-md-3"></div>
+            <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form text-center">
                     <h2><b>Đăng nhập</b> </h2>
