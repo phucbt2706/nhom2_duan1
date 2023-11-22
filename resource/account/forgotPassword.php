@@ -1,13 +1,18 @@
 <?php
 
-if (isset($_POST['senmail'])) {
+if (isset($_POST['sendEmail'])) {
+    $user = new KhachHang();
+    $data = $user->user_select_by_email($_POST["email"]);
+    if(!empty($data)) {
     $token = substr(md5(mt_rand(0, 999999)), 0, 8);
     $email = $_POST["email"];
-    $user = new KhachHang();
+    
     $user->user_update_token($token, $email);
     include "./config/mail.php";
     echo "<script>window.location.href = '?pages=forgotPassword&email=" . $_POST["email"] . "';</script>";
-    
+    } else {
+        $errol = "Bạn chưa đăng ký thành viên";
+    }
 }
 
 
@@ -72,7 +77,7 @@ if (isset($_POST["update"])) {
                                 <?php   }
                             } else {  ?>
                                 <div class="col-lg-12 mt-2 text-center">
-                                    <button name="senmail" type="submit" class="site-btn" style="width: 100%;">SenMail</button>
+                                    <button name="sendEmail" type="submit" class="site-btn" style="width: 100%;">SenMail</button>
                                 </div>
                             <?php }
                             if (isset($_GET['token'])) { ?>

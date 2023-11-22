@@ -9,10 +9,10 @@ class KhachHang extends Connect
     }
 
     // Update category
-    function user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id)
+    function user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $token)
 {
-    $sql = "UPDATE `user` SET username=?, password=?, fullname=?, email=?, phone=?, avatar=?, role_id=? WHERE user_id=?";
-    $this->pdo_execute($sql, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $user_id);
+    $sql = "UPDATE `user` SET username='?', password='?', fullname='?', email='?', phone='?', avatar='?', role_id=?, token='?' WHERE user_id=?";
+    $this->pdo_execute($sql, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $token, $user_id);
 }
 
 
