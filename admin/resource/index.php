@@ -4,6 +4,7 @@ require "../dao/hang-hoa.php";
 require "../dao/khach-hang.php";
 require "../dao/role.php";
 require "../dao/loai.php";
+require "../dao/order.php";
 require "../lib/validation/validate.php ";
 require "../lib/pagging/pagging.php ";
 require "../dao/binh-luan.php";
@@ -408,20 +409,35 @@ if (!empty($_SESSION['user'])) {
             }
 
         case 'delete_all_user': {
-                $id = $_POST["user_id"];
-                try {
-                    $tk->user_delete($id);
-                    echo "<script>alert(\"Delete user successfully! \");</script>";
-                } catch (PDOException $e) {
-                    throw $e;
-                }
-                echo "<script>window.location.href ='?pages=list_account';</script>";
-                break;
+            $id = $_POST["user_id"];
+            try {
+                $tk->user_delete($id);
+                echo "<script>alert(\"Delete user successfully! \");</script>";
+            } catch (PDOException $e) {
+                throw $e;
             }
-
-            //-----------------------------------------------------Module Orders----------------------------------------------------
-
-            //-----------------------------------------------------Module Comments--------------------------------------------------
+            echo "<script>window.location.href ='?pages=list_account';</script>";
+            break;
+        }
+         
+        //-----------------------------------------------------Module Orders----------------------------------------------------
+        case 'orders':{
+            include "resource/orders/list.php";
+            break;
+        }
+        case 'order_detail':{
+            include "resource/orders/list_detail.php";
+            break;
+        }
+        case 'order_delete':{
+            include "resource/orders/delete.php";
+            break;
+        }
+        case 'order_delete_all':{
+            include "resource/orders/delete_all.php";
+            break;
+        }
+        //-----------------------------------------------------Module Comments--------------------------------------------------
         case 'list-comment': {
                 $comments = $bl->binh_luan_select_all();
                 include "resource/comments/list.php";

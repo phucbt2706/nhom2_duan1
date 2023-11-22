@@ -33,5 +33,35 @@ class Order extends Connect{
         return true;
     }
 
+    function order_delete($order_id){
+        $sql = "DELETE FROM orders WHERE order_id = $order_id";
+        if (is_array($order_id)) {
+            foreach ($order_id as $id) {
+                $this->pdo_execute($sql, $id);
+            }
+        } else {
+            $this->pdo_execute($sql, $order_id);
+        }
+    }
+
+    function order_select_all(){
+        $sql = "SELECT o.order_id, u.fullname ,o.total,COUNT(*) as 'qty'
+        FROM user u 
+        JOIN orders o ON u.user_id = o.user_id 
+        JOIN order_detail od ON o.order_id = od.order_id 
+        JOIN product p ON od.product_id = p.product_id 
+        GROUP BY od.order_id";
+        return  $this->pdo_query($sql);
+    }
+
+    function order_select_detail($id){
+        $sql = "SELECT p.product_name,od.qty,p.price
+        FROM user u 
+        JOIN orders o ON u.user_id = o.user_id 
+        JOIN order_detail od ON o.order_id = od.order_id 
+        JOIN product p ON od.product_id = p.product_id 
+        WHERE od.order_id = ?";
+        return  $this->pdo_query($sql,$id);
+    }
    
 }

@@ -36,3 +36,11 @@ function checkedAllRoles() {
     aa[i].checked = checked;
     }
 }
+function checkedAllOrder() {
+    var aa = document.getElementsByClassName("order");
+    checked = document.getElementById('order1').checked;
+
+    for (var i = 0; i < aa.length; i++) {
+    aa[i].checked = checked;
+    }
+}

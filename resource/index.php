@@ -166,7 +166,7 @@ switch ($pages) {
 
     //-----------------------------------------------------Module Admin---------------------------------------------------
     case 'admin': {
-        echo "<script>window.location.href = 'admin/index.php';</>";
+        echo "<script>window.location.href = 'admin/index.php';</script>";
         break;
     }
 
