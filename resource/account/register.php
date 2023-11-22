@@ -4,28 +4,32 @@ if (isset($_POST["register"])) {
     if ($_POST["pass"] == $_POST["passC"]) {
         if ($user->kiemTraSoDienThoai($_POST["phone"])) {
             if ($user->user_select_by_email($_POST["email"]) == Null) {
-                $avatar =  $_FILES['avatar'];
-                $target_dir = "./admin/img/";
-                $target_file = $target_dir . basename($avatar['name']);
+                if ($user->user_select_by_username($_POST['username']) == Null) {
+                    $avatar =  $_FILES['avatar'];
+                    $target_dir = "./admin/img/";
+                    $target_file = $target_dir . basename($avatar['name']);
 
-                if (file_exists($target_file)) {
-                    $errol = "";
-                } else {
-                    if (move_uploaded_file($avatar['tmp_name'], $target_file)) {
+                    if (file_exists($target_file)) {
                         $errol = "";
                     } else {
-                        $errol = "";
+                        if (move_uploaded_file($avatar['tmp_name'], $target_file)) {
+                            $errol = "";
+                        } else {
+                            $errol = "";
+                        }
                     }
+                    $username = $_POST["username"];
+                    $password = $_POST["pass"];
+                    $fullname = $_POST["name"];
+                    $phone = $_POST["phone"];
+                    $email = $_POST["email"];
+                    $avatar = $avatar['name'];
+                    $role_id = "2";
+                    $user->user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id);
+                    echo "<script>window.location.href = '?pages=login';</script>";
+                } else {
+                    $errol = "The account already exists.";
                 }
-                $username = $_POST["username"];
-                $password = $_POST["pass"];
-                $fullname = $_POST["name"];
-                $phone = $_POST["phone"];
-                $email = $_POST["email"];
-                $avatar = $avatar['name'];
-                $role_id = "2";
-                $user->user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id);
-                echo "<script>window.location.href = '?pages=login';</script>";
             } else {
                 $errol = "The account already exists";
             }

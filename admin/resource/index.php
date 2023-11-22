@@ -10,7 +10,9 @@ require "../lib/pagging/pagging.php ";
 require "../dao/binh-luan.php";
 
 if (!empty($_SESSION['user'])) {
-    require "include/header.php";
+    $data = unserialize($_SESSION['user']);
+    if($data['role_id'] == 1){
+        require "include/header.php";
 
     $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
     $db    = new HangHoa();
@@ -463,6 +465,10 @@ if (!empty($_SESSION['user'])) {
             }
     }
     require 'include/footer.php';
+    } else {
+        include  "resource/account/login.php";
+    }
+    
 } else {
     include  "resource/account/login.php";
 }
