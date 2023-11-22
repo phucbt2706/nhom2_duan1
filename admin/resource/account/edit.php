@@ -1,6 +1,7 @@
 <?php
 if (isset($_POST["edit_acount"])) {
     $user = new KhachHang();
+    $data = unserialize($_SESSION['user']);
     if ($user->kiemTraSoDienThoai($_POST["phone"])) {
         if (!empty($_FILES['avatar']['name'])) {
             $avatar =  $_FILES['avatar'];
@@ -17,7 +18,7 @@ if (isset($_POST["edit_acount"])) {
                 }
             }
         } else {
-            $target_file = $retrieved_data['avatar'];
+            $avatar = $data["avatar"];
         }
 
         $username = $_POST["username"];
@@ -25,15 +26,15 @@ if (isset($_POST["edit_acount"])) {
         $fullname = $_POST["name"];
         $phone = $_POST["phone"];
         $email = $_POST["email"];
-        $avatar = $avatar['name'];
-        $role_id = $_POST["role_id"];
+        $avatar =$retrieved_data["avatar"];
+        $role_id = $retrieved_data["role_id"];
         $user_id = $retrieved_data["user_id"];
-        $user->user_update($username, $password, $fullname, $email, $phone, $avatar, $role_id, $user_id);
+      
+        $user->user_update($user_id,$username, $password, $fullname, $email, $phone, $avatar, $role_id);
 
         $data = $user->user_select_by_email($email);
         $_SESSION['user'] = serialize($data);
         $retrieved_data = unserialize($_SESSION['user']);
-
 
         echo "<script>window.location.href = '?pages=account';</script>";
     } else {

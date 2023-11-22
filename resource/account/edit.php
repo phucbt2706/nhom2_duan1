@@ -25,11 +25,11 @@ if (isset($_POST["edit_acount"])) {
         $fullname = $_POST["name"];
         $phone = $_POST["phone"];
         $email = $_POST["email"];
-        $avatar = $_FILES['avatar']['name'];
-        $role_id = "2";
+        $avatar =$retrieved_data["avatar"];
+        $role_id = $retrieved_data["role_id"];
         $user_id = $retrieved_data["user_id"];
-        $token = $retrieved_data["token"]?? "";
-        $user->user_update($username, $password, $fullname, $email, $phone, $avatar, $role_id, $user_id, $token);
+      
+        $user->user_update($user_id,$username, $password, $fullname, $email, $phone, $avatar, $role_id);
 
         $data = $user->user_select_by_email($email);
         $_SESSION['user'] = serialize($data);

@@ -9,11 +9,11 @@ class KhachHang extends Connect
     }
 
     // Update category
-    function user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $token)
-{
-    $sql = "UPDATE `user` SET username='?', password='?', fullname='?', email='?', phone='?', avatar='?', role_id=?, token='?' WHERE user_id=?";
-    $this->pdo_execute($sql, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $token, $user_id);
-}
+    function user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id)
+    {
+        $sql = "UPDATE `user` SET `username`=?, `password`=?, `fullname`=?, `email`=?, `phone`=?, `avatar`=?, `role_id`=? WHERE user_id=?";
+        $this->pdo_execute($sql, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $user_id);
+    }
 
 
     // Delete category
@@ -36,11 +36,13 @@ class KhachHang extends Connect
         $sql = "SELECT * FROM user";
         return  $this->pdo_query($sql);
     }
-    function num_row_user(){
+    function num_row_user()
+    {
         $sql = "SELECT count(*) as num_row FROM user";
         return $this->pdo_query($sql);
     }
-    function user_select_page($start,$num_rows_in_page){
+    function user_select_page($start, $num_rows_in_page)
+    {
         $sql = "SELECT * FROM user LIMIT $start,$num_rows_in_page";
         return $this->pdo_query($sql);
     }
@@ -96,7 +98,7 @@ class KhachHang extends Connect
 
     function user_update_password($password, $email)
     {
-        $sql = "UPDATE `user` SET `password`='$password' WHERE email= '$email';";
+        $sql = "UPDATE `user` SET password='$password' WHERE email= '$email';";
         $this->pdo_execute($sql);
     }
     function user_update_token($token, $email)

@@ -4,7 +4,7 @@ if (isset($_POST["edit_paw"])) {
     $user = new KhachHang();
     $data = $user->user_select_by_email($retrieved_data['email']);
     if ($data['password'] == $_POST["pass"]) {
-        if ($_POST["pass"] == $_POST["passC"]) {
+        if ($_POST["newPass"] == $_POST["passC"]) {
 
             $username = $retrieved_data['username'];
             $password = $_POST['newPass'];
@@ -14,7 +14,7 @@ if (isset($_POST["edit_paw"])) {
             $avatar = $retrieved_data['avatar'];
             $role_id = $retrieved_data['role_id'];
             $user_id = $retrieved_data["user_id"];
-            $user->user_update($username, $password, $fullname, $email, $phone, $avatar, $role_id, $user_id);
+            $user->user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id);
 
             $data = $user->user_select_by_email($retrieved_data['email']);
             $_SESSION['user'] = serialize($data);
