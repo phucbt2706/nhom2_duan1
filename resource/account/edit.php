@@ -8,12 +8,12 @@ if (isset($_POST["edit_acount"])) {
             $target_file = $target_dir . basename($avatar['name']);
 
             if (file_exists($target_file)) {
-                $errol = "Tệp ko tồn tại";
+                $errol = "";
             } else {
                 if (move_uploaded_file($avatar['tmp_name'], $target_file)) {
                     $errol = "";
                 } else {
-                    $errol = "Upload thất bại";
+                    $errol = "";
                 }
             }
         } else {
@@ -38,7 +38,7 @@ if (isset($_POST["edit_acount"])) {
 
         echo "<script>window.location.href = '?pages=account';</script>";
     } else {
-        $errol = "Định dạng số điện thoại sai";
+        $errol = "Incorrect phone number format";
     }
 }
 ?>
@@ -52,34 +52,34 @@ if (isset($_POST["edit_acount"])) {
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form">
-                    <h2 class="mb-4 text-center"><b>Cập nhật thông tin tài khoảng</b></h2>
+                    <h2 class="mb-4 text-center"><b>Update account information</b></h2>
                     <form method="post" enctype="multipart/form-data"> <!-- Để cho phép tải lên file -->
                         <div class="row">
                             <div class="col-lg-12 mt-1">
-                                <label for="">Họ và tên</label>
-                                <input name="name" type="text" value="<?= $retrieved_data['fullname'] ?? "" ?>" placeholder="Họ và tên" style="width: 100%;" required>
+                                <label for="">Full Name</label>
+                                <input name="name" type="text" value="<?= $retrieved_data['fullname'] ?? "" ?>" placeholder="Full name" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt1">
-                                <label for="">Tên đăng nhập</label>
-                                <input name="username" type="text" placeholder="Tên đăng nhập" value="<?= $retrieved_data['username'] ?? "" ?>" style="width: 100%;" required>
+                                <label for="">Username</label>
+                                <input name="username" type="text" placeholder="Username" value="<?= $retrieved_data['username'] ?? "" ?>" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-1">
                                 <label for="">Email</label>
                                 <input name="email" type="email" value="<?= $retrieved_data['email'] ?? "" ?>" placeholder="Email" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-1">
-                                <label for="">Số điện thoại</label>
-                                <input name="phone" type="text" placeholder="Số điện thoại" value="<?= $retrieved_data['phone'] ?? "" ?>" style="width: 100%;" required>
+                                <label for="">Phone</label>
+                                <input name="phone" type="text" placeholder="Phone" value="<?= $retrieved_data['phone'] ?? "" ?>" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-1">
-                                <label for="">Ảnh đại diện</label>
+                                <label for="">Avatar</label>
                                 <input name="avatar" type="file" style="width: 100%;">
                             </div>
                             <div class="col-lg-12">
                                 <small class="text-danger"><?= $errol ?? "" ?></small>
                             </div>
                             <div class="col-lg-12 mt-1">
-                                <button name="edit_acount" type="submit" class="site-btn" style="width: 100%;">Cập nhật</button>
+                                <button name="edit_acount" type="submit" class="site-btn" style="width: 100%;">Update</button>
                             </div>
 
                         </div>

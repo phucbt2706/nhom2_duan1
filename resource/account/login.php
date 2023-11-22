@@ -1,9 +1,4 @@
 <?php
-if(isset($forgot)){
-    echo $forgot;
-}else{
-    echo "";
-}
 if(isset($_POST["login"])){
     $user = new KhachHang();
     $data = $user->user_select_by_username($_POST["username"]);
@@ -13,14 +8,14 @@ if(isset($_POST["login"])){
             $retrieved_data = unserialize($_SESSION['user']);
     
         }else{
-            $errol = 'Tên đăng nhập hoặc mật khẩu sai';
+            $errol = 'Username or password is wrong';
         }
         if(!empty($_SESSION['user'])){
             $retrieved_data = unserialize($_SESSION['user']);
             echo "<script>window.location.href = '?pages=account';</script>";
         }
     }else{
-        $errol = 'Tên đăng nhập hoặc mật khẩu sai';
+        $errol = 'Username or password is wrong';
     }
 
     if(!empty($_SESSION['user'])){
@@ -42,26 +37,26 @@ if(isset($_POST["login"])){
         <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form text-center">
-                    <h2><b>Đăng nhập</b> </h2>
+                    <h2><b>LOGIN</b> </h2>
                     <form method="post">
                         <div class="row">
                             <div class="col-lg-12 mt-3">
-                                <input name="username" type="text" placeholder="Tên đăng nhập" style="width: 100%; " required>
+                                <input name="username" type="text" placeholder="Username" style="width: 100%; " required>
                             </div>
                             <div class="col-lg-12 mt-1">
-                                <input name="pass" type="password" placeholder="Mật khẩu" style="width: 100%;" required>
+                                <input name="pass" type="password" placeholder="Password" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12">
                                 <small class="text-danger"><?= $errol ?? "" ?></small>
                             </div>
                             <div class="col-lg-12 mt-1">
-                                <button name="login" type="submit" class="site-btn" style="width: 100%;">Đăng nhập</button>
+                                <button name="login" type="submit" class="site-btn" style="width: 100%;">Login</button>
                             </div>
                             <div class="col-lg-12 mt-3 text-center">
-                                <a href="?pages=forgotPassword">Quên mật khẩu?</a>
+                                <a href="?pages=forgotPassword">For got Password?</a>
                             </div>
                             <div class="col-lg-12 mt-3 text-center">
-                                <a href="?pages=register">Đăng ký</a>
+                                <a href="?pages=register">Register</a>
                             </div>
                         </div>
                     </form>

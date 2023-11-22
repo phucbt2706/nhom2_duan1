@@ -11,7 +11,7 @@ if (isset($_POST['sendEmail'])) {
     include "./config/mail.php";
     echo "<script>window.location.href = '?pages=forgotPassword&email=" . $_POST["email"] . "';</script>";
     } else {
-        $error = "Bạn chưa đăng ký thành viên";
+        $error = "You have not registered as a member";
     }
 }
 
@@ -23,7 +23,7 @@ if (isset($_POST['check'])) {
 
         echo "<script>window.location.href = '?pages=forgotPassword&email=" . $_POST["email"] . "&token=" . $_POST['token'] . "';</script>";
     } else {
-        $error = "Mã token không đúng";
+        $error = "Incorrect code";
     }
 }
 
@@ -33,10 +33,10 @@ if (isset($_POST["update"])) {
         $password = $_POST["passN"];
         $email = $_GET["email"];
         $user->user_update_password($password, $email);
-        $forgot = "Đổi mật khẩu thành công";
+        $forgot = "Password changed successfully";
         echo "<script>window.location.href = '?pages=finishForgot';</script>";
     } else {
-        $error = "Xác nhận mật khẩu không đúng";
+        $error = "Password was wrong";
     }
 }
 ?>

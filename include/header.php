@@ -93,8 +93,8 @@
                                     }
                                 } else {
                                     echo '
-                                        <a href="?pages=login">Đăng Nhập</a>
-                                        <a style="margin: -15px" href="?pages=register">Đăng Ký</a>';
+                                        <a href="?pages=login">LOGIN</a>
+                                        <a style="margin: -15px" href="?pages=register">REGISTER</a>';
                                 }
 
                                 ?>

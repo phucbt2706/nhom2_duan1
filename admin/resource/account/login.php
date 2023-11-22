@@ -9,10 +9,10 @@ if (isset($_POST["login"])) {
             $retrieved_data = unserialize($_SESSION['user']);
             echo "<script>window.location.href = '?pages=home';</script>";
         } else {
-            $errol = 'Tên đăng nhập hoặc mật khẩu sai';
+            $errol = 'Username or password is wrong';
         }
     } else {
-        $errol = 'Tên đăng nhập hoặc mật khẩu sai';
+        $errol = 'Username or password is wrong';
     }
 }
 
@@ -86,23 +86,23 @@ if (isset($_POST["login"])) {
                                 <div class="card z-index-0 fadeIn3 fadeInBottom ">
                                     <div class="card-body ">
                                         <div class="text-center">
-                                            <h4>Đăng nhập Admin</h4>
+                                            <h4>Login Admin</h4>
                                         </div>
                                         <form role="form" class="text-start" method="POST">
                                             <div class="input-group input-group-outline my-3">
-                                                <input name="name" placeholder="Tên đăng nhập" class="form-control" required>
+                                                <input name="name" placeholder="Username" class="form-control" required>
                                             </div>
                                             <div class="input-group input-group-outline mb-3">
-                                                <input type="password" name="pass" placeholder="Mật khẩu" class="form-control" required>
+                                                <input type="password" name="pass" placeholder="Password" class="form-control" required>
                                             </div>
                                             <div>
                                                 <small style="color: red;"><?= $errol ?? ""  ?></small>
                                             </div>
                                             <div class="text-center">
-                                                <button name="login" class="btn btn-primary w-100 my-2 mb-2">Đăng nhập</button>
+                                                <button name="login" class="btn btn-primary w-100 my-2 mb-2">Login</button>
                                             </div>
                                             <p class="mt-2 text-sm text-center">
-                                                <a href="?pages=forgotPassword" class="text-primary text-gradient font-weight-bold">Quên mật khẩu?</a>
+                                                <a href="?pages=forgotPassword" class="text-primary text-gradient font-weight-bold">Register?</a>
                                             </p>
                                         </form>
                                     </div>

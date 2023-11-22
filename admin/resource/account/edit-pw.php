@@ -22,10 +22,10 @@ if (isset($_POST["edit_paw"])) {
 
             echo "<script>window.location.href = '?pages=account';</script>";
         } else {
-            $errol = "Xác nhận mật khẩu không đúng";
+            $errol = "Password was wrong";
         }
     } else {
-        $errol = "Mật khẩu không đúng";
+        $errol = "Incorrect password";
     }
 }
 ?>
@@ -37,23 +37,23 @@ if (isset($_POST["edit_paw"])) {
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-6 col-md-6 rounded border p-5" style="box-shadow: 0 0 5px grey;">
                 <div class="contact__form text-center ">
-                    <h2><b>Cập nhật mật khẩu</b></h2>
+                    <h2><b>Update password</b></h2>
                     <form method="post" enctype="multipart/form-data" class="">
                         <div class="row">
-                            <div class="col-lg-12 mt-2">
-                                <input name="pass" type="password" placeholder="Mật khẩu cũ" class="form-control" required>
+                            <div class="col-lg-12 mt-1">
+                                <input name="pass" type="password" placeholder="Old password" style="width: 100%;" required>
                             </div>
-                            <div class="col-lg-12 mt-2">
-                                <input name="passC" type="password" placeholder="Xác nhận mật khẩu" class="form-control" required>
+                            <div class="col-lg-12 mt-1">
+                                <input name="newPass" type="password" placeholder="New password" style="width: 100%;" required>
                             </div>
-                            <div class="col-lg-12 mt-2">
-                                <input name="newPass" type="password" placeholder="Mật khẩu mới" class="form-control" required>
+                            <div class="col-lg-12 mt-1">
+                                <input name="passC" type="password" placeholder="Confirm password" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12">
                                 <small class="text-danger"><?= $errol ?? "" ?></small>
                             </div>
                             <div class="col-lg-12 mt-2 ">
-                                <button name="edit_paw" type="submit" class="btn btn-primary w-100">Cập nhật</button>
+                                <button name="edit_paw" type="submit" class="btn btn-primary w-100">Update</button>
                             </div>
                         </div>
                     </form>

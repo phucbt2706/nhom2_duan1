@@ -9,12 +9,12 @@ if (isset($_POST["register"])) {
                 $target_file = $target_dir . basename($avatar['name']);
 
                 if (file_exists($target_file)) {
-                    $errol = "Tệp ko tồn tại";
+                    $errol = "";
                 } else {
                     if (move_uploaded_file($avatar['tmp_name'], $target_file)) {
                         $errol = "";
                     } else {
-                        $errol = "Upload thất bại";
+                        $errol = "";
                     }
                 }
                 $username = $_POST["username"];
@@ -27,13 +27,13 @@ if (isset($_POST["register"])) {
                 $user->user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id);
                 echo "<script>window.location.href = '?pages=login';</script>";
             } else {
-                $errol = "Tài khoảng đã tồn tại";
+                $errol = "The account already exists";
             }
         } else {
-            $errol = "Định dạng số điện thoại sai";
+            $errol = "Incorrect phone number format";
         }
     } else {
-        $errol = "Xác nhận mật khẩu không đúng";
+        $errol = "Password was wrong";
     }
 }
 ?>
@@ -47,26 +47,26 @@ if (isset($_POST["register"])) {
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-6 col-md-6">
                 <div class="contact__form text-center">
-                    <h2><b>Đăng ký</b></h2>
+                    <h2><b>REGISTER</b></h2>
                     <form method="post" enctype="multipart/form-data"> <!-- Để cho phép tải lên file -->
                         <div class="row">
                             <div class="col-lg-12 mt-3">
-                                <input name="name" type="text" placeholder="Họ và tên" style="width: 100%;" required>
+                                <input name="name" type="text" placeholder="Full name" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-3">
-                                <input name="username" type="text" placeholder="Tên đăng nhập" style="width: 100%;" required>
+                                <input name="username" type="text" placeholder="Username" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-1">
                                 <input name="email" type="email" placeholder="Email" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-3">
-                                <input name="phone" type="text" placeholder="Số điện thoại" style="width: 100%;" required>
+                                <input name="phone" type="text" placeholder="Phone" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-1">
-                                <input name="pass" type="password" placeholder="Mật khẩu" style="width: 100%;" required>
+                                <input name="pass" type="password" placeholder="Password" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-1">
-                                <input name="passC" type="password" placeholder="Xác nhận mật khẩu" style="width: 100%;" required>
+                                <input name="passC" type="password" placeholder="Confirm password" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-3">
                                 <input name="avatar" type="file" style="width: 100%;" required>
@@ -75,13 +75,13 @@ if (isset($_POST["register"])) {
                                 <small class="text-danger"><?= $errol ?? "" ?></small>
                             </div>
                             <div class="col-lg-12 mt-1">
-                                <button name="register" type="submit" class="site-btn" style="width: 100%;">Đăng ký</button>
+                                <button name="register" type="submit" class="site-btn" style="width: 100%;">Register</button>
                             </div>
                             <div class="col-lg-12 mt-3 text-center">
-                                <a href="?pages=login">Đã có tài khoản? Đăng nhập ngay</a>
+                                <a href="?pages=login">Already have an account? log in now</a>
                             </div>
                             <div class="col-lg-12 mt-3 text-center">
-                                <a href="?pages=forgotPassword">Quên mật khẩu?</a>
+                                <a href="?pages=forgotPassword">Register?</a>
                             </div>
                         </div>
                     </form>
