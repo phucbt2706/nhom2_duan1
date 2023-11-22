@@ -5,7 +5,7 @@
                 <h3 class="card-header">Orders list</h3>
             </div>
             <div class="table-responsive text-nowrap">
-                <form action="?pages=delete_order" method="post">
+                <form action="?pages=order_delete_all" method="post">
                     <button type="submit" class="btn btn-secondary">Delete</button>
                     <table class="table table-striped table-hover">
                         <thead>
@@ -13,7 +13,7 @@
                                 <th><input type="checkbox" name="order_id[]" id="order1"  onclick="checkedAllOrder();"></th>
                                 <th scope="col">ID. Order</th>
                                 <th scope="col">Customer name</th>
-                                <th scope="col">Quantity</th>
+                                <th scope="col">Product Quantity</th>
                                 <th scope="col">Total</th>
                                 <th scope="col" colspan="2">Action</th>
                             </tr>
