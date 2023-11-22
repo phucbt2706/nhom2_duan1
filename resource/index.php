@@ -149,6 +149,16 @@ switch ($pages) {
         break;
     }
 
+    case 'forgotPassword': {
+        include "resource/account/" . $pages . ".php";
+        break;
+    }
+
+    case 'finishForgot': {
+        include "resource/account/" . $pages . ".php";
+        break;
+    }
+
     case 'edit-pw': {
         include "resource/account/" . $pages . ".php";
         break;

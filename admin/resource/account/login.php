@@ -9,10 +9,10 @@ if (isset($_POST["login"])) {
             $retrieved_data = unserialize($_SESSION['user']);
             echo "<script>window.location.href = '?pages=home';</script>";
         } else {
-            $errol = 'Tên đăng nhập hoặc mật khẩu sai';
+            $errol = 'Username or password is wrong';
         }
     } else {
-        $errol = 'Tên đăng nhập hoặc mật khẩu sai';
+        $errol = 'Username or password is wrong';
     }
 }
 
@@ -63,38 +63,57 @@ if (isset($_POST["login"])) {
 
 <body class="bg-gray-200">
     <main class="main-content  mt-0">
-        <div class="page-header align-items-start min-vh-100" style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
+        <div class="page-header align-items-start min-vh-100"  style="padding-top: 180px; background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
             <span class="mask bg-gradient-dark opacity-6"></span>
-            <div class="container my-auto ">
-                <div class="row" style="padding-top: 180px">
-                    <div class="col-lg-4 col-md-8 col-12 mx-auto">
-                        <div class="card z-index-0 fadeIn3 fadeInBottom ">
-                            <div class="card-body ">
-                                <div class="text-center">
-                                    <h4>Đăng nhập Admin</h4>
+            <?php
+                $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
+                switch ($pages) {
+                     
+                    case 'forgotPassword': {
+                        include "resource/account/" . $pages . ".php";
+                        break;
+                    }
+            
+                    case 'finishForgot': {
+                        include "resource/account/" . $pages . ".php";
+                        break;
+                    }
+                    
+                    default:{
+                        echo ' <div class="container my-auto ">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-8 col-12 mx-auto">
+                                <div class="card z-index-0 fadeIn3 fadeInBottom ">
+                                    <div class="card-body ">
+                                        <div class="text-center">
+                                            <h4>Login Admin</h4>
+                                        </div>
+                                        <form role="form" class="text-start" method="POST">
+                                            <div class="input-group input-group-outline my-3">
+                                                <input name="name" placeholder="Username" class="form-control" required>
+                                            </div>
+                                            <div class="input-group input-group-outline mb-3">
+                                                <input type="password" name="pass" placeholder="Password" class="form-control" required>
+                                            </div>
+                                            <div>
+                                                <small style="color: red;"><?= $errol ?? ""  ?></small>
+                                            </div>
+                                            <div class="text-center">
+                                                <button name="login" class="btn btn-primary w-100 my-2 mb-2">Login</button>
+                                            </div>
+                                            <p class="mt-2 text-sm text-center">
+                                                <a href="?pages=forgotPassword" class="text-primary text-gradient font-weight-bold">Register?</a>
+                                            </p>
+                                        </form>
+                                    </div>
                                 </div>
-                                <form role="form" class="text-start" method="POST">
-                                    <div class="input-group input-group-outline my-3">
-                                        <input name="name" placeholder="Tên đăng nhập" class="form-control" required>
-                                    </div>
-                                    <div class="input-group input-group-outline mb-3">
-                                        <input type="password" name="pass" placeholder="Mật khẩu" class="form-control" required>
-                                    </div>
-                                    <div>
-                                        <small style="color: red;"><?= $errol ?? ""  ?></small>
-                                    </div>
-                                    <div class="text-center">
-                                        <button name="login" class="btn btn-primary w-100 my-2 mb-2">Đăng nhập</button>
-                                    </div>
-                                    <p class="mt-2 text-sm text-center">
-                                        <a href="" class="text-primary text-gradient font-weight-bold">Quên mật khẩu?</a>
-                                    </p>
-                                </form>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div>';
+                    }
+                } 
+            ?>
+           
         </div>
     </main>
 </body>
