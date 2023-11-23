@@ -111,12 +111,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="?pages=list_cate" class="menu-link" target="_blank">
+                    <a href="?pages=list_cate" class="menu-link">
                         <div data-i18n="Basic">Categories list</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="?pages=form_add_cate" class="menu-link" target="_blank">
+                    <a href="?pages=form_add_cate" class="menu-link" >
                         <div data-i18n="Basic">Add new</div>
                     </a>
                 </li>
