@@ -44,6 +44,17 @@ class Order extends Connect{
         }
     }
 
+    function order_detail_delete($product_id,$order_id){
+        $sql = "DELETE FROM `order_detail` WHERE `product_id` = $product_id AND `order_id` = $order_id";
+        if (is_array($product_id)) {
+            foreach ($product_id as $id) {
+                $this->pdo_execute($sql, $id, $order_id);
+            }
+        } else {
+            $this->pdo_execute($sql, $product_id, $order_id);
+        }
+    }
+
     function num_row_order(){
         $sql = "SELECT COUNT(order_id) as num_row FROM orders";
         return $this->pdo_query($sql);
@@ -60,7 +71,7 @@ class Order extends Connect{
     }
 
     function order_select_detail($id){
-        $sql = "SELECT p.product_name,od.qty,p.price
+        $sql = "SELECT p.product_name,od.qty,p.price,od.order_id,od.product_id
         FROM user u 
         JOIN orders o ON u.user_id = o.user_id 
         JOIN order_detail od ON o.order_id = od.order_id 

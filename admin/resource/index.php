@@ -439,6 +439,10 @@ if (!empty($_SESSION['user'])) {
             include "resource/orders/delete_all.php";
             break;
         }
+        case 'delete_order_detail':{
+            include "resource/orders/delete_order_detail.php";
+            break;
+        }
         //-----------------------------------------------------Module Comments--------------------------------------------------
         case 'list-comment': {
                 $comments = $bl->binh_luan_select_all();

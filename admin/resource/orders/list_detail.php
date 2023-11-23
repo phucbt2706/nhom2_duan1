@@ -36,7 +36,7 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="?pages=edit_product&product_id="><i class="bx bx-edit-alt me-1"></i>Edit</a>
-                                            <a class="dropdown-item" href="?pages=delete_product&product_id="><i class="bx bx-edit-alt me-1"></i>Delete</a>
+                                            <a class="dropdown-item" href="?pages=delete_order_detail&product_id=<?= $product_id ?>&order_id=<?= $order_id ?>"><i class="bx bx-edit-alt me-1"></i>Delete</a>
                                         </div>
                                     </div>
                                 </td>
