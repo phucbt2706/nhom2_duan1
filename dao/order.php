@@ -44,13 +44,18 @@ class Order extends Connect{
         }
     }
 
-    function order_select_all(){
+    function num_row_order(){
+        $sql = "SELECT COUNT(order_id) as num_row FROM orders";
+        return $this->pdo_query($sql);
+    }
+
+    function order_select_page($start,$num_rows_in_page){
         $sql = "SELECT o.order_id, u.fullname ,o.total,COUNT(*) as 'qty'
         FROM user u 
         JOIN orders o ON u.user_id = o.user_id 
         JOIN order_detail od ON o.order_id = od.order_id 
         JOIN product p ON od.product_id = p.product_id 
-        GROUP BY od.order_id";
+        GROUP BY od.order_id LIMIT $start,$num_rows_in_page";
         return  $this->pdo_query($sql);
     }
 

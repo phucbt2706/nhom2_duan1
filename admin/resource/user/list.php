@@ -60,8 +60,8 @@
 
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
+<div class="row mt-2">
+    <div class="col-12 d-flex justify-content-end">
         <?php echo get_pagging_user($num_page,$page) ?>
     </div>
 </div>

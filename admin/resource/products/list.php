@@ -64,8 +64,8 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
-    <?php echo get_pagging($num_page,$page) ?>
+<div class="row mt-2">
+    <div class="col-12 d-flex justify-content-end">
+    <?php echo get_pagging_product($num_page,$page) ?>
     </div>
 </div>
