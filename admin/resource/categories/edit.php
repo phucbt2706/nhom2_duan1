@@ -18,18 +18,17 @@
                         </div>
                         <div class="col-6">
                             <label for="" class="form-label required">Cate Name</label>
-                            <input type="" class="form-control <?= !empty($error['error_name_cate']) ? 'border border-danger' : false ?>" id="" name="cate_name" value="<?= $cate_name ?>">
+                            <input type="" class="form-control <?= !empty($error['error_name_cate']) ? 'border border-danger' : false ?>" id="" name="cate_name" value="<?= !empty($_POST['cate_name'])?$_POST['cate_name'] : $cate_name ?>">
                             <span id="red_error" class="form-text"><?= !empty($error['error_name_cate'])?$error['error_name_cate']:false;?> </span>
                         </div>
                         <div class="col-6 form-group ">
                             <label for="" class="form-label required">Parent Category</label>
                             <select class="form-select" name="parent_id">
-                                <option selected value="0">Choose...</option>
+                            <option <?= ($parent_id==0)? 'selected' :false ?>value="0">0 - Empty</option>
                                 <?php
-                                    foreach ($list_cate as $item ) {
-                                        extract($item);?>
-                                <option value=<?= $cate_id ?>><?= $cate_id ." - ".$cate_name ?></option>
-                                <?php
+                                    foreach ($list_cate as $item ) {?>
+                                    <option <?= ($item['cate_id']==$parent_id)? 'selected' :false ?> value=<?= $item['cate_id'] ?>><?= $item['cate_id']." - ".$item['cate_name'] ?></option>
+                                    <?php
                                     }
                                 ?>
                             </select>
