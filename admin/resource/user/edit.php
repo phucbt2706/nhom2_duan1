@@ -13,27 +13,27 @@ extract($item);
                         <input type="" class="form-control" hidden value="<?=$user_id ?>" name="user_id">
                         <div class="col-6">
                             <label for="" class="form-label required">Username</label>
-                            <input type="" class="form-control" id=" " value="<?=$username ?>" name="username">
+                            <input type="" class="form-control <?= !empty($error['error_username']) ? 'border border-danger' : false ?>" id=" " value="<?=$username ?>" name="username">
                             <span id="red_error" class="form-text"><?= !empty($error['error_username'])?$error['error_username']:false;?> </span>
                         </div>
                         <div class="col-6">
                             <label for="" class="form-label required">Fullname</label>
-                            <input type="" class="form-control" id=" " value="<?=$fullname ?>" name="fullname">
+                            <input type="" class="form-control <?= !empty($error['error_name']) ? 'border border-danger' : false ?>" id=" " value="<?=$fullname ?>" name="fullname">
                             <span id="red_error" class="form-text"><?= !empty($error['error_name'])?$error['error_name']:false;?> </span>
                         </div>
                         <div class="col-6">
                             <label for="inputPassword4" class="form-label required">Password</label>
-                            <input type="password" class="form-control"id="" name = "password" value="<?=$password ?>">
+                            <input type="password" class="form-control <?= !empty($error['error_pass']) ? 'border border-danger' : false ?>"id="" name = "password" value="<?=$password ?>">
                             <span id="red_error" class="form-text"><?= !empty($error['error_pass'])?$error['error_pass']:false;?> </span>
                         </div>
                         <div class="col-6">
                             <label for="inputPassword4" class="form-label required">Confirm Password</label>
-                            <input type="password" class="form-control"id="" name = "confirm_password" value="<?=$password ?>">
+                            <input type="password" class="form-control <?= !empty($error['error_conf_pass']) ? 'border border-danger' : false ?>"id="" name = "confirm_password" value="<?=$password ?>">
                             <span id="red_error" class="form-text"><?= !empty($error['error_conf_pass'])?$error['error_conf_pass']:false;?> </span>
                         </div>
                         <div class="col-6">
                             <label for="exampleFormControlInput1" class="form-label required">Email</label>
-                            <input type="email" name="email" class="form-control" value="<?=$email ?>"
+                            <input type="email" name="email" class="form-control <?= !empty($error['error_email']) ? 'border border-danger' : false ?>" value="<?=$email ?>"
                                 placeholder="name@example.com">
                                 <span id="red_error" class="form-text"><?= !empty($error['error_email'])?$error['error_email']:false;?> </span>
                                 
@@ -45,7 +45,7 @@ extract($item);
                         <div class="col-6">
                             <div class="col-6">
                                 <label for="" class="form-label required">Phone</label>
-                                <input type="text" name="phone" class="form-control" value="<?=$phone?>">
+                                <input type="text" name="phone" class="form-control <?= !empty($error['error_phone']) ? 'border border-danger' : false ?>" value="<?=$phone?>">
                                 <span id="red_error" class="form-text"><?= !empty($error['error_phone'])?$error['error_phone']:false;?> </span>
                             </div>
 

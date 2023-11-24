@@ -93,9 +93,11 @@ if (!empty($_SESSION['user'])) {
                     }
                     echo "<script>window.location.href ='?pages=list_cate';</script>";
                 } else {
-                    $list_cate  = $cate->category_select_all();
-                    include "resource/categories/form-add.php";
+                    $id = $_POST['cate_id'];
+                    $item = $cate->cate_select_by_id($id);
+                    include "resource/categories/edit.php";
                 }
+                break;
             }
 
             case "delete_cate": {

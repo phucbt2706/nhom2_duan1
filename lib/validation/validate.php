@@ -77,28 +77,28 @@ function check_form_add_customer()
     //---------------Check username---------------
     if (!empty($username)) {
         if (!check_username($username)) {
-            $error['error_username'] = 'Username không đúng định dạng!';
+            $error['error_username'] = 'The username has an incorect format!';
         }
     } else {
-        $error['error_username'] = 'Không để trống username!';
+        $error['error_username'] = 'The username can’t be empty!';
     }
 
     //---------------Check fullanme---------------
     if (!empty($fullname)) {
         if (strlen($fullname) > 40) {
-            $error['error_name'] = 'Độ dài không phù hợp';
+            $error['error_name'] = 'The fullname too long!';
         }
     } else {
-        $error['error_name'] = 'Không để trống họ và tên!';
+        $error['error_name'] = 'The fullname can’t be empty!';
     }
 
     //---------------Check password---------------
     if (!empty($password)) {
         if (!check_password($password)) {
-            $error['error_pass'] = 'Password không đúng định dạng!';
+            $error['error_pass'] = 'The password has an incorect format!';
         }
     } else {
-        $error['error_pass'] = 'Không để trống password!';
+        $error['error_pass'] = 'The password can’t be empty!';
     }
 
     //---------------Confirm password---------------
@@ -108,30 +108,30 @@ function check_form_add_customer()
             $error['error_conf_pass'] = 'Phải trùng password!';
         }
     } else {
-        $error['error_conf_pass'] = 'Không để trống password!';
+        $error['error_conf_pass'] = 'The confirm password don’t match!';
     }
     //---------------Check sđt---------------
 
     if (!empty($phone)) {
         if (!is_numeric($phone)) {
-            $error['error_phone'] = 'Giá phải là số!';
+            $error['error_phone'] = 'The phone number must be a number!';
         } else {
             if ($phone < 0) {
-                $error['error_phone'] = 'Gía phải lớn hơn 0.';
+                $error['error_phone'] = 'The phone number must be more than 0!';
             }
         }
     } else {
-        $error['error_phone'] = 'Không để trống!';
+        $error['error_phone'] = 'The phone number can’t be empty!';
     }
 
 
     //---------------Check email---------------
     if (!empty($email)) {
         if (!check_email($email)) {
-            $error['error_email'] = 'Email không đúng định dạng!';
+            $error['error_email'] = 'The email address has an incorect format!';
         }
     } else {
-        $error['error_email'] = 'Không để trống email!';
+        $error['error_email'] = 'The email address can’t be empty!';
     }
 
     if (!empty($error)) {
@@ -175,59 +175,55 @@ function check_form_update_customer()
     //---------------Check username---------------
     if (!empty($username)) {
         if (!check_username($username)) {
-            $error['error_username'] = 'Username không đúng định dạng!';
+            $error['error_username'] = 'The username has an incorect format!';
         }
     } else {
-        $error['error_username'] = 'Không để trống username!';
+        $error['error_username'] = 'The username can’t be empty!';
     }
 
     //---------------Check fullanme---------------
     if (!empty($fullname)) {
         if (strlen($fullname) > 40) {
-            $error['error_name'] = 'Độ dài không phù hợp';
+            $error['error_name'] = 'The fullname too long!';
         }
     } else {
-        $error['error_name'] = 'Không để trống họ và tên!';
+        $error['error_name'] = 'The fullname can’t be empty!';
     }
 
     //---------------Check password---------------
     if (!empty($password)) {
         if (!check_password($password)) {
-            $error['error_pass'] = 'Password không đúng định dạng!';
+            $error['error_pass'] = 'The password has an incorrect format!';
         }
     } else {
-        $error['error_pass'] = 'Không để trống password!';
+        $error['error_pass'] = 'The password can’t be empty!';
     }
 
     if (!empty($confirm_password)) {
         if ($confirm_password != $password) {
-            $error['error_conf_pass'] = 'Phải trùng password!';
+            $error['error_conf_pass'] = 'The confirm password don’t match!';
         }
     } else {
-        $error['error_conf_pass'] = 'Không để trống password!';
+        $error['error_conf_pass'] = 'The confirm password can’t be empty!';
     }
     //---------------Check sđt---------------
 
     if (!empty($phone)) {
-        if (!is_numeric($phone)) {
-            $error['error_phone'] = 'Giá phải là số!';
-        } else {
-            if ($phone < 0) {
-                $error['error_phone'] = 'Gía phải lớn hơn 0.';
-            }
-        }
+        if (!is_numeric($phone) || $phone < 0) {
+            $error['error_phone'] = 'The phone number must be a number!';
+        } 
     } else {
-        $error['error_phone'] = 'Không để trống!';
+        $error['error_phone'] = 'The phone number can’t be empty!';
     }
 
 
     //---------------Check email---------------
     if (!empty($email)) {
         if (!check_email($email)) {
-            $error['error_email'] = 'Email không đúng định dạng!';
+            $error['error_email'] = 'The email address has an incorrect format!';
         }
     } else {
-        $error['error_email'] = 'Không để trống email!';
+        $error['error_email'] = 'The email address can’t be empty!';
     }
 
     if (!empty($error)) {
@@ -259,10 +255,10 @@ function check_form_add_category()
 
     if (!empty($cate_name)) {
         if (is_numeric($cate_name)) {
-            $error['error_name_cate'] = 'Tên loại phải là chữ!';
+            $error['error_name_cate'] = 'The category name must be a letter!';
         }
     } else {
-        $error['error_name_cate'] = 'Không để trống tên loại!';
+        $error['error_name_cate'] = 'The category name can’t be empty!';
     }
 
     if (!empty($error)) {
@@ -287,12 +283,12 @@ function check_form_update_category()
 
     if (!empty($cate_name)) {
         if (is_numeric($cate_name)) {
-            $error['name_format'] = 'Tên loại phải là chữ!';
+            $error['error_name_cate'] = 'The category name must be a letter!';
         } else {
             $cate_name = $cate_name;
         }
     } else {
-        $error['name_empty'] = 'Không để trống tên loại!';
+        $error['error_name_cate'] = 'The category name can’t be empty!';
     }
 
     if (!empty($error)) {
@@ -327,42 +323,36 @@ function check_form_add_product()
     //Check name of product
     if (!empty($product_name)) {
         if (is_numeric($product_name)) {
-            $error['name_format'] = 'Tên sản phẩm phải là chữ!';
-        } else {
-            $product_name = $product_name;
+            $error['name_error'] = 'The product name must be a letter!';
         }
     } else {
-        $error['name_empty'] = 'Không để trống tên sản phẩm!';
+        $error['name_error'] = 'The product name can’t be empty!';
     }
 
     //Check price of product
     if (!empty($price)) {
         if (!is_numeric($price)) {
-            $error['price_format'] = 'Giá phải là số!';
+            $error['price_error'] = 'The price must be a number!';
         } else {
             if ($price < 0) {
-                $error['price_format'] = 'Gía phải lớn hơn 0.';
-            } else {
-                $price = $price;
+                $error['price_error'] = 'The price must be more than 0!';
             }
         }
     } else {
-        $error['price_empty'] = 'Không để trống!';
+        $error['price_error'] = 'The price can’t be empty!';
     }
 
     //Check giam gia
     if (!empty($discount)) {
         if (!is_numeric($discount)) {
-            $error['sale_format'] = 'Giảm giá phải là số!';
+            $error['discount_error'] = 'The discount must be a number!';
         } else {
             if ($discount < 0 || $discount > 100) {
-                $error['sale_format'] = 'Giảm giá từ 0 - 100%.';
-            } else {
-                $discount = $discount;
+                $error['discount_error'] = 'The discount must be between 0% and 100%!';
             }
         }
     } else {
-        $error['sale_format'] = 'Không để trống!';
+        $error['discount_error'] = 'The discount can’t be empty!';
     }
 
     if (!empty($error)) {
@@ -402,42 +392,36 @@ function check_form_update_product()
     //Check name of product
     if (!empty($product_name)) {
         if (is_numeric($product_name)) {
-            $error['name_format'] = 'Tên sản phẩm phải là chữ!';
-        } else {
-            $product_name = $product_name;
+            $error['name_format'] = 'The product name must be letters!';
         }
     } else {
-        $error['name_empty'] = 'Không để trống tên sản phẩm!';
+        $error['name_empty'] = 'The product name can’t be empty!';
     }
 
     //Check price of product
     if (!empty($price)) {
         if (!is_numeric($price)) {
-            $error['price_format'] = 'Giá phải là số!';
+            $error['price_format'] = 'The price must be a number!';
         } else {
             if ($price < 0) {
-                $error['price_format'] = 'Gía phải lớn hơn 0.';
-            } else {
-                $price = $price;
+                $error['price_format'] = 'The price must be more than 0!';
             }
         }
     } else {
-        $error['price_empty'] = 'Không để trống!';
+        $error['price_empty'] = 'The price can’t be empty!';
     }
 
     //Check giam gia
     if (!empty($discount)) {
         if (!is_numeric($discount)) {
-            $error['sale_format'] = 'Giảm giá phải là số!';
+            $error['sale_format'] = 'The discount must be a number!';
         } else {
             if ($discount < 0 || $discount > 100) {
-                $error['sale_format'] = 'Giảm giá từ 0 - 100%.';
-            } else {
-                $discount = $discount;
+                $error['sale_format'] = 'The discount must be between 0% and 100%!';
             }
         }
     } else {
-        $error['sale_format'] = 'Không để trống!';
+        $error['sale_format'] = 'The discount can’t be empty!';
     }
 
     if (!empty($error)) {
@@ -468,12 +452,10 @@ function check_form_add_role()
 
     if (!empty($role_name)) {
         if (is_numeric($role_name)) {
-            $error['error_role'] = 'Tên loại phải là chữ!';
-        } else {
-            $role_name = $role_name;
+            $error['error_role'] = 'The role name must be letters!';
         }
     } else {
-        $error['error_role'] = 'Không để trống tên loại!';
+        $error['error_role'] = 'The role name can’t be empty!';
     }
 
     if (!empty($error)) {
@@ -500,10 +482,10 @@ function check_form_update_role()
     // Check name of role
     if (!empty($role_name)) {
         if (is_numeric($role_name)) {
-            $error['error_role'] = 'Tên sản phẩm phải là chữ!';
+            $error['error_role'] = 'The role name must be letters!';
         }
     } else {
-        $error['error_role'] = 'Không để trống tên sản phẩm!';
+        $error['error_role'] = 'The role name can’t be empty!';
     }
 
     if (!empty($error)) {

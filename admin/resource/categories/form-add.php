@@ -10,7 +10,7 @@
                         </div>
                         <div class="col-6">
                             <label for="" class="form-label required">Cate Name</label>
-                            <input type="" class="form-control" id="" name="cate_name">
+                            <input type="" class="form-control <?= !empty($error['error_name_cate']) ? 'border border-danger' : false ?>" id="" value="<?= !empty($_POST['cate_name']) ? $_POST['cate_name'] : false ?>" name="cate_name">
                             <span id="red_error" class="form-text"><?= !empty($error['error_name_cate'])?$error['error_name_cate']:false;?></span>
                         </div>
                         <div class="col-6 form-group ">

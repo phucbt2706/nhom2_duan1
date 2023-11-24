@@ -9,33 +9,18 @@
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Product name</label>
-                            <input type="" class="form-control" id="" value="<?php echo (!empty($_POST['product_name'])) ? $_POST['product_name'] : false; ?>" name="product_name">
-                            <span id="red_error" class="form-text"><?php if (!empty($error['name_format'])) {
-                                                                        echo $error['name_format'];
-                                                                    } else if (!empty($error['name_empty'])) {
-                                                                        echo $error['name_empty'];
-                                                                    }
-                                                                    ?> </span>
+                            <input type="" class="form-control <?= !empty($error['name_error']) ? 'border border-danger' : false ?>" id="" value="<?php echo (!empty($_POST['product_name'])) ? $_POST['product_name'] : false ?>" name="product_name">
+                            <span id="red_error" class="form-text"><?= !empty($error['name_error']) ? $error['name_error']:false ?> </span>
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Price</label>
-                            <input type="" class="form-control" id="" value="<?php echo (!empty($_POST['price'])) ? $_POST['price'] : false; ?>" name="price">
-                            <span id="red_error" class="form-text"><?php if (!empty($error['price_format'])) {
-                                                                        echo $error['price_format'];
-                                                                    } else if (!empty($error['price_empty'])) {
-                                                                        echo $error['price_empty'];
-                                                                    }
-                                                                    ?> </span>
+                            <input type="" class="form-control <?= !empty($error['price_error']) ? 'border border-danger' : false ?>" id="" value="<?php echo (!empty($_POST['price'])) ? $_POST['price'] : false ?>" name="price">
+                            <span id="red_error" class="form-text"><?= !empty($error['price_error']) ? $error['price_error']:false ?> </span>
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Discount</label>
-                            <input type="" class="form-control" id="" value="<?php echo (!empty($_POST['discount'])) ? $_POST['discount'] : false; ?>" name="discount">
-                            <span id="red_error" class="form-text"><?php if (!empty($error['sale_format'])) {
-                                                                        echo $error['sale_format'];
-                                                                    } else if (!empty($error['sale_empty'])) {
-                                                                        echo $error['sale_empty'];
-                                                                    }
-                                                                    ?> </span>
+                            <input type="" class="form-control <?= !empty($error['discount_error']) ? 'border border-danger' : false ?>" id="" value="<?php echo (!empty($_POST['discount'])) ? $_POST['discount'] : false ?>" name="discount">
+                            <span id="red_error" class="form-text"><?= !empty($error['discount_error']) ? $error['discount_error']:false ?> </span>
                         </div>
                         <div class="col-6 form-group">
                             <label for="formFile" class="form-label required">Images</label>
