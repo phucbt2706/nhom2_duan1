@@ -58,12 +58,12 @@
                         <span id="red_error" class="form-text"> </span>
 
                         <div class=" col-12 form-group">
-                            <label class="required">Description</label>
+                            <label class="form-label required">Description</label>
                             <textarea class="form-control" name="description" rows="3"><?php echo (!empty($_POST['description'])) ? $_POST['description'] : false; ?></textarea>
                         </div>
                         <div class="col-6">
                             <button type="submit" name="button" value="insert_product" class="btn btn-primary">Add</button>
-                            <a class="btn btn-primary" href="?pages=list_products" role="button">List of Product</a>
+                            <a class="btn btn-primary" href="?pages=list_products" role="button">Products list</a>
                         </div>
 
                     </div>
