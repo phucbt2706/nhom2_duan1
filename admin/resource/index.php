@@ -462,7 +462,11 @@ if (!empty($_SESSION['user'])) {
             }
             
             //-----------------------------------------------------Module Statistic-------------------------------------------------
-
+            case 'statistic': {
+                
+                include "resource/statistic/demo.php";
+                break;
+            }
             //-----------------------------------------------------Module Statistic-------------------------------------------------
             default: {
                 include "resource/home/404.php";
