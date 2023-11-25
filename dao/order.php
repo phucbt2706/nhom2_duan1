@@ -10,9 +10,9 @@ class Order extends Connect{
         return $last_id;
     }
 
-    function order_details_insert($qty,$product_id,$order_id){
-        $sql = "INSERT INTO order_detail(`qty`, `product_id`,`order_id`) VALUES(?,?,?)";
-        $this->pdo_execute($sql, $qty, $product_id,$order_id);
+    function order_details_insert($qty,$price,$product_id,$order_id){
+        $sql = "INSERT INTO order_detail(`qty`,`price`, `product_id`,`order_id`) VALUES(?,?,?,?)";
+        $this->pdo_execute($sql, $qty,$price, $product_id,$order_id);
     }
 
     function add_order(){
@@ -26,7 +26,8 @@ class Order extends Connect{
         foreach ($_SESSION['cart']['buy'] as $item) {
             $product_id = $item['product_id'];
             $qty = $item['qty'];
-            $this->order_details_insert($qty,$product_id,$order_id);
+            $price = $item['price'];
+            $this->order_details_insert($qty,$price,$product_id,$order_id);
         }
 
         unset($_SESSION['cart']);
@@ -34,7 +35,7 @@ class Order extends Connect{
     }
 
     function order_delete($order_id){
-        $sql = "DELETE FROM orders WHERE order_id = $order_id";
+        $sql = "DELETE FROM `orders` WHERE `order_id` = ?";
         if (is_array($order_id)) {
             foreach ($order_id as $id) {
                 $this->pdo_execute($sql, $id);
@@ -71,7 +72,7 @@ class Order extends Connect{
     }
 
     function order_select_detail($id){
-        $sql = "SELECT p.product_name,od.qty,p.price,od.order_id,od.product_id
+        $sql = "SELECT p.product_name,od.qty,od.price,od.order_id,od.product_id
         FROM user u 
         JOIN orders o ON u.user_id = o.user_id 
         JOIN order_detail od ON o.order_id = od.order_id 
