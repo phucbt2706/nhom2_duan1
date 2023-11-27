@@ -16,6 +16,18 @@ $pro = new HangHoa();
 $cart = new Cart();
 $bl = new BinhLuan();
 $order = new Order();
+
+if(isset($_SESSION['timestamp'])){
+    if(time() - $_SESSION['timestamp'] > 10) { //subtract new timestamp from the old one
+        echo"<script>alert('5 Minutes over!');</script>";
+        unset($_SESSION['user'], $_SESSION['timestamp']);
+        echo "<script>window.location.href = '?pages=home';</script>"; //redirect to index.php
+        exit;
+      } else {
+        $_SESSION['timestamp'] = time(); //set new timestamp
+      }
+}
+
 //Include header
 require "include/header.php";
 switch ($pages) {

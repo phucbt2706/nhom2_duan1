@@ -7,13 +7,9 @@ if (isset($_POST["login"])) {
         if($data['username'] == $_POST["username"] && $data['password'] == $_POST["pass"]){
             $_SESSION['user'] = serialize($data);
             $retrieved_data = unserialize($_SESSION['user']);
-    
+            $_SESSION['timestamp'] = time();
         }else{
             $errol = 'Username or password is wrong';
-        }
-        if(!empty($_SESSION['user'])){
-            $retrieved_data = unserialize($_SESSION['user']);
-            echo "<script>window.location.href = '?pages=account';</script>";
         }
     }else{
         $errol = 'Username or password is wrong';

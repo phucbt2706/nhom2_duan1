@@ -9,6 +9,15 @@ require "../lib/validation/validate.php ";
 require "../lib/pagging/pagging.php ";
 require "../dao/binh-luan.php";
 
+if(isset($_SESSION['timestamp'])){
+    if(time() - $_SESSION['timestamp'] > 300) { //subtract new timestamp from the old one
+        echo"<script>alert('5 Minutes over!');</script>";
+        unset($_SESSION['user'], $_SESSION['timestamp']);        
+      } else {
+        $_SESSION['timestamp'] = time(); //set new timestamp
+      }
+}
+
 if (!empty($_SESSION['user'])) {
     $data = unserialize($_SESSION['user']);
     if($data['role_id'] == 1){
@@ -473,6 +482,8 @@ if (!empty($_SESSION['user'])) {
     } else {
         include  "resource/account/login.php";
     }
+    
+
     
 } else {
     include  "resource/account/login.php";
