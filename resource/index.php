@@ -68,7 +68,10 @@ switch ($pages) {
     case 'shop-detail': {
         $id = $_GET['product_id'];
         $item = $pro->products_select_by_id($id);
+        extract($item);
+        $spcl = $pro->hang_hoa_select_by_loai($cate_id);
         $comment = $bl->binh_luan_get_detail($id);
+
         if (isset($_POST['comment'])) {
             $infor_user = unserialize($_SESSION['user']);
             $bl->addComment($infor_user['user_id'], $_GET['product_id'], $_POST['content']);

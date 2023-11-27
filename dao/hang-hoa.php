@@ -64,9 +64,9 @@ class HangHoa extends Connect{
         $sql = "SELECT * FROM hang_hoa WHERE dac_biet = 1 ";
         return $this->pdo_query($sql);
     }
-    function hang_hoa_select_by_loai($ma_loai){
-        $sql = "SELECT * FROM hang_hoa WHERE ma_loai = ? LIMIT 0,4";
-        return $this->pdo_query($sql, $ma_loai);
+    function hang_hoa_select_by_loai($cate_id){
+        $sql = "SELECT * FROM product WHERE cate_id = ? LIMIT 0,4";
+        return $this->pdo_query($sql, $cate_id);
     }
 
     function hang_hoa_select_loai_page($ma_loai,$start,$num_rows_in_page){
