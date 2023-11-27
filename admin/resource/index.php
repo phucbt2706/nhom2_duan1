@@ -106,7 +106,7 @@ if (!empty($_SESSION['user'])) {
                     $cate->cate_delete($id);
                     echo "<script>alert(\"Delete successfully! \");</script>";
                 } catch (PDOException $e) {
-                    throw $e;
+                    // throw $e;
                     echo "<script>alert(\"Delete failed! \");</script>";
                 }
                 echo "<script>window.location.href ='?pages=list_cate';</script>";

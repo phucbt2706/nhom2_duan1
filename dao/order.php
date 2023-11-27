@@ -10,9 +10,9 @@ class Order extends Connect{
         return $last_id;
     }
 
-    function order_details_insert($qty,$product_id,$order_id){
-        $sql = "INSERT INTO order_detail(`qty`, `product_id`,`order_id`) VALUES(?,?,?)";
-        $this->pdo_execute($sql, $qty, $product_id,$order_id);
+    function order_details_insert($qty,$price,$product_id,$order_id){
+        $sql = "INSERT INTO order_detail(`qty`,`price`, `product_id`,`order_id`) VALUES(?,?,?,?)";
+        $this->pdo_execute($sql, $qty,$price, $product_id,$order_id);
     }
 
     function add_order(){
@@ -26,7 +26,8 @@ class Order extends Connect{
         foreach ($_SESSION['cart']['buy'] as $item) {
             $product_id = $item['product_id'];
             $qty = $item['qty'];
-            $this->order_details_insert($qty,$product_id,$order_id);
+            $price = $item['price'];
+            $this->order_details_insert($qty,$price,$product_id,$order_id);
         }
 
         unset($_SESSION['cart']);
