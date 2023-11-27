@@ -187,5 +187,11 @@
 
             </ul>
         </li>
+        <li class="menu-item">
+            <a href="?pages=add_pro" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Add pro</div>
+            </a>
+        </li>
     </ul>
 </aside>

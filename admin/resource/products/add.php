@@ -1,3 +1,17 @@
+<!-- Add Product -->
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+
+<div class="d-flex flex-column justify-content-center">
+    <h4 class="mb-1 mt-3">Add a new Product</h4>
+    <p class="text-muted">Orders placed across your store</p>
+</div>
+<div class="d-flex align-content-center flex-wrap gap-3">
+    <button class="btn btn-label-secondary">Discard</button>
+    <button class="btn btn-label-primary">Save draft</button>
+    <button type="submit" class="btn btn-primary">Publish product</button>
+</div>
+
+</div>
 <div class="row">
     <div class="col-8">
         <div class="card mb-4">
