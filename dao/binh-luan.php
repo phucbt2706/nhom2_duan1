@@ -48,7 +48,7 @@ class BinhLuan extends Connect
         $sql = "SELECT count(*) FROM comments WHERE ma_bl =?";
         return $this->pdo_query_value($sql, $ma_bl) > 0;
     }
-    function addComment($product_id, $user_id, $content)
+    function addComment($user_id, $product_id, $content)
     {
         $sql = "INSERT INTO `comments` (`comment_id`, 
                                         `user_id`, 
