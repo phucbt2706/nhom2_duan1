@@ -53,10 +53,8 @@ class BinhLuan extends Connect
         $sql = "INSERT INTO `comments` (`comment_id`, 
                                         `user_id`, 
                                         `product_id`, 
-                                        `fullname`, 
-                                        `email`, 
                                         `content`) 
-                VALUES (NULL, ?, ?, '', '', ?);
+                VALUES (NULL, ?,?,?);
         ";
         return $this->pdo_execute($sql, $user_id, $product_id, $content);
     }
