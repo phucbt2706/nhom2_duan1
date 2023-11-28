@@ -8,6 +8,7 @@ require "../dao/order.php";
 require "../lib/validation/validate.php ";
 require "../lib/pagging/pagging.php ";
 require "../dao/binh-luan.php";
+require "../dao/statistic.php";
 
 if (!empty($_SESSION['user'])) {
     $data = unserialize($_SESSION['user']);
@@ -462,7 +463,10 @@ if (!empty($_SESSION['user'])) {
             }
             
             //-----------------------------------------------------Module Statistic-------------------------------------------------
-
+            case 'statistic_comment': {
+                include "resource/statistic/comment.php";
+                break;
+            }
             //-----------------------------------------------------Module Statistic-------------------------------------------------
             default: {
                 include "resource/home/404.php";
