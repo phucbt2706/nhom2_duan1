@@ -2,16 +2,16 @@
     <div class="col-12">
         <div class="card">
             <div class="text-center">
-                <h3 class="card-header">Chi tiết bình luận</h3>
+                <h3 class="card-header">Comment Detail</h3>
             </div>
             <div class="table-responsive text-nowrap">
                 <form action="?pages=delete_all_product" method="post">
-                    <button type="submit" class="btn btn-secondary">Delete</button>
-                    <a class="btn btn-primary" role="button" href="?pages=add_products">Add</a>
+                    <!-- <button type="submit" class="btn btn-secondary">Delete</button>
+                    <a class="btn btn-primary" role="button" href="?pages=add_products">Add</a> -->
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th><input type="checkbox"></th>
+                                <!-- <th><input type="checkbox"></th> -->
                                 <th scope="col">Khách hàng</th>
                                 <th scope="col">Nội dung</th>
                                 <th scope="col" colspan="2">Action</th>
@@ -23,7 +23,7 @@
                                 foreach ($detail_comment as $cmt) {
                                 ?>
                                     <tr>
-                                        <td> <input type="checkbox"></td>
+                                        <!-- <td> <input type="checkbox"></td> -->
                                         <td><?= $cmt['name'] ?></td>
                                         <td><?= $cmt['content'] ?></td>
                                         <td>

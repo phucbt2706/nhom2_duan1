@@ -180,7 +180,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="?pages=statistic" class="menu-link">
+                    <a href="?pages=statistic_comment" class="menu-link">
                         <div data-i18n="Perfect Scrollbar">Statistic</div>
                     </a>
                 </li>

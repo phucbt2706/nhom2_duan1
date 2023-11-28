@@ -33,7 +33,7 @@
                                 <td><?=($password)?></td>
                                 <td><?=$fullname?></td>
                                 <td><?=$email?></td>
-                                <td><img id="img_hh" src="../../../content/images/<?= $hinh ?>" alt=""></td>
+                                <td><img id="img_hh" src="../../public/img/product/<?= $avatar ?>" alt=""></td>
                                 <td><?=$phone?></td>
                                 <td><?=$role_id?></td>
                                 <td>

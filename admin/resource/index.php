@@ -8,6 +8,7 @@ require "../dao/order.php";
 require "../lib/validation/validate.php ";
 require "../lib/pagging/pagging.php ";
 require "../dao/binh-luan.php";
+require "../dao/statistic.php";
 
 if(isset($_SESSION['timestamp'])){
     if(time() - $_SESSION['timestamp'] > 300) { //subtract new timestamp from the old one
@@ -267,7 +268,7 @@ if (!empty($_SESSION['user'])) {
                         $role->role_insert($role_name);
                         echo "<script>alert(\"Add successfully! \");</script>";
                     } catch (PDOException $e) {
-                        throw $e;
+                        // throw $e;
                         echo "<script>alert(\"Add failed! \");</script>";
                     }
                     echo "<script>window.location.href ='?pages=list_role';</script>";
@@ -312,7 +313,7 @@ if (!empty($_SESSION['user'])) {
                     $role->role_delete($id);
                     echo "<script>alert(\"Delete role successfully! \");</script>";
                 } catch (PDOException $e) {
-                    throw $e;
+                    echo "<script>alert(\"Delete failed! \");</script>";
                 }
                 echo "<script>window.location.href ='?pages=list_role';</script>";
                 break;
@@ -324,7 +325,7 @@ if (!empty($_SESSION['user'])) {
                     $role->role_delete($id);
                     echo "<script>alert(\"Delete role successfully! \");</script>";
                 } catch (PDOException $e) {
-                    throw $e;
+                    echo "<script>alert(\"Update failed! \");</script>";
                 }
                 echo "<script>window.location.href ='?pages=list_role';</script>";
                 break;
@@ -471,7 +472,10 @@ if (!empty($_SESSION['user'])) {
             }
             
             //-----------------------------------------------------Module Statistic-------------------------------------------------
-
+            case 'statistic_comment': {
+                include "resource/statistic/comment.php";
+                break;
+            }
             //-----------------------------------------------------Module Statistic-------------------------------------------------
             default: {
                 include "resource/home/404.php";

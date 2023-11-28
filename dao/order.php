@@ -2,9 +2,9 @@
 
 class Order extends Connect{
 
-    function order_insert($user_id,$total,$note,$order_date){
+    function order_insert($user_id,$total,$note){
         $conn = $this->pdo_get_connection();
-        $sql = "INSERT INTO orders(`user_id`,`total`,`note`,`order_date`) VALUES('$user_id','$total','$note','$order_date')";
+        $sql = "INSERT INTO orders(`user_id`,`total`,`note`) VALUES('$user_id','$total','$note')";
         $conn->exec($sql);
         $last_id = $conn->lastInsertId();
         return $last_id;
@@ -21,7 +21,7 @@ class Order extends Connect{
         $note = !empty($_POST['note']) ? $_POST['note'] : '';
         $order_date = date_format(date_create(),'Y-m-d h-m-s');
 
-        $order_id = $this->order_insert($user_id,$total,$note,$order_date);
+        $order_id = $this->order_insert($user_id,$total,$note);
 
         foreach ($_SESSION['cart']['buy'] as $item) {
             $product_id = $item['product_id'];
