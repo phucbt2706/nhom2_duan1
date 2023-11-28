@@ -2,12 +2,12 @@
     <div class="col-12">
         <div class="card">
             <div class="text-center">
-                <h3 class="card-header">Quản lí bình luận</h3>
+                <h3 class="card-header">Comments list</h3>
             </div>
             <div class="table-responsive text-nowrap">
                 <form action="?pages=delete_all_product" method="post">
-                    <button type="submit" class="btn btn-secondary">Delete</button>
-                    <a class="btn btn-primary" role="button" href="?pages=add_products">Add</a>
+                    <!-- <button type="submit" class="btn btn-secondary">Delete</button>
+                    <a class="btn btn-primary" role="button" href="?pages=add_products">Add</a> -->
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>

@@ -259,7 +259,7 @@ if (!empty($_SESSION['user'])) {
                         $role->role_insert($role_name);
                         echo "<script>alert(\"Add successfully! \");</script>";
                     } catch (PDOException $e) {
-                        throw $e;
+                        // throw $e;
                         echo "<script>alert(\"Add failed! \");</script>";
                     }
                     echo "<script>window.location.href ='?pages=list_role';</script>";
@@ -304,7 +304,7 @@ if (!empty($_SESSION['user'])) {
                     $role->role_delete($id);
                     echo "<script>alert(\"Delete role successfully! \");</script>";
                 } catch (PDOException $e) {
-                    throw $e;
+                    echo "<script>alert(\"Delete failed! \");</script>";
                 }
                 echo "<script>window.location.href ='?pages=list_role';</script>";
                 break;
@@ -316,7 +316,7 @@ if (!empty($_SESSION['user'])) {
                     $role->role_delete($id);
                     echo "<script>alert(\"Delete role successfully! \");</script>";
                 } catch (PDOException $e) {
-                    throw $e;
+                    echo "<script>alert(\"Update failed! \");</script>";
                 }
                 echo "<script>window.location.href ='?pages=list_role';</script>";
                 break;
