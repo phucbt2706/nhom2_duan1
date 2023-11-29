@@ -35,7 +35,7 @@ function sendMail($body, $to, $from){
         $mail->send();
         echo 'Message has been sent';
     } catch (Exception $e) {        
-        echo "Lỗi khi gửi email: " . $mail->ErrorInfo;
+        echo "Error: " . $mail->ErrorInfo;
     }
 }
 
@@ -46,6 +46,11 @@ if(isset($_POST['email'])){
     $from = $_POST['email'];
     $user = new KhachHang();
     $database = $user->user_select_by_email($_POST['email']);
-    $body = '<h2>'.$database['token'].'</h2>';
+    $body = $body = '<div style="background-color: #f5f5f5; padding: 20px;">
+    <h2 style="color: #333333;">Xin chào!</h2>
+    <p style="color: #555555;">Dưới đây là mã token của bạn:</p>
+    <p style="font-size: 24px; font-weight: bold; color: #007bff;">'.$database['token'].'</p>
+    <p style="color: #555555;">Xin cảm ơn!</p>
+  </div>';
     sendMail($body, $to, $from);
 }
