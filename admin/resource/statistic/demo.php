@@ -4,9 +4,9 @@
 
 <!-- Product List Table -->
 <div class="card">
-    <!-- <div class="card-header">
+    <div class="card-header">
         <h5 class="card-title">Product List</h5>
-        <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0">
+        <!-- <div class="d-flex justify-content-between align-items-center row py-3 gap-3 gap-md-0">
             <div class="col-md-4 product_status"><select id="ProductStatus" class="form-select text-capitalize">
                     <option value="">Status</option>
                     <option value="Scheduled">Scheduled</option>
@@ -27,8 +27,8 @@
                     <option value="Out_of_Stock">Out of Stock</option>
                     <option value="In_Stock">In Stock</option>
                 </select></div>
-        </div>
-    </div> -->  
+        </div> -->
+    </div>  
     <div class="card-datatable table-responsive">
         <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
             <div class="card-header d-flex border-top rounded-0 flex-wrap py-md-0">
@@ -83,7 +83,7 @@
                         <td><span>$125</span></td>
                         <td><span>942</span></td>
                         <td><span class="badge bg-label-danger" text-capitalized="">Inactive</span></td>
-                        <td class="dtr-hidden" style="">
+                        <td class="dtr-hidden">
                             <div class="d-inline-block text-nowrap"><button class="btn btn-sm btn-icon"><i class="bx bx-edit"></i></button><button class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded me-2"></i></button>
                                 <div class="dropdown-menu dropdown-menu-end m-0"><a href="javascript:0;" class="dropdown-item">View</a><a href="javascript:0;" class="dropdown-item">Suspend</a></div>
                             </div>

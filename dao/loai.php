@@ -1,5 +1,5 @@
 <?php 
-    class Loai extends Connect{
+    class Category extends Connect{
         //Insert category
         function cate_insert($cate_name,$parent_id)
         {

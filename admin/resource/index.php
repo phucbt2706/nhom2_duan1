@@ -16,7 +16,7 @@ if (!empty($_SESSION['user'])) {
 
         $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
         $db    = new HangHoa();
-        $cate  = new Loai();
+        $cate  = new Category();
         $tk    = new KhachHang();
         $bl    = new BinhLuan();
         $role    = new Role();

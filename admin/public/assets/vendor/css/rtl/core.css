@@ -10372,8 +10372,8 @@ html:not([dir=rtl]) .nav-align-top .nav-tabs:not(.nav-fill)~.tab-content {
 }
 
 .form-label,.col-form-label {
-    font-size: .75rem;
-    text-transform: uppercase;
+    font-size: 0.9rem;
+    /* text-transform: uppercase; */
     letter-spacing: inherit
 }
 
