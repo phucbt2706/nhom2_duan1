@@ -1,3 +1,18 @@
+<?php
+$pro = new HangHoa();
+$rows = $pro->num_row_product();
+$total_rows  = $rows[0]['num_row'];
+$num_rows_in_page = 12;
+$num_page = ceil($total_rows / $num_rows_in_page);
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1; 
+$start = ($page - 1) * $num_rows_in_page;
+if (!empty($_GET['cate_id'])) {
+    $condition = "WHERE `cate_id`= ". $_GET['cate_id'];
+}else {
+    $condition= ''; 
+}
+$list_product = $pro->product_select_page($start, $num_rows_in_page,$condition);
+?>
 <section class="breadcrumb-option">
     <div class="container">
         <div class="row">
