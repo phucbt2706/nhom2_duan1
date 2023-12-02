@@ -2,8 +2,9 @@
     if (!empty($_GET['cate_id'])) {
         $cate  = new Category();
         $item = $cate->cate_select_by_id($_GET['cate_id']);
-        extract($item);
     }
+    extract($item);
+
 ?>
 <h4 class="py-3 mb-4">
     <span class="text-muted fw-light">eCommerce /</span><span> Edit Product</span>
@@ -41,6 +42,7 @@
                             </div>
                             <div class="col"><label class="form-label">Category Name</label>
                                 <input type="text" class="form-control <?= !empty($error['error_name_cate']) ? 'border border-danger' : false ?>" value="<?= !empty($_POST['cate_name'])?$_POST['cate_name'] : $cate_name ?>" name="cate_name">
+                                <span id="red_error" class="form-text"><?= !empty($error['error_name_cate'])?$error['error_name_cate']:false;?> </span>
                             </div>
                         </div>
                         <!-- Description -->

@@ -529,7 +529,7 @@ div.dt-button-collection .dt-button:not(.dt-btn-split-drop) {
 }
 
 .light-style .dataTable a:not([href]):not([tabindex]) {
-    color: #71dd37
+    /* color: #71dd37 */
 }
 
 .light-style .dt-button-info {

@@ -30,17 +30,6 @@ if (!empty($_SESSION['user'])) {
 
             //-------------------------------------------------------Module Categories---------------------------- 
             case "list_cate": {
-                $rows = $cate->num_row_cate();
-                $total_rows  = $rows[0]['num_row'];
-                $num_rows_in_page = 10;
-
-                $num_page = ceil($total_rows / $num_rows_in_page);
-
-                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; 
-
-                $start = ($page - 1) * $num_rows_in_page;
-
-                $list_cate = $cate->cate_select_page($start, $num_rows_in_page);
                 include "resource/categories/list.php";
                 break;
             }
@@ -129,16 +118,6 @@ if (!empty($_SESSION['user'])) {
 
             //------------------------------------------------------Module Product------------------------------ 
             case 'list_products': {
-                $rows = $db->num_row_product();
-                $total_rows  = $rows[0]['num_row'];
-                $num_rows_in_page = 10;
-                $num_page = ceil($total_rows / $num_rows_in_page);
-
-                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-
-                $start = ($page - 1) * $num_rows_in_page;
-
-                $list_product = $db->product_select_page($start, $num_rows_in_page);
                 include "resource/products/list.php";
                 break;
             }
