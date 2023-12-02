@@ -80,7 +80,7 @@ class HangHoa extends Connect{
     }
 
     function product_select_page($start,$num_rows_in_page,$condition){
-        $sql = "SELECT * FROM product ".$condition." LIMIT $start,$num_rows_in_page";
+        $sql = "SELECT * FROM product p JOIN category c ON c.cate_id = p.cate_id  ".$condition." LIMIT $start,$num_rows_in_page";
         return $this->pdo_query($sql);
     }
 }
