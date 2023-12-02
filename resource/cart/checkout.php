@@ -36,6 +36,7 @@
                                         <p>Fullname<span>*</span></p>
                                         <input hidden name="user_id" value="<?= $user_id ?>" type="text">
                                         <input hidden name="total" value="<?= $_SESSION['cart']['info']['total'] ?>" type="text">
+                                        <input name="price" type="text">
                                         <input readonly type="text" value="<?= $fullname ?>">
                                     </div>
                                 </div>

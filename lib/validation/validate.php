@@ -392,36 +392,36 @@ function check_form_update_product()
     //Check name of product
     if (!empty($product_name)) {
         if (is_numeric($product_name)) {
-            $error['name_format'] = 'The product name must be letters!';
+            $error['name_error'] = 'The product name must be letters!';
         }
     } else {
-        $error['name_empty'] = 'The product name can’t be empty!';
+        $error['name_error'] = 'The product name can’t be empty!';
     }
 
     //Check price of product
     if (!empty($price)) {
         if (!is_numeric($price)) {
-            $error['price_format'] = 'The price must be a number!';
+            $error['price_error'] = 'The price must be a number!';
         } else {
             if ($price < 0) {
-                $error['price_format'] = 'The price must be more than 0!';
+                $error['price_error'] = 'The price must be more than 0!';
             }
         }
     } else {
-        $error['price_empty'] = 'The price can’t be empty!';
+        $error['price_error'] = 'The price can’t be empty!';
     }
 
     //Check giam gia
     if (!empty($discount)) {
         if (!is_numeric($discount)) {
-            $error['sale_format'] = 'The discount must be a number!';
+            $error['discount_error'] = 'The discount must be a number!';
         } else {
             if ($discount < 0 || $discount > 100) {
-                $error['sale_format'] = 'The discount must be between 0% and 100%!';
+                $error['discount_error'] = 'The discount must be between 0% and 100%!';
             }
         }
     } else {
-        $error['sale_format'] = 'The discount can’t be empty!';
+        $error['discount_error'] = 'The discount can’t be empty!';
     }
 
     if (!empty($error)) {

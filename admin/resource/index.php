@@ -26,7 +26,7 @@ if (!empty($_SESSION['user'])) {
 
         $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
         $db    = new HangHoa();
-        $cate  = new Loai();
+        $cate  = new Category();
         $tk    = new KhachHang();
         $bl    = new BinhLuan();
         $role    = new Role();
@@ -40,17 +40,6 @@ if (!empty($_SESSION['user'])) {
 
             //-------------------------------------------------------Module Categories---------------------------- 
             case "list_cate": {
-                $rows = $cate->num_row_cate();
-                $total_rows  = $rows[0]['num_row'];
-                $num_rows_in_page = 10;
-
-                $num_page = ceil($total_rows / $num_rows_in_page);
-
-                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; 
-
-                $start = ($page - 1) * $num_rows_in_page;
-
-                $list_cate = $cate->cate_select_page($start, $num_rows_in_page);
                 include "resource/categories/list.php";
                 break;
             }
@@ -139,16 +128,6 @@ if (!empty($_SESSION['user'])) {
 
             //------------------------------------------------------Module Product------------------------------ 
             case 'list_products': {
-                $rows = $db->num_row_product();
-                $total_rows  = $rows[0]['num_row'];
-                $num_rows_in_page = 10;
-                $num_page = ceil($total_rows / $num_rows_in_page);
-
-                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-
-                $start = ($page - 1) * $num_rows_in_page;
-
-                $list_product = $db->product_select_page($start, $num_rows_in_page);
                 include "resource/products/list.php";
                 break;
             }
@@ -231,6 +210,11 @@ if (!empty($_SESSION['user'])) {
                 echo "<script>window.location.href ='?pages=list_products';</script>";
                 break;
             }
+            case 'add_pro': {
+                include "resource/statistic/add_pro.php";
+                break;
+            }
+
 
             //-----------------------------------------------------Module Account---------------------------------------------------
             case 'account': {

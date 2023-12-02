@@ -17,7 +17,7 @@ extract($item);
                         </div>
                         <div class="col-6 form-group">
                             <label for="" class="form-label required">Role Name</label>
-                            <input type="" class="form-control <?= !empty($error['error_role']) ? 'border border-danger' : false ?>" value="<?=$role_name ?>" name="role_name">
+                            <input type="" class="form-control <?= !empty($error['error_role']) ? 'border border-danger' : false ?>" value="<?= !empty($_POST['role_name'])?$_POST['role_name'] :$role_name ?>" name="role_name">
                             <span id="red_error" class="form-text"><?= !empty($error['error_role']) ? $error['error_role']:false ?> </span>
                         </div>
                         </div>
