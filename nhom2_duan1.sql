@@ -11,6 +11,24 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+INSERT INTO `product` (`product_id`, `product_name`, `price`, `discount`, `images`, `description`, `cate_id`) VALUES 
+(NULL, 'vivo', '11990000', NULL, 'vivo.png', 'dess', '13'), 
+(NULL, 'vivo', '11990000', NULL, 'vivo.png', 'dess', '13'), 
+(NULL, 'vivo', '11990000', NULL, 'vivo.png', 'dess', '13'), 
+(NULL, 'vivo', '11990000', NULL, 'vivo.png', 'dess', '13'), 
+(NULL, 'vivo', '11990000', NULL, 'vivo.png', 'dess', '13'),
+(NULL, 'vivo', '11000000', NULL, 'vivo.png', 'dess', '13'),
+(NULL, 'vivo', '11000000', NULL, 'vivo.png', 'dess', '13'),
+(NULL, 'vivo', '11000000', NULL, 'vivo.png', 'dess', '13'),
+(NULL, 'vivo', '11000000', NULL, 'vivo.png', 'dess', '13'),
+(NULL, 'vivo', '11990000', NULL, 'vivo.png', 'dess', '13'), 
+(NULL, 'vivo', '11990000', NULL, 'vivo.png', 'dess', '13'), 
+(NULL, 'vivo', '11000000', NULL, 'vivo.png', 'dess', '13'),
+(NULL, 'vivo', '11000000', NULL, 'vivo.png', 'dess', '13'),
+(NULL, 'vivo', '11000000', NULL, 'vivo.png', 'dess', '13'),
+(NULL, 'vivo', '11000000', NULL, 'vivo.png', 'dess', '13'),
+(NULL, 'vivo', '11000000', NULL, 'vivo.png', 'dess', '13')
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
