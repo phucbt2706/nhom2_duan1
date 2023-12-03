@@ -3,7 +3,7 @@ require "../dao/pdo.php";
 require "../dao/hang-hoa.php";
 require "../dao/khach-hang.php";
 require "../dao/role.php";
-require "../dao/loai.php";
+require "../dao/category.php";
 require "../dao/order.php";
 require "../lib/validation/validate.php ";
 require "../lib/pagging/pagging.php ";
