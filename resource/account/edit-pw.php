@@ -3,7 +3,7 @@
 if (isset($_POST["edit_paw"])) {
     $user = new KhachHang();
     $data = $user->user_select_by_email($retrieved_data['email']);
-    if($data['password'] == $_POST["pass"]){
+    if ($data['password'] == $_POST["pass"]) {
         if ($_POST["newPass"] == $_POST["passC"]) {
 
             $username = $retrieved_data['username'];
@@ -14,20 +14,20 @@ if (isset($_POST["edit_paw"])) {
             $avatar = $retrieved_data['avatar'];
             $role_id = $retrieved_data['role_id'];
             $user_id = $retrieved_data["user_id"];
-            $user->user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id);
-    
+            $address = $retrieved_data["address"];
+            $user->user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $address);
+
             $data = $user->user_select_by_email($retrieved_data['email']);
             $_SESSION['user'] = serialize($data);
             $retrieved_data = unserialize($_SESSION['user']);
-    
+
             echo "<script>window.location.href = '?pages=account';</script>";
         } else {
             $errol = "Password was wrong";
         }
-    }else {
+    } else {
         $errol = "Incorrect password";
     }
-    
 }
 ?>
 
