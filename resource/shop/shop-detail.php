@@ -256,15 +256,17 @@
                                                                 <p>
                                                                     <?= $cmt['content'] ?>
                                                                 </p>
-                                                                <form action="" method="post" enctype="multipart/form-data">
-                                                                    <input class="reply_content" type="text" placeholder="reply comment" name="reply_content">
-                                                                    <input hidden type="text" value="<?= $cmt['level'] ?>" name="level-rep">
-                                                                    <input hidden type="text" value="<?= $cmt['cmt_id'] ?>" name="parent-rep">
-                                                                    <?php if ($parent == $cmt['cmt_id']) : ?>
-                                                                        <p style="color: red;"><?= $message['rep'] ?? "" ?></p>
-                                                                    <?php endif ?>
-                                                                    <button name="reply" value="submit" class="btn btn-primary" type="submit">Trả lời</button>
-                                                                </form>
+                                                                <?php if (!empty($_SESSION['user'])) : ?>
+                                                                    <form action="" method="post" enctype="multipart/form-data">
+                                                                        <input class="reply_content" type="text" placeholder="reply comment" name="reply_content">
+                                                                        <input hidden type="text" value="<?= $cmt['level'] ?>" name="level-rep">
+                                                                        <input hidden type="text" value="<?= $cmt['cmt_id'] ?>" name="parent-rep">
+                                                                        <?php if ($parent == $cmt['cmt_id']) : ?>
+                                                                            <p style="color: red;"><?= $message['rep'] ?? "" ?></p>
+                                                                        <?php endif ?>
+                                                                        <button name="reply" value="submit" class="btn btn-primary" type="submit">Trả lời</button>
+                                                                    </form>
+                                                                <?php endif ?>
                                                             </div>
                                                             <?php
                                                             $listChild = $bl->childExistence($cmt['cmt_id'], $comment);
@@ -286,15 +288,17 @@
                                                                         <p>
                                                                             <?= $cmt['content'] ?>
                                                                         </p>
-                                                                        <form action="" method="post" enctype="multipart/form-data">
-                                                                            <input class="reply_content" type="text" placeholder="reply comment" name="reply_content">
-                                                                            <input hidden type="text" value="<?= $cmt['level'] ?>" name="level-rep">
-                                                                            <input hidden type="text" value="<?= $cmt['cmt_id'] ?>" name="parent-rep">
-                                                                            <?php if ($parent == $cmt['cmt_id']) : ?>
-                                                                                <p style="color: red;"><?= $message['rep'] ?? "" ?></p>
-                                                                            <?php endif ?>
-                                                                            <button name="reply" value="submit" class="btn btn-primary" type="submit">Trả lời</button>
-                                                                        </form>
+                                                                        <?php if (!empty($_SESSION['user'])) : ?>
+                                                                            <form action="" method="post" enctype="multipart/form-data">
+                                                                                <input class="reply_content" type="text" placeholder="reply comment" name="reply_content">
+                                                                                <input hidden type="text" value="<?= $cmt['level'] ?>" name="level-rep">
+                                                                                <input hidden type="text" value="<?= $cmt['cmt_id'] ?>" name="parent-rep">
+                                                                                <?php if ($parent == $cmt['cmt_id']) : ?>
+                                                                                    <p style="color: red;"><?= $message['rep'] ?? "" ?></p>
+                                                                                <?php endif ?>
+                                                                                <button name="reply" value="submit" class="btn btn-primary" type="submit">Trả lời</button>
+                                                                            </form>
+                                                                        <?php endif ?>
                                                                     </div>
                                                                     <?php
                                                                     $listChild = $bl->childExistence($cmt['cmt_id'], $comment);
@@ -318,15 +322,17 @@
                                                                                     <p>
                                                                                         <?= $cmt['content'] ?>
                                                                                     </p>
-                                                                                    <form action="" method="post" enctype="multipart/form-data">
-                                                                                        <input class="reply_content" type="text" placeholder="reply comment" name="reply_content">
-                                                                                        <input hidden type="text" value="<?= $cmt['level'] ?>" name="level-rep">
-                                                                                        <input hidden type="text" value="<?= $cmt['cmt_id'] ?>" name="parent-rep">
-                                                                                        <?php if ($parent == $cmt['cmt_id']) : ?>
-                                                                                            <p style="color: red;"><?= $message['rep'] ?? "" ?></p>
-                                                                                        <?php endif ?>
-                                                                                        <button name="reply" value="submit" class="btn btn-primary" type="submit">Trả lời</button>
-                                                                                    </form>
+                                                                                    <?php if (!empty($_SESSION['user'])) : ?>
+                                                                                        <form action="" method="post" enctype="multipart/form-data">
+                                                                                            <input class="reply_content" type="text" placeholder="reply comment" name="reply_content">
+                                                                                            <input hidden type="text" value="<?= $cmt['level'] ?>" name="level-rep">
+                                                                                            <input hidden type="text" value="<?= $cmt['cmt_id'] ?>" name="parent-rep">
+                                                                                            <?php if ($parent == $cmt['cmt_id']) : ?>
+                                                                                                <p style="color: red;"><?= $message['rep'] ?? "" ?></p>
+                                                                                            <?php endif ?>
+                                                                                            <button name="reply" value="submit" class="btn btn-primary" type="submit">Trả lời</button>
+                                                                                        </form>
+                                                                                    <?php endif ?>
                                                                                 </div>
                                                                             <?php endforeach ?>
                                                                         </div>
