@@ -24,7 +24,7 @@
             (int)$level += 1;
             $content = $_POST['reply_content'];
             $bl->addComment($user_id, $id_product, $content, $level, $parent);
-            header("location: ?pages=shop-detail&product_id=<?=" . $id_product . "?>");
+            header("location: ?pages=shop-detail&product_id=" . $id_product);
         } else {
             $parent = (int)$_POST['parent-rep'];
             $message['rep'] = 'comment empty!';
@@ -34,7 +34,7 @@
         if ($_POST['content'] != null) {
             $content = $_POST['content'];
             $bl->addComment($user_id, $id_product, $content, $level, $parent);
-            header("location: ?pages=shop-detail&product_id=<?=" . $id_product . "?>");
+            header("location: ?pages=shop-detail&product_id=" . $id_product);
         } else {
             $message['cmt'] = 'comment empty!';
         }
