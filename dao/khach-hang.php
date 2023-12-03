@@ -9,10 +9,10 @@ class KhachHang extends Connect
     }
 
     // Update category
-    function user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id)
+    function user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $address)
     {
-        $sql = "UPDATE `user` SET `username`=?, `password`=?, `fullname`=?, `email`=?, `phone`=?, `avatar`=?, `role_id`=? WHERE user_id=?";
-        $this->pdo_execute($sql, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $user_id);
+        $sql = "UPDATE `user` SET `username`=?, `password`=?, `fullname`=?, `email`=?, `phone`=?, `avatar`=?, `role_id`=?, `address`=? WHERE user_id=?";
+        $this->pdo_execute($sql, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $address, $user_id);
     }
 
 
@@ -77,7 +77,7 @@ class KhachHang extends Connect
         $soDienThoai = preg_replace('/\D/', '', $soDienThoai);
 
         // Kiểm tra xem số điện thoại sau khi loại bỏ ký tự không phải số có đúng định dạng không
-        if (preg_match('/^0[0-9]{9}$/', $soDienThoai)) {
+        if (preg_match('/^0[1-9][0-9]{0,}$/', $soDienThoai)) {
             return true; // Số điện thoại đúng định dạng
         } else {
             return false; // Số điện thoại không đúng định dạng
@@ -92,7 +92,7 @@ class KhachHang extends Connect
 
     function user_select_by_username($name)
     {
-        $sql = "SELECT `user_id`, `username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id` FROM `user` WHERE username = '$name';";
+        $sql = "SELECT * FROM `user` WHERE username = '$name';";
         return  $this->pdo_query_one($sql);
     }
 

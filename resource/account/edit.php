@@ -28,8 +28,8 @@ if (isset($_POST["edit_acount"])) {
         $avatar =$retrieved_data["avatar"];
         $role_id = $retrieved_data["role_id"];
         $user_id = $retrieved_data["user_id"];
-      
-        $user->user_update($user_id,$username, $password, $fullname, $email, $phone, $avatar, $role_id);
+        $address = $_POST["address"];
+        $user->user_update($user_id,$username, $password, $fullname, $email, $phone, $avatar, $role_id, $address);
 
         $data = $user->user_select_by_email($email);
         $_SESSION['user'] = serialize($data);
@@ -70,6 +70,10 @@ if (isset($_POST["edit_acount"])) {
                             <div class="col-lg-12 mt-1">
                                 <label for="">Phone</label>
                                 <input name="phone" type="text" placeholder="Phone" value="<?= $retrieved_data['phone'] ?? "" ?>" style="width: 100%;" required>
+                            </div>
+                            <div class="col-lg-12 mt-1">
+                                <label for="">Address</label>
+                                <input name="address" type="text" placeholder="Address" value="<?= $retrieved_data['address'] ?? "" ?>" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-1">
                                 <label for="">Avatar</label>

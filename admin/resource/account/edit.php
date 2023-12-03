@@ -26,11 +26,11 @@ if (isset($_POST["edit_acount"])) {
         $fullname = $_POST["name"];
         $phone = $_POST["phone"];
         $email = $_POST["email"];
-        $avatar =$retrieved_data["avatar"];
+        $avatar = $retrieved_data["avatar"];
         $role_id = $retrieved_data["role_id"];
         $user_id = $retrieved_data["user_id"];
-      
-        $user->user_update($user_id,$username, $password, $fullname, $email, $phone, $avatar, $role_id);
+        $address = $_POST["address"];
+        $user->user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $address);
 
         $data = $user->user_select_by_email($email);
         $_SESSION['user'] = serialize($data);
@@ -45,52 +45,52 @@ if (isset($_POST["edit_acount"])) {
 
 
 <!-- register Section Begin -->
-<section class="contact spad">
-    <div class="container">
 
+<section class="contact spad"> <!-- Thêm lớp 'shadow' để tạo đổ bóng mờ -->
+    <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3"></div>
             <div class="col-lg-6 col-md-6">
-                <div class="contact__form text-center">
-                    <form method="post" enctype="multipart/form-data">
+                <div class="contact__form  shadow p-5">
+                    <h2 class="mb-4 text-center"><b>Update account information</b></h2>
+                    <form method="post" enctype="multipart/form-data"> <!-- Để cho phép tải lên file -->
                         <div class="row">
-                            <div class="col-lg-12">
-                                <h2 class="text-center mb-4"><b>Update account information</b></h2>
+                            <div class="col-lg-12 mt-1">
+                                <label for="">Full Name</label>
+                                <input name="name" type="text" value="<?= $retrieved_data['fullname'] ?? "" ?>" placeholder="Full name" style="width: 100%;" required>
+                            </div>
+                            <div class="col-lg-12 mt1">
+                                <label for="">Username</label>
+                                <input name="username" type="text" placeholder="Username" value="<?= $retrieved_data['username'] ?? "" ?>" style="width: 100%;" required>
+                            </div>
+                            <div class="col-lg-12 mt-1">
+                                <label for="">Email</label>
+                                <input name="email" type="email" value="<?= $retrieved_data['email'] ?? "" ?>" placeholder="Email" style="width: 100%;" required>
+                            </div>
+                            <div class="col-lg-12 mt-1">
+                                <label for="">Phone</label>
+                                <input name="phone" type="text" placeholder="Phone" value="<?= $retrieved_data['phone'] ?? "" ?>" style="width: 100%;" required>
+                            </div>
+                            <div class="col-lg-12 mt-1">
+                                <label for="">Address</label>
+                                <input name="address" type="text" placeholder="Address" value="<?= $retrieved_data['address'] ?? "" ?>" style="width: 100%;" required>
+                            </div>
+                            <div class="col-lg-12 mt-1">
+                                <label for="">Avatar</label>
+                                <input name="avatar" type="file" style="width: 100%;">
                             </div>
                             <div class="col-lg-12">
-                                <div class="mb-3">
-                                    <input name="role_id" type="number" value="<?= $retrieved_data['role_id'] ?? "" ?>" placeholder="Role_id" min="1" max="2" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input name="username" type="text" value="<?= $retrieved_data['username'] ?? "" ?>" placeholder="Username" min="1" max="2" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input name="name" type="text" value="<?= $retrieved_data['fullname'] ?? "" ?>" placeholder="Full name" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input name="email" type="email" value="<?= $retrieved_data['email'] ?? "" ?>" placeholder="Email" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input name="phone" type="text" placeholder="Số điện thoại" value="<?= $retrieved_data['phone'] ?? "" ?>" class="form-control" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input name="avatar" type="file" class="form-control">
-                                    <label class="form-label" for="formFile">Avatar</label>
-                                </div>
-                                <div>
-                                    <small class="text-danger"><?= $errol ?? "" ?></small>
-                                </div>
-                                <div class="mt-3">
-                                    <button name="edit_acount" type="submit" class="btn btn-primary w-100">Update</button>
-                                </div>
+                                <small class="text-danger"><?= $errol ?? "" ?></small>
                             </div>
+                            <div class="col-lg-12 mt-1">
+                                <button name="edit_acount" type="submit" class="site-btn" style="width: 100%;">Update</button>
+                            </div>
+
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 <!-- register Section end -->
