@@ -26,7 +26,7 @@ if (isset($_POST['edit-pw'])) {
             <img src="./admin/img/<?= $retrieved_data['avatar'] ?? "" ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="mt-3 mb-1"><?= $retrieved_data['fullname'] ?? "" ?></h5>
             <p class="text-muted mb-1"><?= $retrieved_data['phone'] ?? "" ?></p>
-            <p class="text-muted mb-2">Users in Vietnam</p>
+            <p class="text-muted mb-2"><?= $retrieved_data['address'] ?? "" ?></p>
             <div class="d-flex justify-content-center mb-2">
               <form method="post">
                 <button class="btn btn-outline-primary ms-1" name="edit">Edit account</button>
