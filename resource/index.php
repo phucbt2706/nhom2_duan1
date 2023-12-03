@@ -14,18 +14,17 @@ require "./dao/order.php";
 $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
 $pro = new HangHoa();
 $cart = new Cart();
-$bl = new BinhLuan();
 $order = new Order();
 
-if(isset($_SESSION['timestamp'])){
-    if(time() - $_SESSION['timestamp'] > 10) { //subtract new timestamp from the old one
-        echo"<script>alert('5 Minutes over!');</script>";
+if (isset($_SESSION['timestamp'])) {
+    if (time() - $_SESSION['timestamp'] > 300) { //subtract new timestamp from the old one
+        echo "<script>alert('5 Minutes over!');</script>";
         unset($_SESSION['user'], $_SESSION['timestamp']);
         echo "<script>window.location.href = '?pages=home';</script>"; //redirect to index.php
         exit;
-      } else {
+    } else {
         $_SESSION['timestamp'] = time(); //set new timestamp
-      }
+    }
 }
 
 //Include header
@@ -78,17 +77,11 @@ switch ($pages) {
         }
 
     case 'shop-detail': {
-        $id = $_GET['product_id'];
-        $item = $pro->products_select_by_id($id);
-        $comment = $bl->binh_luan_get_detail($id);
-        if (isset($_POST['comment'])) {
-            $infor_user = unserialize($_SESSION['user']);
-            $bl->addComment($infor_user['user_id'], $_GET['product_id'], $_POST['content']);
-            header("Location:http:/?pages=shop-detail&product_id=" . $_GET['product_id']);
+            $id = $_GET['product_id'];
+            $item = $pro->products_select_by_id($id);
+            include "resource/shop/shop-detail.php";
+            break;
         }
-        include "resource/shop/shop-detail.php";
-        break;
-    }
 
         //-----------------------------------------------------Module Cart---------------------------------------------------
     case 'cart': {
