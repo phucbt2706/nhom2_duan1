@@ -35,6 +35,10 @@ class HangHoa extends Connect{
         $sql = "SELECT * FROM product";
         return $this->pdo_query($sql);
     }
+    function products_select_home(){
+        $sql = "SELECT * FROM product LIMIT 0,8";
+        return $this->pdo_query($sql);
+    }
     function num_row_product($condition){
         $sql = "SELECT count(*) as num_row FROM product p JOIN category c ON c.cate_id = p.cate_id  ".$condition;
         return $this->pdo_query($sql);
