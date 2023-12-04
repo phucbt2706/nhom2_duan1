@@ -77,7 +77,7 @@ class KhachHang extends Connect
         $soDienThoai = preg_replace('/\D/', '', $soDienThoai);
 
         // Kiểm tra xem số điện thoại sau khi loại bỏ ký tự không phải số có đúng định dạng không
-        if (preg_match('/^0[1-9][0-9]{0,}$/', $soDienThoai)) {
+        if (preg_match('/^\d{10}$/', $soDienThoai)) {
             return true; // Số điện thoại đúng định dạng
         } else {
             return false; // Số điện thoại không đúng định dạng

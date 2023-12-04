@@ -5,9 +5,9 @@ if (isset($_POST["register"])) {
         if ($user->kiemTraSoDienThoai($_POST["phone"])) {
             if ($user->user_select_by_email($_POST["email"]) == Null) {
                 if ($user->user_select_by_username($_POST['username']) == Null) {
-                    $avatar =  $_FILES['avatar'];
+                    $avatar =  $_FILES['avatar']?? "";
                     $target_dir = "./admin/img/";
-                    $target_file = $target_dir . basename($avatar['name']);
+                    $target_file = $target_dir . basename($avatar['name']?? "");
 
                     if (file_exists($target_file)) {
                         $errol = "";
@@ -23,7 +23,7 @@ if (isset($_POST["register"])) {
                     $fullname = $_POST["name"];
                     $phone = $_POST["phone"];
                     $email = $_POST["email"];
-                    $avatar = $avatar['name'];
+                    $avatar = $avatar['name']?? "tải xuống.jpg";
                     $role_id = "2";
                     $user->user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id);
                     echo "<script>window.location.href = '?pages=login';</script>";
@@ -73,7 +73,7 @@ if (isset($_POST["register"])) {
                                 <input name="passC" type="password" placeholder="Confirm password" style="width: 100%;" required>
                             </div>
                             <div class="col-lg-12 mt-3">
-                                <input name="avatar" type="file" style="width: 100%;" required>
+                                <input name="avatar" type="file" style="width: 100%;">
                             </div>
                             <div class="col-lg-12">
                                 <small class="text-danger"><?= $errol ?? "" ?></small>

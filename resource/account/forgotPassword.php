@@ -59,7 +59,7 @@ if (isset($_POST["update"])) {
                                 echo "";
                             } ?>
                             <div class="col-lg-12 mt-3">
-                                <input name="email" value="<?= $_GET['email'] ?? "" ?>" type="text" <?php if (isset($_GET['email'])) {
+                                <input name="email" value="<?= $_GET['email'] ?? "" ?>" type="email" <?php if (isset($_GET['email'])) {
                                                                                                         echo "readonly";
                                                                                                     }  ?> placeholder="Email" style="width: 100%; " required>
                             </div>
