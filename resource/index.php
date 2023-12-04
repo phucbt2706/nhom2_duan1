@@ -14,7 +14,6 @@ require "./dao/order.php";
 $pages = isset($_GET['pages']) ?  $_GET['pages'] : 'home';
 $pro = new HangHoa();
 $cart = new Cart();
-$bl = new BinhLuan();
 $order = new Order();
 
 if(isset($_SESSION['timestamp'])){
@@ -64,17 +63,11 @@ switch ($pages) {
     }
 
     case 'shop-detail': {
-        $id = $_GET['product_id'];
-        $item = $pro->products_select_by_id($id);
-        $comment = $bl->binh_luan_get_detail($id);
-        if (isset($_POST['comment'])) {
-            $infor_user = unserialize($_SESSION['user']);
-            $bl->addComment($infor_user['user_id'], $_GET['product_id'], $_POST['content']);
-            header("Location:http:/?pages=shop-detail&product_id=" . $_GET['product_id']);
+            $id = $_GET['product_id'];
+            $item = $pro->products_select_by_id($id);
+            include "resource/shop/shop-detail.php";
+            break;
         }
-        include "resource/shop/shop-detail.php";
-        break;
-    }
 
     //-----------------------------------------------------Module Cart---------------------------------------------------
     case 'cart': {

@@ -2343,7 +2343,7 @@ ol {
 	margin: 0 0 30px 30px;
 }
 
-.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__pic img{
+.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__pic img {
 	width: 100%;
 	height: 100%;
 }
@@ -3171,6 +3171,11 @@ ol {
 	font-weight: 700;
 	margin-bottom: 35px;
 	text-align: center;
+}
+
+.reply_content {
+	border: none;
+	border-bottom: 1px solid black;
 }
 
 .blog__details__comment form input {

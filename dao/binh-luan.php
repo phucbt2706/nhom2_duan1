@@ -6,7 +6,21 @@ class BinhLuan extends Connect
         $sql = "DELETE FROM comments WHERE comment_id=?";
         return $this->pdo_execute($sql, $ma_bl);
     }
-
+    function getTableComment()
+    {
+        $sql = "SELECT * FROM comments";
+        return $this->pdo_query($sql);
+    }
+    function childExistence($ma_bl, $comments)
+    {
+        $childCmt = [];
+        foreach ($comments as $cmt) {
+            if ($cmt['parent'] == $ma_bl) {
+                $childCmt[] = $cmt;
+            }
+        }
+        return $childCmt;
+    }
     function binh_luan_delete($ma_bl)
     {
         $sql = "DELETE FROM comments WHERE ma_bl=?";
@@ -32,31 +46,33 @@ class BinhLuan extends Connect
     function binh_luan_get_detail($id)
     {
         $sql = "SELECT user.username 'name', 
-        comments.content as 'content', comments.comment_id as 'cmt_id'
+        comments.content as 'content', comments.comment_id as 'cmt_id',
+        comments.level as 'level', comments.parent as 'parent'
         FROM comments JOIN user ON comments.user_id = user.user_id  
         WHERE comments.product_id = ?";
         return $this->pdo_query($sql, $id);
     }
     function binh_luan_select_by_id($ma_bl)
     {
-        $sql = "SELECT * FROM comments WHERE ma_bl =?";
+        $sql = "SELECT * FROM comments WHERE comment_id =?";
         return $this->pdo_query_one($sql, $ma_bl);
     }
-
     function binh_luan_exist($ma_bl)
     {
         $sql = "SELECT count(*) FROM comments WHERE ma_bl =?";
         return $this->pdo_query_value($sql, $ma_bl) > 0;
     }
-    function addComment($user_id, $product_id, $content)
+    function addComment($user_id, $product_id, $content, $level, $parent)
     {
         $sql = "INSERT INTO `comments` (`comment_id`, 
                                         `user_id`, 
-                                        `product_id`, 
-                                        `content`) 
-                VALUES (NULL, ?,?,?);
+                                        `product_id`,                                                                            
+                                        `content`,
+                                        `level`,
+                                        `parent`) 
+                VALUES (NULL, ?, ?, ?, ?, ?);
         ";
-        return $this->pdo_execute($sql, $user_id, $product_id, $content);
+        return $this->pdo_execute($sql, $user_id, $product_id, $content, $level, $parent);
     }
     function binh_luan_select_by_hang_hoa($ma_hh)
     {

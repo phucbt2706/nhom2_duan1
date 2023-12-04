@@ -1,3 +1,45 @@
+    <?php
+    $bl = new BinhLuan();
+    $id_product = $_GET['product_id'];
+    $comment = $bl->binh_luan_get_detail($id_product);
+    $user_id;
+    if (!empty($_SESSION['user'])) {
+        $info_user = unserialize($_SESSION['user']);
+        $user_id = $info_user['user_id'];
+    }
+
+    $id_product = $_GET['product_id'];
+    $message = [];
+    $level = 0;
+    $parent = 0;
+
+    if (isset($_POST['reply'])) {
+        $level = (int)$_POST['level-rep'];
+        $parent = (int)$_POST['parent-rep'];
+        if ($level >= 2) {
+            $parent_cmt = $bl->binh_luan_select_by_id($parent);
+            $parent = $parent_cmt['parent'];
+        }
+        if ($_POST['reply_content'] != null) {
+            (int)$level += 1;
+            $content = $_POST['reply_content'];
+            $bl->addComment($user_id, $id_product, $content, $level, $parent);
+            header("location: ?pages=shop-detail&product_id=" . $id_product);
+        } else {
+            $parent = (int)$_POST['parent-rep'];
+            $message['rep'] = 'comment empty!';
+        }
+    }
+    if (isset($_POST['comment'])) {
+        if ($_POST['content'] != null) {
+            $content = $_POST['content'];
+            $bl->addComment($user_id, $id_product, $content, $level, $parent);
+            header("location: ?pages=shop-detail&product_id=" . $id_product);
+        } else {
+            $message['cmt'] = 'comment empty!';
+        }
+    }
+    ?>
     <?php extract($item) ?>
     <!-- Shop Details Section Begin -->
     <section class="shop-details">
@@ -200,19 +242,104 @@
                                             <div class="comment_list">
                                                 <?php if (!empty($comment)) : ?>
                                                     <?php foreach ($comment as $cmt) : ?>
-                                                        <div class="review_item">
-                                                            <div class="media">
-                                                                <div class="d-flex">
-                                                                    <img src="img/product/review-1.png" alt="">
+                                                        <?php if ($cmt['parent'] == 0) : ?>
+                                                            <div class="review_item comments">
+                                                                <div class="media">
+                                                                    <div class="d-flex">
+                                                                        <img src="img/product/review-1.png" alt="">
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <h4><?= $cmt['name'] ?></h4>
+                                                                        <h5>12th Feb, 2018 at 05:56 pm</h5>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="media-body">
-                                                                    <h4><?= $cmt['name'] ?></h4>
-                                                                    <h5>12th Feb, 2018 at 05:56 pm</h5>
-                                                                    <a class="reply_btn" href="#">Trả lời</a>
-                                                                </div>
+                                                                <p>
+                                                                    <?= $cmt['content'] ?>
+                                                                </p>
+                                                                <?php if (!empty($_SESSION['user'])) : ?>
+                                                                    <form action="" method="post" enctype="multipart/form-data">
+                                                                        <input class="reply_content" type="text" placeholder="reply comment" name="reply_content">
+                                                                        <input hidden type="text" value="<?= $cmt['level'] ?>" name="level-rep">
+                                                                        <input hidden type="text" value="<?= $cmt['cmt_id'] ?>" name="parent-rep">
+                                                                        <?php if ($parent == $cmt['cmt_id']) : ?>
+                                                                            <p style="color: red;"><?= $message['rep'] ?? "" ?></p>
+                                                                        <?php endif ?>
+                                                                        <button name="reply" value="submit" class="btn btn-primary" type="submit">Trả lời</button>
+                                                                    </form>
+                                                                <?php endif ?>
                                                             </div>
-                                                            <p><?= $cmt['content'] ?></p>
-                                                        </div>
+                                                            <?php
+                                                            $listChild = $bl->childExistence($cmt['cmt_id'], $comment);
+                                                            if (!empty($listChild)) :
+                                                            ?>
+                                                                <?php foreach ($listChild as $cmt) : ?>
+                                                                    <div class="review_item comments" style="margin-left: 30px; border-left: 1px solid black; padding-left: 10px;">
+                                                                        <div class="media">
+                                                                            <div class="d-flex">
+                                                                                <img src="img/product/review-1.png" alt="">
+                                                                            </div>
+                                                                            <div class="media-body">
+                                                                                <h4><?= $cmt['name'] ?></h4>
+                                                                                <?php $getParent = $bl->binh_luan_select_by_id($cmt['parent']) ?>
+                                                                                <p>trả lời cho <?= $getParent['user_id'] ?></p>
+                                                                                <h5>12th Feb, 2018 at 05:56 pm</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <p>
+                                                                            <?= $cmt['content'] ?>
+                                                                        </p>
+                                                                        <?php if (!empty($_SESSION['user'])) : ?>
+                                                                            <form action="" method="post" enctype="multipart/form-data">
+                                                                                <input class="reply_content" type="text" placeholder="reply comment" name="reply_content">
+                                                                                <input hidden type="text" value="<?= $cmt['level'] ?>" name="level-rep">
+                                                                                <input hidden type="text" value="<?= $cmt['cmt_id'] ?>" name="parent-rep">
+                                                                                <?php if ($parent == $cmt['cmt_id']) : ?>
+                                                                                    <p style="color: red;"><?= $message['rep'] ?? "" ?></p>
+                                                                                <?php endif ?>
+                                                                                <button name="reply" value="submit" class="btn btn-primary" type="submit">Trả lời</button>
+                                                                            </form>
+                                                                        <?php endif ?>
+                                                                    </div>
+                                                                    <?php
+                                                                    $listChild = $bl->childExistence($cmt['cmt_id'], $comment);
+
+                                                                    if (!empty($listChild)) :
+                                                                    ?>
+                                                                        <div style="margin-left: 60px; border-left: 1px solid black; padding-left: 10px;">
+                                                                            <?php foreach ($listChild as $cmt) : ?>
+                                                                                <div class="review_item comments">
+                                                                                    <div class="media">
+                                                                                        <div class="d-flex">
+                                                                                            <img src="img/product/review-1.png" alt="">
+                                                                                        </div>
+                                                                                        <div class="media-body">
+                                                                                            <h4><?= $cmt['name'] ?></h4>
+                                                                                            <?php $getParent = $bl->binh_luan_select_by_id($cmt['parent']); ?>
+                                                                                            <p>trả lời cho <?= $getParent['user_id'] ?></p>
+                                                                                            <h5>12th Feb, 2018 at 05:56 pm</h5>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <p>
+                                                                                        <?= $cmt['content'] ?>
+                                                                                    </p>
+                                                                                    <?php if (!empty($_SESSION['user'])) : ?>
+                                                                                        <form action="" method="post" enctype="multipart/form-data">
+                                                                                            <input class="reply_content" type="text" placeholder="reply comment" name="reply_content">
+                                                                                            <input hidden type="text" value="<?= $cmt['level'] ?>" name="level-rep">
+                                                                                            <input hidden type="text" value="<?= $cmt['cmt_id'] ?>" name="parent-rep">
+                                                                                            <?php if ($parent == $cmt['cmt_id']) : ?>
+                                                                                                <p style="color: red;"><?= $message['rep'] ?? "" ?></p>
+                                                                                            <?php endif ?>
+                                                                                            <button name="reply" value="submit" class="btn btn-primary" type="submit">Trả lời</button>
+                                                                                        </form>
+                                                                                    <?php endif ?>
+                                                                                </div>
+                                                                            <?php endforeach ?>
+                                                                        </div>
+                                                                    <?php endif ?>
+                                                                <?php endforeach ?>
+                                                            <?php endif ?>
+                                                        <?php endif ?>
                                                     <?php endforeach ?>
                                                 <?php else : ?>
                                                     <div class="review_item">
@@ -225,10 +352,11 @@
                                             <?php if (!empty($_SESSION['user'])) : ?>
                                                 <div class="review_box">
                                                     <h4>Gửi bình luận</h4>
-                                                    <form class="row contact_form" action="?pages=shop-detail&product_id=<?= $product_id ?>" method="post" enctype="multipart/form-data" id="contactForm" novalidate="novalidate">
+                                                    <form class="row contact_form" action="" method="post" enctype="multipart/form-data" id="contactForm" novalidate="novalidate">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <textarea class="form-control" name="content" id="content" rows="1" placeholder="Nội dung bình luận"></textarea>
+                                                                <p style="color: red;"><?= $message['cmt'] ?? "" ?></p>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12 ">
@@ -262,40 +390,39 @@
                 </div>
             </div>
             <div class="row">
-                <?php 
+                <?php
                 foreach ($spcl as $spcl) {
                     extract($spcl);
-                
                 ?>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                    <div class="product__item">
-                    <a href="?pages=shop-detail&product_id=<?= $product_id ?>"> <img class="product__item__pic set-bg" src="<?= $PUBLIC_URL ?>/img/product/<?= $images ?>"></img></a>
-                        <div class="product__item__text">
-                            <h6><?= $product_name ?></h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5><?= currency_format($price) ?></h5>
-                            <div class="product__color__select">
-                                <label for="pc-1">
-                                    <input type="radio" id="pc-1">
-                                </label>
-                                <label class="active black" for="pc-2">
-                                    <input type="radio" id="pc-2">
-                                </label>
-                                <label class="grey" for="pc-3">
-                                    <input type="radio" id="pc-3">
-                                </label>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
+                        <div class="product__item">
+                            <a href="?pages=shop-detail&product_id=<?= $product_id ?>"> <img class="product__item__pic set-bg" src="<?= $PUBLIC_URL ?>/img/product/<?= $images ?>"></img></a>
+                            <div class="product__item__text">
+                                <h6><?= $product_name ?></h6>
+                                <a href="#" class="add-cart">+ Add To Cart</a>
+                                <div class="rating">
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                                <h5><?= currency_format($price) ?></h5>
+                                <div class="product__color__select">
+                                    <label for="pc-1">
+                                        <input type="radio" id="pc-1">
+                                    </label>
+                                    <label class="active black" for="pc-2">
+                                        <input type="radio" id="pc-2">
+                                    </label>
+                                    <label class="grey" for="pc-3">
+                                        <input type="radio" id="pc-3">
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
                 <?php } ?>
 
             </div>
