@@ -65,6 +65,8 @@ switch ($pages) {
     case 'shop-detail': {
             $id = $_GET['product_id'];
             $item = $pro->products_select_by_id($id);
+            extract($item);
+            $spcl = $pro->hang_hoa_select_by_loai($product_id, $cate_id);
             include "resource/shop/shop-detail.php";
             break;
         }
