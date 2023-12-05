@@ -126,9 +126,6 @@
                 </div>
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="<?= $PUBLIC_URL ?>/img/icon/search.png" alt=""></a>
-                        <a href="#"><img src="<?= $PUBLIC_URL ?>/img/icon/heart.png" alt=""></a>
-
                         <?php if (isset($_SESSION['cart'])) : ?>
                             <a href="?pages=cart"><img src="<?= $PUBLIC_URL ?>/img/icon/cart.png" alt=""> <span><?= sizeof($_SESSION['cart']['buy']) ?></span></a>
                             <div class="price"><?= currency_format($_SESSION['cart']['info']['total']) ?></div>
