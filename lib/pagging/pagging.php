@@ -102,7 +102,7 @@
         <ul class="pagination">';
         if ($page>1) {
             $page_pre = $page -1;
-            $str_html .= '<li class="page-item"><a class="page-link" href="?pages=list_user&page='.$page_pre.'"><<</a></li>';
+            $str_html .= '<li class="page-item"><a class="page-link" href="?pages=list_account&page='.$page_pre.'"><<</a></li>';
         }
 
         if ($page<=1) {
@@ -114,7 +114,7 @@
             if ($i == $page ) {
                 $active = 'active';
             }
-            $str_html .= '<li class="page-item '.$active.'"><a class="page-link" href="?pages=list_user&page='.$i.'">'.$i.'</a></li>';
+            $str_html .= '<li class="page-item '.$active.'"><a class="page-link" href="?pages=list_account&page='.$i.'">'.$i.'</a></li>';
         }
 
         if ($page>=$num_page) {
@@ -123,7 +123,7 @@
 
         if ($page<$num_page) {
             $page_next = $page + 1;
-            $str_html .= '<li class="page-item"><a class="page-link" href="?pages=list_user&page='.$page_next.'">>></a></li>';
+            $str_html .= '<li class="page-item"><a class="page-link" href="?pages=list_account&page='.$page_next.'">>></a></li>';
         }
         $str_html .= '</ul>
         </nav>';
