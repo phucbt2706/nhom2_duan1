@@ -2,15 +2,15 @@
 
 class HangHoa extends Connect{
     // Insert product
-    function product_insert($product_name, $price,$discount,$images,$description,$cate_id){
-        $sql = "INSERT INTO product(`product_name`, `price`,`discount`,`images`,`description`,`cate_id`) VALUES(?,?,?,?,?,?)";
-        $this->pdo_execute($sql, $product_name, $price,$discount,$images,$description,$cate_id);
+    function product_insert($product_name, $price,$discount,$quantity,$images,$description,$cate_id){
+        $sql = "INSERT INTO product(`product_name`, `price`,`discount`,`quantity`,`images`,`description`,`cate_id`) VALUES(?,?,?,?,?,?,?)";
+        $this->pdo_execute($sql, $product_name, $price,$discount,$quantity,$images,$description,$cate_id);
     }
 
     // Update product
-    function product_update($product_id,$product_name, $price,$discount,$images,$description,$cate_id){
-        $sql = "UPDATE product SET `product_name`=?,`price`=?,`discount`=?,`images`=?,`description`=?,`cate_id`=? WHERE `product_id`=?";
-        $this->pdo_execute($sql, $product_name, $price,$discount,$images,$description,$cate_id, $product_id);
+    function product_update($product_id,$product_name, $price,$discount,$quantity,$images,$description,$cate_id){
+        $sql = "UPDATE product SET `product_name`=?,`price`=?,`discount`=?,`quantity`=?,`images`=?,`description`=?,`cate_id`=? WHERE `product_id`=?";
+        $this->pdo_execute($sql, $product_name, $price,$discount,$quantity,$images,$description,$cate_id, $product_id);
     }
 
     // Delete product

@@ -3,7 +3,7 @@
 </h4>
 
 <div class="app-ecommerce" data-select2-id="17">
-    <form action="?pages=insert_cate" method="post">
+    <form action="?pages=insert_cate" method="post" >
         <!-- Add Product -->
         <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
 
