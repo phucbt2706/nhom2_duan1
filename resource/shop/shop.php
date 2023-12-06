@@ -75,7 +75,7 @@ $list_product = $pro->product_select_page($start, $num_rows_in_page, $condition)
                 <div class="row d-flex justify-content-center">
                     <div class="col-4">
                         <?php
-                        echo get_pagging($num_page, $page, $_GET['cate_id']) ?>
+                        echo get_pagging($num_page, $page, 1) ?>
                     </div>
                 </div>
             </div>

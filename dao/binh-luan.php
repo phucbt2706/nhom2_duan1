@@ -47,7 +47,7 @@ class BinhLuan extends Connect
     {
         $sql = "SELECT user.username 'name', 
         comments.content as 'content', comments.comment_id as 'cmt_id',
-        comments.level as 'level', comments.parent as 'parent'
+        comments.level as 'level', comments.parent as 'parent', comments.parent_real as 'parent_real'
         FROM comments JOIN user ON comments.user_id = user.user_id  
         WHERE comments.product_id = ?";
         return $this->pdo_query($sql, $id);
@@ -62,17 +62,18 @@ class BinhLuan extends Connect
         $sql = "SELECT count(*) FROM comments WHERE ma_bl =?";
         return $this->pdo_query_value($sql, $ma_bl) > 0;
     }
-    function addComment($user_id, $product_id, $content, $level, $parent)
+    function addComment($user_id, $product_id, $content, $level, $parent, $parent_real)
     {
         $sql = "INSERT INTO `comments` (`comment_id`, 
                                         `user_id`, 
                                         `product_id`,                                                                            
                                         `content`,
                                         `level`,
-                                        `parent`) 
-                VALUES (NULL, ?, ?, ?, ?, ?);
+                                        `parent`,
+                                        `parent_real`) 
+                VALUES (NULL, ?, ?, ?, ?, ?, ?);
         ";
-        return $this->pdo_execute($sql, $user_id, $product_id, $content, $level, $parent);
+        return $this->pdo_execute($sql, $user_id, $product_id, $content, $level, $parent, $parent_real);
     }
     function binh_luan_select_by_hang_hoa($ma_hh)
     {

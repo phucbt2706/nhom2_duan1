@@ -16,9 +16,9 @@ $pro = new HangHoa();
 $cart = new Cart();
 $order = new Order();
 
-if(isset($_SESSION['timestamp'])){
-    if(time() - $_SESSION['timestamp'] > 3000) { //subtract new timestamp from the old one
-        echo"<script>alert('5 Minutes over!');</script>";
+if (isset($_SESSION['timestamp'])) {
+    if (time() - $_SESSION['timestamp'] > 3000) { //subtract new timestamp from the old one
+        echo "<script>alert('5 Minutes over!');</script>";
         unset($_SESSION['user'], $_SESSION['timestamp']);
         echo "<script>window.location.href = '?pages=home';</script>"; //redirect to index.php
         exit;
@@ -30,37 +30,37 @@ if(isset($_SESSION['timestamp'])){
 //Include header
 require "include/header.php";
 switch ($pages) {
-    //-----------------------------------------------------Module Home---------------------------------------------------
+        //-----------------------------------------------------Module Home---------------------------------------------------
     case 'home': {
-        include "resource/home/" . $pages . ".php";
-        break;
-    }
+            include "resource/home/" . $pages . ".php";
+            break;
+        }
 
     case 'contact': {
-        include "resource/home/" . $pages . ".php";
-        break;
-    }
+            include "resource/home/" . $pages . ".php";
+            break;
+        }
 
     case 'blog': {
-        include "resource/home/" . $pages . ".php";
-        break;
-    }
+            include "resource/home/" . $pages . ".php";
+            break;
+        }
 
     case 'blog-detail': {
-        include "resource/home/" . $pages . ".php";
-        break;
-    }
+            include "resource/home/" . $pages . ".php";
+            break;
+        }
 
     case 'about': {
-        include "resource/home/" . $pages . ".php";
-        break;
-    }
+            include "resource/home/" . $pages . ".php";
+            break;
+        }
 
-    //-----------------------------------------------------Module Shop---------------------------------------------------
+        //-----------------------------------------------------Module Shop---------------------------------------------------
     case 'shop': {
-        include "resource/shop/shop.php";
-        break;
-    }
+            include "resource/shop/shop.php";
+            break;
+        }
 
     case 'shop-detail': {
             $id = $_GET['product_id'];
@@ -71,103 +71,93 @@ switch ($pages) {
             break;
         }
 
-    //-----------------------------------------------------Module Cart---------------------------------------------------
+        //-----------------------------------------------------Module Cart---------------------------------------------------
     case 'cart': {
-        include "resource/cart/" . $pages . ".php";
-        break;
-    }
+            include "resource/cart/" . $pages . ".php";
+            break;
+        }
 
     case 'add_cart': {
-        $id = $_GET['product_id'];
-        $cart->addCart($id);
-        header("Location:http:/?pages=cart");;
-        break;
-    }
+            $id = $_GET['product_id'];
+            $cart->addCart($id);
+            header("Location:http:/?pages=cart");;
+            break;
+        }
 
     case 'delete_prod': {
-        $id = $_GET['product_id'];
-        $cart->deleteCart($id);
-        header("Location:http:/?pages=cart");
-        break;
-    }
-
-    case 'update_cart': {
-        if (isset($_POST['update'])) {
-            if (isset($_POST['qty'])) {
-                $cart->updateQty($_POST['qty']);
-            }
+            $id = $_GET['product_id'];
+            $cart->deleteCart($id);
+            header("Location:http:/?pages=cart");
+            break;
         }
-        header("Location:http:/?pages=cart");
-        break;
-    }
 
     case 'checkout': {
-        if (!empty($_SESSION['user'])) {
-            $infor_user = unserialize($_SESSION['user']);
-            $list_cart = $cart->get_list_cart();
-            include "resource/cart/" . $pages . ".php";
-        } else {
-            $_SESSION['check'] = true;
-            header("location: ?pages=login");
+            if (!empty($_SESSION['user'])) {
+                $infor_user = unserialize($_SESSION['user']);
+                $list_cart = $cart->get_list_cart();
+                include "resource/cart/" . $pages . ".php";
+            } else {
+                $_SESSION['check'] = true;
+                header("location: ?pages=login");
+            }
+            break;
         }
-        break;
-    }
-    
-    case 'order': {
-        if ($order->add_order()) {
-            echo "<script>alert(\"Đặt hàng thành công\")</script>";
-        }
-        echo "<script>window.location.href = '?pages=shop';</script>";
-        // header("location: ?pages=shop");
-        break;
-    }
 
-    //-----------------------------------------------------Module Account---------------------------------------------------
+    case 'order': {
+            if ($order->add_order()) {
+                echo "<script>alert(\"Đặt hàng thành công\")</script>";
+            }
+            echo "<script>window.location.href = '?pages=shop';</script>";
+            // header("location: ?pages=shop");
+            break;
+        }
+
+        //-----------------------------------------------------Module Account---------------------------------------------------
     case 'login': {
-        include "resource/account/" . $pages . ".php";
-        break;
-    }
+            include "resource/account/" . $pages . ".php";
+            break;
+        }
 
     case 'register': {
-        include "resource/account/" . $pages . ".php";
-        break;
-    }
+            include "resource/account/" . $pages . ".php";
+            break;
+        }
 
     case 'account': {
-        include "resource/account/" . $pages . ".php";
-        break;
-    }
+            include "resource/account/" . $pages . ".php";
+            break;
+        }
 
     case 'edit': {
-        include "resource/account/" . $pages . ".php";
-        break;
-    }
+            include "resource/account/" . $pages . ".php";
+            break;
+        }
 
     case 'forgotPassword': {
-        include "resource/account/" . $pages . ".php";
-        break;
-    }
+            include "resource/account/" . $pages . ".php";
+            break;
+        }
 
     case 'finishForgot': {
-        include "resource/account/" . $pages . ".php";
-        break;
-    }
+            include "resource/account/" . $pages . ".php";
+            break;
+        }
 
     case 'edit-pw': {
-        include "resource/account/" . $pages . ".php";
-        break;
-    }
+            include "resource/account/" . $pages . ".php";
+            break;
+        }
 
-    //-----------------------------------------------------Module Admin---------------------------------------------------
+        //-----------------------------------------------------Module Admin---------------------------------------------------
     case 'admin': {
-        echo "<script>window.location.href = 'admin/index.php';</script>";
-        break;
-    }
+            echo "<script>window.location.href = 'admin/index.php';</script>";
+            break;
+        }
 
     default: {
-        include "resource/home/404.php";
-        break;
-    }
+            include "resource/home/404.php";
+            break;
+        }
 }
 //Include footer
 require 'include/footer.php';

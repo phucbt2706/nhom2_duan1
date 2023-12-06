@@ -46,7 +46,11 @@ class KhachHang extends Connect
         $sql = "SELECT * FROM user LIMIT $start,$num_rows_in_page";
         return $this->pdo_query($sql);
     }
-
+    function getNameByID($user_id)
+    {
+        $sql = "SELECT user.username FROM `user` WHERE user.user_id = ?;";
+        return  $this->pdo_query_one($sql, $user_id);
+    }
     function user_select_by_id($user_id)
     {
         $sql = "SELECT * FROM user WHERE user_id=?";

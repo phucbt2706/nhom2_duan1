@@ -48,32 +48,32 @@
 
 <!-- Banner Section Begin -->
 <section class="banner-custom">
-    <h2 class="title-custom">VIVO PHONE</h2>
+    <h2 class="title-custom">BRANDS</h2>
     <div class="container-custom">
         <div class="banner-item-custom">
             <div class="img">
                 <img src="../../public/img/product/vivo.png" alt="">
             </div>
             <div class="content">
-                <h3>VIVO PLUS 2023</h3>
+                <h3>VIVO</h3>
                 <P>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit, nihil.</P>
             </div>
         </div>
         <div class="banner-item-custom">
             <div class="img">
-                <img src="../../public/img/product/vivo.png" alt="">
+                <img src="../../public/img/product/samsung.jpg" alt="">
             </div>
             <div class="content">
-                <h3>VIVO PLUS 2023</h3>
+                <h3>SAMSUNG</h3>
                 <P>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit, nihil.</P>
             </div>
         </div>
         <div class="banner-item-custom">
             <div class="img">
-                <img src="../../public/img/product/vivo.png" alt="">
+                <img src="../../public/img/product/iphone-15promax.png" alt="">
             </div>
             <div class="content">
-                <h3>VIVO PLUS 2023</h3>
+                <h3>APPLE</h3>
                 <P>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit, nihil.</P>
             </div>
         </div>

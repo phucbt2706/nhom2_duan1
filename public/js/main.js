@@ -228,3 +228,20 @@
             );
     });
 })(jQuery);
+// comments
+const reply_Comment = document.getElementsByClassName("btn-reply-custom");
+const reply_custom = document.getElementsByClassName("reply-custom");
+const btn_reply = document.getElementsByClassName("btn-reply");
+console.log(reply_Comment);
+console.log(reply_custom);
+for (let i = 0; i < reply_Comment.length; i++) {
+    reply_Comment[i].addEventListener("click", () => {
+        reply_custom[i].classList.add("showReply-custom");
+    });
+}
+
+for (let i = 0; i < btn_reply.length; i++) {
+    btn_reply[i].addEventListener("click", () => {
+        btn_reply[i].classList.remove("showReply-custom");
+    });
+}
