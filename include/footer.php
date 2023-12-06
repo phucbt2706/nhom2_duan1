@@ -73,6 +73,7 @@
     <script src="<?= $PUBLIC_URL ?>/js/mixitup.min.js"></script>
     <script src="<?= $PUBLIC_URL ?>/js/owl.carousel.min.js"></script>
     <script src="<?= $PUBLIC_URL ?>/js/main.js"></script>
+    <script src="<?= $PUBLIC_URL ?>/js/script.js"></script>
 </body>
 
 </html>

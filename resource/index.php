@@ -113,12 +113,16 @@ switch ($pages) {
         break;
     }
     
+    // case 'order': {
+    //     if ($order->add_order()) {
+    //         echo "<script>alert(\"Đặt hàng thành công\")</script>";
+    //     }
+    //     echo "<script>window.location.href = '?pages=shop';</script>";
+    //     // header("location: ?pages=shop");
+    //     break;
+    // }
     case 'order': {
-        if ($order->add_order()) {
-            echo "<script>alert(\"Đặt hàng thành công\")</script>";
-        }
-        echo "<script>window.location.href = '?pages=shop';</script>";
-        // header("location: ?pages=shop");
+        include "resource/cart/order.php";
         break;
     }
 
