@@ -91,9 +91,14 @@ $list_product = $pro->product_select_page($start, $num_rows_in_page,$condition);
                     } ?>
                 </div>
                 <div class="row d-flex justify-content-center">
-                    <div class="col-4">
+                    <div class="col-8 d-flex justify-content-center">
                         <?php
-                         echo get_pagging($num_page, $page, $_GET['cate_id']) ?>
+                        if (!empty($_POST['cate_id'])) {
+                            echo get_pagging($num_page, $page, $_GET['cate_id']) ;
+                        }else{
+                            echo get_pagging_shop($num_page,$page);
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
