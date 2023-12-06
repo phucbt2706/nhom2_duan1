@@ -317,17 +317,6 @@ if (!empty($_SESSION['user'])) {
 
             //-----------------------------------------------------Module User------------------------------------------------------
             case 'list_account': {
-                $rows = $tk->num_row_user();
-                $total_rows  = $rows[0]['num_row'];
-                $num_rows_in_page = 10;
-
-                $num_page = ceil($total_rows / $num_rows_in_page);
-
-                $page = isset($_GET['page']) ? (int)$_GET['page'] : 1; 
-
-                $start = ($page - 1) * $num_rows_in_page;
-
-                $list_user = $tk->user_select_page($start, $num_rows_in_page);
                 include "resource/user/list.php";
                 break;
             }
@@ -343,7 +332,7 @@ if (!empty($_SESSION['user'])) {
                 extract($value);
                 if (empty($error)) {
                     try {
-                        $tk->user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id);
+                        $tk->user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id, $address);
                         echo "<script>alert(\"Add successfully! \");</script>";
                     } catch (PDOException $e) {
                         throw $e;
@@ -362,8 +351,9 @@ if (!empty($_SESSION['user'])) {
                 extract($value);
                 if (empty($error)) {
                     try {
-                        $tk->user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id);
+                        $tk->user_update($user_id, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $address);
                         echo "<script>alert(\"Update successfully! \");</script>";
+
                     } catch (PDOException $e) {
                         throw $e;
                         echo "<script>alert(\"Update failed! \");</script>";
