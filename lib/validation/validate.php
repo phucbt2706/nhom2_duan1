@@ -70,6 +70,7 @@ function check_form_add_customer()
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $address = $_POST['address'];
     $role_id = $_POST['role_id'];
     $up_hinh = save_file("avatar", $IMAGE_DIR);
     $avatar = strlen($up_hinh) > 0 ? $up_hinh : 'product_default.png';
@@ -124,6 +125,20 @@ function check_form_add_customer()
         $error['error_phone'] = 'The phone number can’t be empty!';
     }
 
+    //---------------Check address---------------
+    if (!empty($address)) {
+        if($address < 0){
+            $error['error_address'] = 'The address must be not be more 0!';
+        }else{
+            if(strlen($address)>50){
+                $error['error_address'] = 'The address too long!';
+            }
+        }
+    }else{
+        $error['error_address'] = 'The address can’t be empty!';
+    }
+
+
 
     //---------------Check email---------------
     if (!empty($email)) {
@@ -147,6 +162,7 @@ function check_form_add_customer()
             'password' => $password,
             'phone' => $phone,
             'email' => $email,
+            'address' => $address,
             'avatar' => $avatar,
             'role_id' => $role_id
         ];
@@ -160,7 +176,6 @@ function check_form_update_customer()
 {
     global $IMAGE_DIR;
     $error = [];
-
     $user_id = $_POST['user_id'];
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -168,6 +183,7 @@ function check_form_update_customer()
     $fullname = $_POST['fullname'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $address = $_POST['address'];
     $role_id = $_POST['role_id'];
     $up_hinh = save_file("avatar", $IMAGE_DIR);
     $avatar = strlen($up_hinh) > 0 ? $up_hinh : 'product_default.png';
@@ -193,34 +209,52 @@ function check_form_update_customer()
     //---------------Check password---------------
     if (!empty($password)) {
         if (!check_password($password)) {
-            $error['error_pass'] = 'The password has an incorrect format!';
+            $error['error_pass'] = 'The password has an incorect format!';
         }
     } else {
         $error['error_pass'] = 'The password can’t be empty!';
     }
 
+    //---------------Confirm password---------------
+    
     if (!empty($confirm_password)) {
         if ($confirm_password != $password) {
-            $error['error_conf_pass'] = 'The confirm password don’t match!';
+            $error['error_conf_pass'] = 'Phải trùng password!';
         }
     } else {
-        $error['error_conf_pass'] = 'The confirm password can’t be empty!';
+        $error['error_conf_pass'] = 'The confirm password don’t match!';
     }
     //---------------Check sđt---------------
 
     if (!empty($phone)) {
-        if (!is_numeric($phone) || $phone < 0) {
+        if (!is_numeric($phone)) {
             $error['error_phone'] = 'The phone number must be a number!';
-        } 
+        } else {
+            if ($phone < 0) {
+                $error['error_phone'] = 'The phone number must be more than 0!';
+            }
+        }
     } else {
         $error['error_phone'] = 'The phone number can’t be empty!';
     }
 
+    //---------------Check address---------------
+    if (!empty($address)) {
+        if($address < 0){
+            $error['error_address'] = 'The address must be not be more 0!';
+        }else{
+            if(strlen($address)>50){
+                $error['error_address'] = 'The address too long!';
+            }
+        }
+    }else{
+        $error['error_address'] = 'The address can’t be empty!';
+    }
 
     //---------------Check email---------------
     if (!empty($email)) {
         if (!check_email($email)) {
-            $error['error_email'] = 'The email address has an incorrect format!';
+            $error['error_email'] = 'The email address has an incorect format!';
         }
     } else {
         $error['error_email'] = 'The email address can’t be empty!';
@@ -240,6 +274,7 @@ function check_form_update_customer()
             'password' => $password,
             'phone' => $phone,
             'email' => $email,
+            'address' => $address,
             'avatar' => $avatar,
             'role_id' => $role_id
         ];
