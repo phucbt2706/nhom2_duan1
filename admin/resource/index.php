@@ -10,14 +10,14 @@ require "../lib/pagging/pagging.php ";
 require "../dao/binh-luan.php";
 require "../dao/statistic.php";
 
-if(isset($_SESSION['timestamp'])){
-    if(time() - $_SESSION['timestamp'] > 300) { //subtract new timestamp from the old one
-        echo"<script>alert('5 Minutes over!');</script>";
-        unset($_SESSION['user'], $_SESSION['timestamp']);        
-      } else {
-        $_SESSION['timestamp'] = time(); //set new timestamp
-      }
-}
+// if(isset($_SESSION['timestamp'])){
+//     if(time() - $_SESSION['timestamp'] > 300) { //subtract new timestamp from the old one
+//         echo"<script>alert('5 Minutes over!');</script>";
+//         unset($_SESSION['user'], $_SESSION['timestamp']);        
+//       } else {
+//         $_SESSION['timestamp'] = time(); //set new timestamp
+//       }
+// }
 
 if (!empty($_SESSION['user'])) {
     $data = unserialize($_SESSION['user']);
@@ -143,7 +143,7 @@ if (!empty($_SESSION['user'])) {
                 extract($value);
                 if (empty($error)) {
                     try {
-                        $db->product_insert($product_name, $price, $discount, $images, $description, $cate_id);
+                        $db->product_insert($product_name, $price, $discount,$quantity, $images, $description, $cate_id);
                         echo "<script>alert(\"Add successfully! \");</script>";
                     } catch (PDOException $e) {
                         throw $e;
@@ -163,7 +163,7 @@ if (!empty($_SESSION['user'])) {
 
                 if (empty($error)) {
                     try {
-                        $db->product_update($product_id, $product_name, $price, $discount, $images, $description, $cate_id);
+                        $db->product_update($product_id, $product_name, $price, $discount,$quantity, $images, $description, $cate_id);
                         echo "<script>alert(\"Update successfully! \");</script>";
                     } catch (PDOException $e) {
                         throw $e;

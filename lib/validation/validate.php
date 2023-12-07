@@ -351,6 +351,7 @@ function check_form_add_product()
     $product_name = $_POST['product_name'];
     $price = $_POST['price'];
     $discount = $_POST['discount'];
+    $quantity = $_POST['quantity'];
     $description = $_POST['description'];
     $up_hinh = save_file("images", $IMAGE_DIR);
     $images = strlen($up_hinh) > 0 ? $up_hinh : 'product_default.png';
@@ -375,6 +376,18 @@ function check_form_add_product()
         }
     } else {
         $error['price_error'] = 'The price can’t be empty!';
+    }
+    
+    if (!empty($quantity)) {
+        if (!is_numeric($quantity)) {
+            $error['quantity_error'] = 'The quantity must be a number!';
+        } else {
+            if ($price < 0) {
+                $error['quantity_error'] = 'The quantity must be more than 0!';
+            }
+        }
+    } else {
+        $error['quantity_error'] = 'The quatity can’t be empty!';
     }
 
     //Check giam gia
@@ -401,6 +414,7 @@ function check_form_add_product()
             'cate_id' => $cate_id,
             'product_name' => $product_name,
             'price' => $price,
+            'quantity' => $quantity,
             'description' => $description,
             'images' => $images,
             'discount' => $discount
@@ -420,6 +434,7 @@ function check_form_update_product()
     $product_name = $_POST['product_name'];
     $price = $_POST['price'];
     $discount = $_POST['discount'];
+    $quantity = $_POST['quantity'];
     $description = $_POST['description'];
     $up_hinh = save_file("images", $IMAGE_DIR);
     $images = strlen($up_hinh) > 0 ? $up_hinh : 'product_default.png';
@@ -444,6 +459,18 @@ function check_form_update_product()
         }
     } else {
         $error['price_error'] = 'The price can’t be empty!';
+    }
+
+    if (!empty($quantity)) {
+        if (!is_numeric($quantity)) {
+            $error['quantity_error'] = 'The quantity must be a number!';
+        } else {
+            if ($price < 0) {
+                $error['quantity_error'] = 'The quantity must be more than 0!';
+            }
+        }
+    } else {
+        $error['quantity_error'] = 'The quatity can’t be empty!';
     }
 
     //Check giam gia
@@ -471,6 +498,7 @@ function check_form_update_product()
             'product_id' => $product_id,
             'product_name' => $product_name,
             'price' => $price,
+            'quantity' => $quantity,
             'description' => $description,
             'images' => $images,
             'discount' => $discount

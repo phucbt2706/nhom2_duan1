@@ -26,9 +26,15 @@
 <!-- endbuild -->
 
 <!-- Vendors JS -->
+<script src="<?= $ASSETS_URL ?>/vendor/libs/quill/katex.js"></script>
 <script src="<?= $ASSETS_URL ?>/vendor/libs/apex-charts/apexcharts.js"></script>
 <script src="<?= $ASSETS_URL ?>/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
 <script src="<?= $ASSETS_URL ?>/vendor/libs/select2/select2.js"></script>
+<script src="<?= $ASSETS_URL ?>/vendor/libs/dropzone/dropzone.js"></script>
+<script src="<?= $ASSETS_URL ?>/vendor/libs/quill/quill.js"></script>
+<script src="<?= $ASSETS_URL ?>/vendor/libs/jquery-repeater/jquery-repeater.js"></script>
+<script src="<?= $ASSETS_URL ?>/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="<?= $ASSETS_URL ?>/vendor/libs/tagify/tagify.js"></script>
 <!-- Main JS -->
 <script src="<?= $ASSETS_URL ?>/js/script.js"></script>
 <script src="<?= $ASSETS_URL ?>/js/main.js"></script>

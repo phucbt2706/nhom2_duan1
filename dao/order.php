@@ -19,8 +19,6 @@ class Order extends Connect{
         $user_id = $_POST['user_id'];
         $total = $_POST['total'];
         $note = !empty($_POST['note']) ? $_POST['note'] : '';
-        $order_date = date_format(date_create(),'Y-m-d h-m-s');
-
         $order_id = $this->order_insert($user_id,$total,$note);
 
         foreach ($_SESSION['cart']['buy'] as $item) {
@@ -28,10 +26,22 @@ class Order extends Connect{
             $qty = $item['qty'];
             $price = $item['price'];
             $this->order_details_insert($qty,$price,$product_id,$order_id);
+            $quantity = $this->get_qty_product($product_id);
+            $newQty = ($quantity['quantity'] - $qty);
+            $this->product_update_qty_order($product_id,$newQty);
         }
-
         unset($_SESSION['cart']);
         return true;
+    }
+
+    function get_qty_product($product_id){
+        $sql = "SELECT `quantity` FROM product WHERE product_id=?";
+        return $this->pdo_query_one($sql, $product_id);
+    }
+
+    function product_update_qty_order($product_id,$newQty){
+        $sql = "UPDATE product SET `quantity`=? WHERE `product_id`=?";
+        $this->pdo_execute($sql, $newQty, $product_id);
     }
 
     function order_delete($order_id){
