@@ -50,6 +50,15 @@ extract($item);
 
                         </div>
                         <div class="col-6">
+                            <label for="" class="form-label required">Address</label>
+                            <input type="text"
+                                class="form-control <?= !empty($error['error_address']) ? 'border border-danger' : '' ?>"
+                                id="" value="<?= !empty($_POST['address']) ? $_POST['address'] : $address ?>" name="address">
+                            <span id="red_error" class="form-text">
+                                <?= !empty($error['error_address']) ? $error['error_address'] : '' ?>
+                            </span>
+                        </div>
+                        <div class="col-6">
                             <label for="" class="form-label required">Role</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="role_id" value="1" id="role-radio3" <?= $role_id== 1?'checked':false ?>>

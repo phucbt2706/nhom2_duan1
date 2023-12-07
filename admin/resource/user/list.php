@@ -1,3 +1,17 @@
+<?php
+$tk = new KhachHang();
+$rows = $tk->num_row_user();
+$total_rows  = $rows[0]['num_row'];
+$num_rows_in_page = 10;
+$num_page = ceil($total_rows / $num_rows_in_page);
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+$start = ($page - 1) * $num_rows_in_page;
+
+$list_user = $tk->user_select_page($start, $num_rows_in_page);
+
+?>
 <div class="row">
     <div class="col-12">
         <div class="card">

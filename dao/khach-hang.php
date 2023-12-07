@@ -2,10 +2,10 @@
 class KhachHang extends Connect
 {
     // Insert category
-    function user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id)
+    function user_insert($username, $password, $fullname, $email, $phone, $avatar, $role_id, $address)
     {
-        $sql = "INSERT INTO `user`(`username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id`) VALUES(?,?,?,?,?,?,?)";
-        $this->pdo_execute($sql, $username, $password, $fullname, $email, $phone, $avatar, $role_id);
+        $sql = "INSERT INTO `user`(`username`, `password`, `fullname`, `email`, `phone`, `avatar`, `role_id`, `address`) VALUES(?,?,?,?,?,?,?,?)";
+        $this->pdo_execute($sql, $username, $password, $fullname, $email, $phone, $avatar, $role_id, $address);
     }
 
     // Update category
