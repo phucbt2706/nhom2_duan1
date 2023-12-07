@@ -2,14 +2,12 @@
 $pro = new HangHoa();
 if (!empty($_GET['cate_id'])) {
     $condition = " WHERE p.cate_id = " . $_GET['cate_id'] . " OR c.parent_id =" . $_GET['cate_id'];
-} else {
+} else if(!empty($_GET['search'])) {
+    $condition = " WHERE product_name LIKE '%". $_GET['search']."%'";
+}else {
     $condition = '';
 }
-if (!empty($_POST['search'])) {
-    $condition = " WHERE product_name LIKE '%". $_POST['search']."%'";
-} else {
-    $condition = '';
-}
+
 $rows = $pro->num_row_product($condition);
 $total_rows  = $rows[0]['num_row'];
 $num_rows_in_page = 12;
@@ -67,7 +65,7 @@ $list_product = $pro->product_select_page($start, $num_rows_in_page, $condition)
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item product-item-custom">
                                 <a href="?pages=shop-detail&product_id=<?= $product_id ?>"> <img class="product__item__pic set-bg" src="<?= $PUBLIC_URL ?>/img/product/<?= $images ?>"></img></a>
-                                <div class="product__item__text text-center">
+                                <div class="product__item__text">
                                     <h6><?= $product_name ?></h6>
                                     <a href="?pages=add_cart&product_id=<?= $product_id ?>" class="add-cart">+ Add To Cart</a>
                                     <h5><?= currency_format($price) ?></h5>

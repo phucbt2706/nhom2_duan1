@@ -3,7 +3,7 @@
     if (isset($_POST['update'])) {
         foreach ($_POST['qty'] as $key => $value) {
             $prod = $pro->products_select_by_id($key);
-            if ((int)$prod['discount'] < (int)$value) {
+            if ((int)$prod['quantity'] < (int)$value) {
                 echo "<script>alert(\"Số lượng vượt quá số lượng sản phẩm có trong kho!\")</script>";
                 $check = false;
                 break;

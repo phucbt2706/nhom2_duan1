@@ -4071,7 +4071,10 @@ ol {
 	align-items: center;
 	justify-content: center;
 }
-
+.product-item-custom a{
+	display: inline-block;
+	min-width: 200px;
+}
 .product-item-custom:hover {
 	box-shadow: 2px 2px 20px black;
 	transition: all .4s;
