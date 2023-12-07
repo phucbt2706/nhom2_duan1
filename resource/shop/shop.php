@@ -5,6 +5,11 @@ if (!empty($_GET['cate_id'])) {
 } else {
     $condition = '';
 }
+if (!empty($_POST['search'])) {
+    $condition = " WHERE product_name LIKE '%". $_POST['search']."%'";
+} else {
+    $condition = '';
+}
 $rows = $pro->num_row_product($condition);
 $total_rows  = $rows[0]['num_row'];
 $num_rows_in_page = 12;
