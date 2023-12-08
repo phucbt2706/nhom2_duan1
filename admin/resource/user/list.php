@@ -12,6 +12,23 @@ $start = ($page - 1) * $num_rows_in_page;
 $list_user = $tk->user_select_page($start, $num_rows_in_page);
 
 ?>
+
+<?php
+// ...
+
+// Kiểm tra xem user_id đã được lưu trong session hay chưa
+if (isset($_SESSION['user'])) {
+    // Lấy thông tin người dùng từ session
+    $userData = unserialize($_SESSION['user']);
+
+    // Sử dụng user_id
+    $user_id_login = $userData['user_id'];
+}
+echo '<script>';
+echo 'var user_id_login = ' . json_encode($user_id_login) . ';';
+echo '</script>';
+?>
+
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -57,7 +74,11 @@ $list_user = $tk->user_select_page($start, $num_rows_in_page);
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="index.php?pages=edit_user&user_id=<?=$user_id?>"><i class="bx bx-edit-alt me-1"></i>Edit</a>
-                                            <a class="dropdown-item" href="index.php?pages=delete_user&user_id=<?=$user_id?>"><i class="bx bx-edit-alt me-1"></i>Delete</a>
+                                            <!-- Thay thế liên kết "Delete" -->
+                                            <a class="dropdown-item" href="javascript:void(0);"
+                                                    onclick="showConfirmation(<?= $user_id ?>)">
+                                                    <i class="bx bx-edit-alt me-1"></i>Delete
+                                                </a>
                                         </div>
                                     </div>
                                 </td>
@@ -79,3 +100,23 @@ $list_user = $tk->user_select_page($start, $num_rows_in_page);
         <?php echo get_pagging_user($num_page,$page) ?>
     </div>
 </div>
+
+<!-- JavaScript -->
+<script>
+    function showConfirmation(user_id) {
+        // Hiển thị popup xác nhận
+        var confirmation = confirm("Bạn có chắc chắn muốn xóa User này?");
+
+        // Kiểm tra nếu người dùng đã nhấp vào OK (đồng ý)
+        if (confirmation) {
+            // Kiểm tra user_id
+            if (user_id_login == user_id) {
+                alert('Bạn không thể xóa tài khoản đang đăng nhập!!!');
+            } else {
+                // Chuyển hướng đến trang xóa với user_id
+                window.location.href = "?pages=delete_user&user_id=" + user_id;
+            }
+        }
+    }
+    
+</script>
