@@ -1,6 +1,6 @@
 $(document).ready(function(){
     //Change quantity
-    $(".site-btn").click(function(e){
+    $(".site-btn-order").click(function(e){
         e.preventDefault();
         var user_id = $(".user_id").val();
         var total = $(".total").val();

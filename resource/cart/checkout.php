@@ -139,7 +139,7 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <button type="submit" name="order" class="site-btn">PLACE ORDER</button>
+                            <button type="submit" name="order" class="site-btn-order">PLACE ORDER</button>
                         </div>
                     </div>
                 </div>
