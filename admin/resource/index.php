@@ -210,12 +210,7 @@ if (!empty($_SESSION['user'])) {
                 echo "<script>window.location.href ='?pages=list_products';</script>";
                 break;
             }
-            case 'add_pro': {
-                include "resource/statistic/add_pro.php";
-                break;
-            }
-
-
+            
             //-----------------------------------------------------Module Account---------------------------------------------------
             case 'account': {
                 include "resource/account/" . $pages . ".php";
