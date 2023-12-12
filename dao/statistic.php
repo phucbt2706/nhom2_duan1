@@ -1,16 +1,21 @@
 <?php
 class Statistic extends Connect{
     function thong_ke_hang_hoa(){
-        $sql = " SELECT lo.ma_loai, lo.ten_loai,"
-                        . " COUNT(*) so_luong,"
-                        . " MIN(hh.don_gia) gia_min,"
-                        . " MAX(hh.don_gia) gia_max,"
-                        . " AVG(hh.don_gia) gia_avg,"
-                        . " FROM hang_hoa hh "
-                        . " JOIN loai_hang lo ON lo.ma_loai = hh.ma_loai "
-                        . " GROUP BY lo.ma_loai, lo.ten_loai";
+        $sql = " SELECT c.cate_id,c.cate_name,c.parent_id,
+                        COUNT(*) num_cate 
+                        FROM product p 
+                        JOIN category c ON c.cate_id = p.cate_id 
+                        GROUP BY c.cate_id,c.cate_name
+                        ";
         return $this->pdo_query($sql);
     }
+
+    function get_name_parent($parent_id){
+        $sql = " SELECT * FROM category WHERE cate_id = ?";
+        $item = $this->pdo_query_one($sql,$parent_id);
+        return $item['cate_name'];
+    }
+
     
     function statistic_cmt($start,$num_rows_in_page){
         $sql = " SELECT p.product_id, p.product_name,
@@ -31,7 +36,7 @@ class Statistic extends Connect{
                 GROUP BY p.product_id, p.product_name";
         return $this->pdo_query($sql);
     }
+
+    
 }
-    
-    
 ?>
