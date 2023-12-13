@@ -123,7 +123,10 @@ switch ($pages) {
             // header("location: ?pages=shop");
             break;
         }
-
+    case 'access_momo': {
+        include "resource/cart/access_momo.php";
+        break;
+    }
         //-----------------------------------------------------Module Account---------------------------------------------------
     case 'login': {
             include "resource/account/" . $pages . ".php";
