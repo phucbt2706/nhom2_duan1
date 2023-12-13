@@ -30,7 +30,12 @@
         //Get all
         function category_select_all()
         {
-            $sql = "SELECT * FROM category";
+            $sql = "SELECT * FROM category WHERE parent_id = 0";
+            return $this->pdo_query($sql);
+        }
+        function category_select_brand()
+        {
+            $sql = "SELECT * FROM category WHERE parent_id != 0 LIMIT 0,7";
             return $this->pdo_query($sql);
         }
 

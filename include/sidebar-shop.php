@@ -38,10 +38,14 @@
                         <div class="card-body">
                             <div class="shop__sidebar__brand">
                                 <ul>
-                                    <li><a href="#">Louis Vuitton</a></li>
-                                    <li><a href="#">Chanel</a></li>
-                                    <li><a href="#">Hermes</a></li>
-                                    <li><a href="#">Gucci</a></li>
+                                <?php
+                                    $cate  = new Category();
+                                    foreach ($cate->category_select_brand() as $item) {
+                                        extract($item) ?>
+                                        <li><a href="?pages=shop&cate_id=<?= $cate_id ?>"><?= $cate_name ?></a></li>
+                                    <?php
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                         </div>
@@ -55,12 +59,12 @@
                         <div class="card-body">
                             <div class="shop__sidebar__price">
                                 <ul>
-                                    <li><a href="#">$0.00 - $50.00</a></li>
-                                    <li><a href="#">$50.00 - $100.00</a></li>
-                                    <li><a href="#">$100.00 - $150.00</a></li>
-                                    <li><a href="#">$150.00 - $200.00</a></li>
-                                    <li><a href="#">$200.00 - $250.00</a></li>
-                                    <li><a href="#">250.00+</a></li>
+                                    <li><a href="?pages=shop&price_min=1&price_max=100">$0.00 - $100.00</a></li>
+                                    <li><a href="?pages=shop&price_min=100&price_max=200">$100.00 - $200.00</a></li>
+                                    <li><a href="?pages=shop&price_min=200&price_max=500">$200.00 - $500.00</a></li>
+                                    <li><a href="?pages=shop&price_min=500&price_max=700">$500.00 - $700.00</a></li>
+                                    <li><a href="?pages=shop&price_min=700&price_max=1000">$700.00 - $1000.00</a></li>
+                                    <li><a href="?pages=shop&price_min=1000">$1000.00+</a></li>
                                 </ul>
                             </div>
                         </div>

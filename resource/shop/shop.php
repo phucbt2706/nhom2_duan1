@@ -4,7 +4,15 @@ if (!empty($_GET['cate_id'])) {
     $condition = " WHERE p.cate_id = " . $_GET['cate_id'] . " OR c.parent_id =" . $_GET['cate_id'];
 } else if(!empty($_GET['search'])) {
     $condition = " WHERE product_name LIKE '%". $_GET['search']."%'";
-}else {
+}
+elseif(!empty($_GET['price_min']) && !empty($_GET['price_max'])) {
+    $condition = " WHERE price >= '". $_GET['price_min']."' AND price < '". $_GET['price_max']."'";
+}
+elseif(!empty($_GET['price_min']))  {
+    $condition = " WHERE price >=
+     '". $_GET['price_min']."'";
+}
+else {
     $condition = '';
 }
 

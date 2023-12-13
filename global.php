@@ -48,5 +48,5 @@ function get_cookie($name)
 
 function currency_format($number)
 {
-    return number_format($number) . ' $';
+    return '$'.number_format($number,2) ;
 }
