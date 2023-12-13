@@ -11,7 +11,7 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th><input type="checkbox" name="product_id[]" id="product1" onclick="checkedAllPro();"></th>
+                                <!-- <th><input type="checkbox" name="product_id[]" id="product1" onclick="checkedAllPro();"></th> -->
                                 <th scope="col">Số lượng bình luận</th>
                                 <th scope="col">Tên sản phẩm</th>
                                 <th scope="col" colspan="2">Action</th>
@@ -22,7 +22,7 @@
                             foreach ($comments as $cmt) {
                             ?>
                                 <tr>
-                                    <td> <input type="checkbox"></td>
+                                    <!-- <td> <input type="checkbox"></td> -->
                                     <td><?= $cmt['quantity'] ?></td>
                                     <td><?= $cmt['name_product'] ?></td>
                                     <td>

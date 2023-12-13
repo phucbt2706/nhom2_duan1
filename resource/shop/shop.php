@@ -55,7 +55,7 @@ $list_product = $pro->product_select_page($start, $num_rows_in_page, $condition)
                                 <p>Showing 1–<?= $num_rows_in_page ?> of <?= $total_rows ?> results</p>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <!-- <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="shop__product__option__right">
                                 <p>Sort by Price:</p>
                                 <select>
@@ -64,7 +64,7 @@ $list_product = $pro->product_select_page($start, $num_rows_in_page, $condition)
                                     <option value="">$55 - $100</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="row">

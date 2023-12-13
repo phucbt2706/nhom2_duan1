@@ -74,10 +74,8 @@
                                     <div class="product__details__text">
                                         <h4><?= $product_name ?></h4>
 
-                                        <h3><?= currency_format($price) ?> <span>70.00</span></h3>
-                                        <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
-                                            cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
-                                            with placket.</p>
+                                        <h3><?= currency_format($price) ?></h3>
+                                        <p><img src="../../public/img/product/thongso.PNG" alt=""></p>
 
                                         <div class="product__details__cart__option">
                                             <a href="?pages=add_cart&product_id=<?= $product_id ?>" class="primary-btn">add to cart</a>

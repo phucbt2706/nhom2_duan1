@@ -8,7 +8,8 @@ if (!empty($_POST['order_id'])) {
         echo "<script>alert(\"Delete order successfully! \");</script>";
         echo "<script>window.location.href ='?pages=orders';</script>";
     } catch (PDOException $e) {
-        throw $e;
+        echo "<script>alert(\"Delete failed! \");</script>";
+        echo "<script>window.location.href ='?pages=orders';</script>";
     }
 }else {
     echo "<script>alert(\"Chưa chọn sản phẩm để xóa \");</script>";
